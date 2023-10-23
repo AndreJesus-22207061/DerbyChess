@@ -22,30 +22,59 @@ import java.util.ArrayList;
                 boolean segundaLinha = false;
                 int tamanhoTabuleiro = 0;
                 int count = 0;
+                int countLinhasTabuleiro = 0;
                 int numeroPecas = 0;
-                String[] pecas = new String[numeroPecas];
+                ArrayList<Peca> pecas = new ArrayList<>();
+
+
 
                 while((linha = reader.readLine()) != null){
                     if(primeiraLinha){
                         tamanhoTabuleiro = Integer.parseInt(linha);
+
                         primeiraLinha = false;
                         segundaLinha= true;
+                        continue;
                     }
                     if(segundaLinha){
                         numeroPecas = Integer.parseInt(linha);
-
+                        segundaLinha = false;
+                        continue;
                     }
 
+                    if(primeiraLinha== false && segundaLinha == false && count<numeroPecas){
+                        String[] partes = linha.split(":");
+                        int idPeca = Integer.parseInt(partes[0].trim());
+                        int tipoPeca = Integer.parseInt(partes[1].trim());
+                        int equipaPeca = Integer.parseInt(partes[2].trim());
+                        String alcunhaPeca = partes[3].trim();
 
+                        Peca peca = new Peca(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        pecas.add(peca);
 
+                        count++;
+                    }
 
-
-
-
-
-
-
+                    if(count==numeroPecas){
+                        String[] partes = linha.split(":");
+                        int countColunas = 0;
+                        for(String parte : partes){
+                            int parteInt = Integer.parseInt(parte);
+                            if(parteInt==0){
+                                countColunas++;
+                            }else{
+                                for(Peca peca : pecas){
+                                    if(peca.getID()==parteInt){
+                                        peca.setCoordenadas(countLinhasTabuleiro,countColunas);
+                                        countColunas++;
+                                    }
+                                }
+                            }
+                        }
+                        countLinhasTabuleiro++;
+                    }
                 }
+                Tabuleiro tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
 
 
                 reader.close();
@@ -91,10 +120,12 @@ import java.util.ArrayList;
             ArrayList<String> aaa = new ArrayList<>();
             return aaa;
         }
-
+/*
         JPanel getAuthorsPanel(){
             return ;
         }
+        */
+
     }
 
 

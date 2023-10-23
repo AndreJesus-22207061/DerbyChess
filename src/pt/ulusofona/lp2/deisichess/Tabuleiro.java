@@ -1,12 +1,18 @@
 package pt.ulusofona.lp2.deisichess;
 
+import java.util.ArrayList;
+
 public class Tabuleiro {
     int tamanho;
     Peca[][] tabuleiro;
+    String[][] tabuleiroCoordenadas;
 
-    public Tabuleiro(int tamanho) {
+    ArrayList<Peca> pecas;
+
+    public Tabuleiro(int tamanho,ArrayList<Peca>pecas) {
         this.tamanho = tamanho;
         this.tabuleiro = new Peca[tamanho][tamanho];
+        this.pecas = pecas;
     }
 
     public void inicializarTabuleiro() {
