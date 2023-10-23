@@ -2,12 +2,42 @@ package pt.ulusofona.lp2.deisichess;
 
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
     public class GameManager {
 
-        boolean loadGame( File file ){
+        boolean loadGame(File file) {
+            BufferedReader reader;
+
+            try {
+                reader = new BufferedReader(new FileReader(file));
+            } catch (FileNotFoundException e) {
+                return false;
+            }
+
+            try{
+                String linha;
+                while((linha = reader.readLine()) != null){
+
+
+
+
+
+
+
+
+
+
+                }
+
+
+                reader.close();
+            } catch (IOException e) {
+                return false;
+            }
+
+
             return true;
         }
 
