@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Tabuleiro {
     int tamanho;
     Peca[][] tabuleiro;
-    String[][] tabuleiroCoordenadas;
 
     ArrayList<Peca> pecas;
 

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
     public class GameManager {
 
+      static   Tabuleiro tabuleiro;
+
         boolean loadGame(File file) {
             BufferedReader reader;
 
@@ -44,15 +46,15 @@ import java.util.ArrayList;
 
                     if(primeiraLinha== false && segundaLinha == false && count<numeroPecas){
                         String[] partes = linha.split(":");
-                        int idPeca = Integer.parseInt(partes[0].trim());
-                        int tipoPeca = Integer.parseInt(partes[1].trim());
-                        int equipaPeca = Integer.parseInt(partes[2].trim());
-                        String alcunhaPeca = partes[3].trim();
+                        int idPeca = Integer.parseInt(partes[0]);
+                        int tipoPeca = Integer.parseInt(partes[1]);
+                        int equipaPeca = Integer.parseInt(partes[2]);
+                        String alcunhaPeca = partes[3];
 
                         Peca peca = new Peca(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                         pecas.add(peca);
-
                         count++;
+                        continue;
                     }
 
                     if(count==numeroPecas){
@@ -74,7 +76,7 @@ import java.util.ArrayList;
                         countLinhasTabuleiro++;
                     }
                 }
-                Tabuleiro tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
+                tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
 
 
                 reader.close();
