@@ -18,7 +18,23 @@ import java.util.ArrayList;
 
             try{
                 String linha;
+                boolean primeiraLinha = true;
+                boolean segundaLinha = false;
+                int tamanhoTabuleiro = 0;
+                int count = 0;
+                int numeroPecas = 0;
+                String[] pecas = new String[numeroPecas];
+
                 while((linha = reader.readLine()) != null){
+                    if(primeiraLinha){
+                        tamanhoTabuleiro = Integer.parseInt(linha);
+                        primeiraLinha = false;
+                        segundaLinha= true;
+                    }
+                    if(segundaLinha){
+                        numeroPecas = Integer.parseInt(linha);
+
+                    }
 
 
 
