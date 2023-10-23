@@ -100,8 +100,8 @@ import java.util.ArrayList;
         }
 
         String[] getPieceInfo(int ID){
-            String[] dibil= new String[1];
-            return dibil;
+            String[] dibil1= new String[1];
+            return dibil1;
         }
 
         String getPieceInfoAsString(int ID){
