@@ -111,8 +111,7 @@ import java.util.ArrayList;
         }
 
         String[] getPieceInfo(int ID){
-            String[] dibil1= new String[1];
-            return dibil1;
+            return tabuleiro.buscarInfomacaoPeca(ID);
         }
 
         String getPieceInfoAsString(int ID){

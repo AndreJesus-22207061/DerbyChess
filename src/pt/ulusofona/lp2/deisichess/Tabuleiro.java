@@ -27,12 +27,18 @@ public class Tabuleiro {
     String[] buscarInfomacaoPeca (int ID){
         String[]informacaoPeca = new String[7];
         for (Peca peca : pecas) {
-            if(peca.getID()== ID){
-                informacaoPeca[0]=
+            if(peca.getID()== ID) {
+                informacaoPeca[0] = String.valueOf(peca.getID());
+                informacaoPeca[1] = String.valueOf(peca.getTipo());
+                informacaoPeca[2] = String.valueOf(peca.getEquipa());
+                informacaoPeca[3] = peca.getAlcunha();
+                informacaoPeca[4] = peca.estaEmJogo();
+                informacaoPeca[5] = String.valueOf(peca.getX());
+                informacaoPeca[6] = String.valueOf(peca.getY());
+                return informacaoPeca;
             }
         }
-
-
+        return null;
     }
 
 

@@ -11,6 +11,8 @@ public class Peca {
 
     String alcunha;
 
+    boolean estado;
+
     int x;
 
     int y;
@@ -20,6 +22,7 @@ public class Peca {
         this.tipo = tipo;
         this.equipa = equipa;
         this.alcunha = alcunha;
+        this.estado = true;
     }
 
     @Override
@@ -48,6 +51,17 @@ public class Peca {
         return alcunha;
     }
 
+    boolean getEstado(){
+        return estado;
+    }
+
+    int getX(){
+        return x;
+    }
+
+    int getY(){
+        return y;
+    }
 
 
 
@@ -56,13 +70,15 @@ public class Peca {
         this.y = coordenadaY;
     }
 
-int getX(){
-        return x;
-}
 
-int getY(){
-        return y;
-}
+    String estaEmJogo (){
+        if(!estado){
+            return "Capturada";
+        }else{
+            return "Em jogo";
+        }
+
+    }
 
 
 }
