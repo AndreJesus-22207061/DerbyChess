@@ -24,6 +24,19 @@ public class Tabuleiro {
         return tamanho;
     }
 
+    String[] buscarInfomacaoPeca (int ID){
+        String[]informacaoPeca = new String[7];
+        for (Peca peca : pecas) {
+            if(peca.getID()== ID){
+                informacaoPeca[0]=
+            }
+        }
+
+
+    }
+
+
+
 
 
 

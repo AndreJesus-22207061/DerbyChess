@@ -15,6 +15,7 @@ public class TestGameManager {
     @Test
     public void loadGame4x4(){
         File file = new File("test-files","4x4.txt");
+        jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = GameManager.tabuleiro;
@@ -53,6 +54,7 @@ public class TestGameManager {
     @Test
     public void loadGame8x8(){
         File file = new File("test-files","8x8.txt");
+        jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = GameManager.tabuleiro;
