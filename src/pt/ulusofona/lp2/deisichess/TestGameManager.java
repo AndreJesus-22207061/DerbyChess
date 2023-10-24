@@ -13,7 +13,7 @@ public class TestGameManager {
 
 
     @Test
-    public void loadFiles(){
+    public void loadFiles4x4(){
         File file = new File("4x4.txt");
         jogo.loadGame(file);
 
