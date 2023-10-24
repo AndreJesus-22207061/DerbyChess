@@ -95,8 +95,7 @@ import java.util.ArrayList;
         }
 
         int getBoardSize(){
-            tabuleiro.getTamanho();
-            return 1;
+            return tabuleiro.getTamanho();
         }
 
 
