@@ -13,9 +13,9 @@ public class Peca {
 
     boolean estado;
 
-    int x;
+    int x; //colunas
 
-    int y;
+    int y; //linhas
 
     public Peca(int id, int tipo, int equipa, String alcunha) {
         this.id = id;

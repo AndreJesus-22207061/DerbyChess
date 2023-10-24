@@ -25,27 +25,27 @@ public class TestGameManager {
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
         Peca peca1 = new Peca(1,0,0,"Chefe");
-        peca1.setCoordenadas(0,1);
+        peca1.setCoordenadas(1,0);
         pecasTeste.add(peca1);
 
         Peca peca2 = new Peca(2,0,0,"Selvagem");
-        peca2.setCoordenadas(0,3);
+        peca2.setCoordenadas(3,0);
         pecasTeste.add(peca2);
 
         Peca peca3 = new Peca(3,0,0,"Grande Artista");
-        peca3.setCoordenadas(1,2);
+        peca3.setCoordenadas(2,1);
         pecasTeste.add(peca3);
 
         Peca peca4 = new Peca(4,0,1,"O Maior");
-        peca4.setCoordenadas(3,2);
+        peca4.setCoordenadas(2,3);
         pecasTeste.add(peca4);
 
         Peca peca5 = new Peca(5,0,1,"O Amigo");
-        peca5.setCoordenadas(3,1);
+        peca5.setCoordenadas(1,3);
         pecasTeste.add(peca5);
 
         Peca peca6 = new Peca(6,0,1,"O Beberolas");
-        peca6.setCoordenadas(2,1);
+        peca6.setCoordenadas(1,2);
         pecasTeste.add(peca6);
 
         assertEquals(pecasTeste,tabuleiro.pecas);
@@ -64,31 +64,31 @@ public class TestGameManager {
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
         Peca peca1 = new Peca(1,0,0,"Chefe");
-        peca1.setCoordenadas(0,1);
+        peca1.setCoordenadas(1,0);
         pecasTeste.add(peca1);
 
         Peca peca2 = new Peca(2,0,0,"Selvagem");
-        peca2.setCoordenadas(0,3);
+        peca2.setCoordenadas(3,0);
         pecasTeste.add(peca2);
 
         Peca peca3 = new Peca(3,0,0,"Grande Artista");
-        peca3.setCoordenadas(1,2);
+        peca3.setCoordenadas(2,1);
         pecasTeste.add(peca3);
 
         Peca peca4 = new Peca(4,0,0,"Amante de Praia");
-        peca4.setCoordenadas(1,4);
+        peca4.setCoordenadas(4,1);
         pecasTeste.add(peca4);
 
         Peca peca5 = new Peca(5,0,0,"Artolas");
-        peca5.setCoordenadas(1,6);
+        peca5.setCoordenadas(6,1);
         pecasTeste.add(peca5);
 
         Peca peca6 = new Peca(6,0,1,"O Maior");
-        peca6.setCoordenadas(5,4);
+        peca6.setCoordenadas(4,5);
         pecasTeste.add(peca6);
 
         Peca peca7 = new Peca(7,0,1,"O Amigo");
-        peca7.setCoordenadas(6,2);
+        peca7.setCoordenadas(2,6);
         pecasTeste.add(peca7);
 
         Peca peca8 = new Peca(8,0,1,"O Beberolas");
@@ -96,11 +96,11 @@ public class TestGameManager {
         pecasTeste.add(peca8);
 
         Peca peca9 = new Peca(9,0,1,"O Esperto");
-        peca9.setCoordenadas(7,2);
+        peca9.setCoordenadas(2,7);
         pecasTeste.add(peca9);
 
         Peca peca10 = new Peca(10,0,1,"O Barulhento");
-        peca10.setCoordenadas(7,4);
+        peca10.setCoordenadas(4,7);
         pecasTeste.add(peca10);
 
         assertEquals(pecasTeste,tabuleiro.pecas);
@@ -118,7 +118,7 @@ public class TestGameManager {
 
 
         // -------------------Teste para coordenadas com peça-------------------------------
-        String[] resultComPeca = jogo.getSquareInfo(0, 1);
+        String[] resultComPeca = jogo.getSquareInfo(1, 0);
         assertArrayEquals(new String[]{"1", "0", "0", "Chefe", null}, resultComPeca);
 
 
@@ -140,7 +140,7 @@ public class TestGameManager {
 
         // -------------------Teste para peça válida-------------------------------
         String[] resultComPeca = jogo.getPieceInfo(1);
-        assertArrayEquals(new String[]{"1", "0", "0", "Chefe","Em jogo","0","1"}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "0", "Chefe","Em jogo","1","0"}, resultComPeca);
 
 
 

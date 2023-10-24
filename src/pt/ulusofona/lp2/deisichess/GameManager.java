@@ -67,7 +67,7 @@ import java.util.ArrayList;
                             }else{
                                 for(Peca peca : pecas){
                                     if(peca.getID()==parteInt){
-                                        peca.setCoordenadas(countLinhasTabuleiro,countColunas);
+                                        peca.setCoordenadas(countColunas,countLinhasTabuleiro);
                                         countColunas++;
                                         break;
                                     }
