@@ -140,7 +140,7 @@ public class TestGameManager {
 
         // -------------------Teste para peça válida-------------------------------
         String[] resultComPeca = jogo.getPieceInfo(1);
-        assertArrayEquals(new String[]{"1", "0", "0", "Chefe","Em jogo","1","0"}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "0", "Chefe","em jogo","1","0"}, resultComPeca);
 
 
 

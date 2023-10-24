@@ -57,7 +57,7 @@ public class Tabuleiro {
                 return informacaoQuadrado;
             }
         }
-            return informacaoQuadrado;
+            return null;
     }
 
 
