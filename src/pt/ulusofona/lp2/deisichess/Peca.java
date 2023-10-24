@@ -36,12 +36,33 @@ public class Peca {
         return id;
     }
 
+    int getTipo(){
+        return tipo;
+    }
+
+    int getEquipa(){
+        return equipa;
+    }
+
+    String getAlcunha(){
+        return alcunha;
+    }
+
+
+
+
     void setCoordenadas (int coordenadaX, int coordenadaY ){
         this.x = coordenadaX;
         this.y = coordenadaY;
     }
 
+int getX(){
+        return x;
+}
 
+int getY(){
+        return y;
+}
 
 
 }

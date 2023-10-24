@@ -21,9 +21,14 @@ public class Tabuleiro {
 
 
     int getTamanho(){
-        return this.tamanho;
+        return tamanho;
     }
 
 
 
+
+
+
 }
+
+

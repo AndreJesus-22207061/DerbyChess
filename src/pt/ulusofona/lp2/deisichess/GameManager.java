@@ -69,7 +69,6 @@ import java.util.ArrayList;
                                     if(peca.getID()==parteInt){
                                         peca.setCoordenadas(countLinhasTabuleiro,countColunas);
                                         countColunas++;
-                                        break;
                                     }
                                 }
                             }
@@ -90,8 +89,7 @@ import java.util.ArrayList;
         }
 
         int getBoardSize(){
-            tabuleiro.getTamanho();
-            return 1;
+            return tabuleiro.getTamanho();
         }
 
         boolean move( int x0, int y0, int x1, int y1){
@@ -104,8 +102,10 @@ import java.util.ArrayList;
         }
 
         String[] getPieceInfo(int ID){
-            String[] dibil1= new String[1];
-            return dibil1;
+            Peca peca = ;
+            String[] informacaoPeca = new String[7];
+            informacaoPeca[0] = peca.getID();
+            return informacaoPeca;
         }
 
         String getPieceInfoAsString(int ID){
