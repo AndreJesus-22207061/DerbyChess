@@ -106,8 +106,7 @@ import java.util.ArrayList;
         }
 
         String[] getSquareInfo(int x, int y){
-            String[] dibil3 = new String[1];
-            return dibil3;
+            return tabuleiro.buscarInformacaoQuadrado(x,y);
         }
 
         String[] getPieceInfo(int ID){

@@ -42,6 +42,22 @@ public class Tabuleiro {
     }
 
 
+    String[] buscarInformacaoQuadrado(int x, int y){
+        String[] informacaoQuadrado = new String[5];
+        for (Peca peca : pecas) {
+            if(peca.getX() == x && peca.getY() == y){
+                informacaoQuadrado[0] = String.valueOf(peca.getID());
+                informacaoQuadrado[1] = String.valueOf(peca.getTipo());
+                informacaoQuadrado[2] = String.valueOf(peca.getEquipa());
+                informacaoQuadrado[3] = peca.getAlcunha();
+                informacaoQuadrado[4] = null;
+                return informacaoQuadrado;
+            }
+        }
+        return null;
+    }
+
+
 
 
 
