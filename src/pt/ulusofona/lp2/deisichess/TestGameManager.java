@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class TestGameManager {
 
     public GameManager jogo = new GameManager();
@@ -105,6 +107,25 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testGetSquareInfo() {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+        // -------------------Teste para coordenadas inválidas---------------------
+        String[] resultInvalid = jogo.getSquareInfo(10, 20);
+        assertNull(resultInvalid);
+
+
+        // -------------------Teste para coordenadas com peça-------------------------------
+        String[] resultComPeca = jogo.getSquareInfo(0, 1);
+        assertArrayEquals(new String[]{"1", "0", "0", "Chefe", null}, resultComPeca);
+
+
+        // ------------------ Teste para coordenadas sem peça-----------------------------
+        String[] resultSemPeca = jogo.getSquareInfo(2, 2);
+        assertArrayEquals(new String[]{null, null, null, null, null}, resultSemPeca);
+    }
 
 
 
@@ -112,10 +133,16 @@ public class TestGameManager {
 
 
 
-    /*a funcao de teste nao pode tar vazia
-    a funcao de teste tem de ter pelo menos um assert
-    a funcao de teste tem de chamar codigo do projeto
-    o assert tem de comparar o resultado de uma funcao do projeto com um resultado esperado
-    */
+
+
 
 }
+
+
+
+
+
+
+
+
+
