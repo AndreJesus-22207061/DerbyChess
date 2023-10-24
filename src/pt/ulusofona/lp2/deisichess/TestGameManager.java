@@ -114,7 +114,7 @@ public class TestGameManager {
         jogo.loadGame(file);
         // -------------------Teste para coordenadas inválidas---------------------
         String[] resultInvalid = jogo.getSquareInfo(10, 20);
-        assertArrayEquals(new String[]{},resultInvalid);
+        assertNull(resultInvalid);
 
 
         // -------------------Teste para coordenadas com peça-------------------------------
@@ -124,7 +124,7 @@ public class TestGameManager {
 
         // ------------------ Teste para coordenadas sem peça-----------------------------
         String[] resultSemPeca = jogo.getSquareInfo(2, 2);
-        assertArrayEquals(new String[]{null, null, null, null, null}, resultSemPeca);
+        assertArrayEquals(new String[]{}, resultSemPeca);
     }
 
 
@@ -135,7 +135,7 @@ public class TestGameManager {
         jogo.loadGame(file);
         // -------------------Teste para peça inválida---------------------
         String[] resultInvalid = jogo.getPieceInfo(11);
-        assertNull(resultInvalid);
+        assertArrayEquals(new String[]{}, resultInvalid);
 
 
         // -------------------Teste para peça válida-------------------------------
