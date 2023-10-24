@@ -23,7 +23,7 @@ import java.util.ArrayList;
                 boolean primeiraLinha = true;
                 boolean segundaLinha = false;
                 int tamanhoTabuleiro = 0;
-                int count = 0;
+                int countLinhasFicheiro = 0;
                 int countLinhasTabuleiro = 0;
                 int numeroPecas = 0;
                 ArrayList<Peca> pecas = new ArrayList<>();
@@ -44,7 +44,7 @@ import java.util.ArrayList;
                         continue;
                     }
 
-                    if(primeiraLinha== false && segundaLinha == false && count<numeroPecas){
+                    if(primeiraLinha== false && segundaLinha == false && countLinhasFicheiro<numeroPecas){
                         String[] partes = linha.split(":");
                         int idPeca = Integer.parseInt(partes[0]);
                         int tipoPeca = Integer.parseInt(partes[1]);
@@ -53,11 +53,11 @@ import java.util.ArrayList;
 
                         Peca peca = new Peca(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                         pecas.add(peca);
-                        count++;
+                        countLinhasFicheiro++;
                         continue;
                     }
 
-                    if(count==numeroPecas){
+                    if(countLinhasFicheiro==numeroPecas){
                         String[] partes = linha.split(":");
                         int countColunas = 0;
                         for(String parte : partes){
