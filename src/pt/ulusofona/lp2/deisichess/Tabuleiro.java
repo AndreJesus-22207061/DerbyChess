@@ -38,7 +38,7 @@ public class Tabuleiro {
                 return informacaoPeca;
             }
         }
-        return null;
+        return new String[0];
     }
 
 
@@ -57,7 +57,7 @@ public class Tabuleiro {
                 return informacaoQuadrado;
             }
         }
-            return null;
+            return new String[0];
     }
 
 

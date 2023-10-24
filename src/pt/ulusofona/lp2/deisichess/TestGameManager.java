@@ -114,7 +114,7 @@ public class TestGameManager {
         jogo.loadGame(file);
         // -------------------Teste para coordenadas inválidas---------------------
         String[] resultInvalid = jogo.getSquareInfo(10, 20);
-        assertNull(resultInvalid);
+        assertArrayEquals(new String[]{},resultInvalid);
 
 
         // -------------------Teste para coordenadas com peça-------------------------------
