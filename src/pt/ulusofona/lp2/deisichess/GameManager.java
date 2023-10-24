@@ -129,11 +129,11 @@ import java.util.ArrayList;
             ArrayList<String> aaa = new ArrayList<>();
             return aaa;
         }
-/*
+
         JPanel getAuthorsPanel(){
-            return ;
+            return new JPanel();
         }
-        */
+
 
     }
 
