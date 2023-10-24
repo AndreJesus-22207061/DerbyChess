@@ -26,6 +26,11 @@ public class Peca {
     }
 
     @Override
+    public String toString() {
+        return  id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + "," + y +")" ;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o){
             return true;
@@ -83,6 +88,10 @@ public class Peca {
         }
 
     }
+
+
+
+
 
 
 }

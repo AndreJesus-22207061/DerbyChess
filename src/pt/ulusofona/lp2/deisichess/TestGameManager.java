@@ -146,7 +146,23 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testGetPieceInfoAsString() {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+        // -------------------Teste para peça inválida---------------------
+        String resultInvalid = jogo.getPieceInfoAsString(11);
+        assertNull(resultInvalid);
 
+
+        // -------------------Teste para peça válida-------------------------------
+        String resultComPeca = jogo.getPieceInfoAsString(1);
+        assertEquals("1 | 0 | 0 | Chefe @ (1,0)", resultComPeca);
+
+
+
+    }
 
 
 

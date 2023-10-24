@@ -113,7 +113,7 @@ import java.util.ArrayList;
         }
 
         String getPieceInfoAsString(int ID){
-            return "aa";
+            return tabuleiro.buscarInformacaoPecaAsString(ID);
         }
 
         int getCurrentTeamID(){
