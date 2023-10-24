@@ -69,6 +69,7 @@ import java.util.ArrayList;
                                     if(peca.getID()==parteInt){
                                         peca.setCoordenadas(countLinhasTabuleiro,countColunas);
                                         countColunas++;
+                                        break;
                                     }
                                 }
                             }
@@ -89,6 +90,7 @@ import java.util.ArrayList;
         }
 
         int getBoardSize(){
+            tabuleiro.getTamanho();
             return 1;
         }
 
