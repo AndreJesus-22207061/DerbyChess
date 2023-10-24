@@ -84,7 +84,7 @@ public class Peca {
         if(!estado){
             return "Capturada";
         }else{
-            return "Em jogo";
+            return "em jogo";
         }
 
     }
