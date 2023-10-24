@@ -158,7 +158,7 @@ public class TestGameManager {
 
         // -------------------Teste para peça válida-------------------------------
         String resultComPeca = jogo.getPieceInfoAsString(1);
-        assertEquals("1 | 0 | 0 | Chefe @ (1,0)", resultComPeca);
+        assertEquals("1 | 0 | 0 | Chefe @ (1, 0)", resultComPeca);
 
 
 
