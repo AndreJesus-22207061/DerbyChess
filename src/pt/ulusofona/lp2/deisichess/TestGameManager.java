@@ -19,8 +19,7 @@ public class TestGameManager {
         File file = new File("test-files","4x4.txt");
         jogo.reset();
         jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = GameManager.tabuleiro;
+        Tabuleiro tabuleiro = jogo.tabuleiro;
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
@@ -48,7 +47,7 @@ public class TestGameManager {
         peca6.setCoordenadas(1,2);
         pecasTeste.add(peca6);
 
-        assertEquals(pecasTeste,tabuleiro.pecas);
+        assertEquals(pecasTeste, tabuleiro.pecas);
 
     }
 
@@ -59,7 +58,9 @@ public class TestGameManager {
         jogo.reset();
         jogo.loadGame(file);
 
-        Tabuleiro tabuleiro = GameManager.tabuleiro;
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
@@ -133,6 +134,7 @@ public class TestGameManager {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
+
         // -------------------Teste para peça inválida---------------------
         String[] resultInvalid = jogo.getPieceInfo(11);
         assertArrayEquals(new String[]{}, resultInvalid);
