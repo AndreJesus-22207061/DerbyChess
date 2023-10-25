@@ -117,7 +117,7 @@ import java.util.ArrayList;
         }
 
         int getCurrentTeamID(){
-            return 1;
+            return 0;
         }
 
         boolean gameOver(){
