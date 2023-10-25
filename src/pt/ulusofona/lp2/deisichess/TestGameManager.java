@@ -20,7 +20,7 @@ public class TestGameManager {
         jogo.reset();
         jogo.loadGame(file);
 
-        Tabuleiro tabuleiro = GameManager.tabuleiro;
+        Tabuleiro tabuleiro = jogo.tabuleiro;
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class TestGameManager {
         jogo.reset();
         jogo.loadGame(file);
 
-        Tabuleiro tabuleiro = GameManager.tabuleiro;
+        Tabuleiro tabuleiro = jogo.tabuleiro;
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
@@ -112,6 +112,9 @@ public class TestGameManager {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
         // -------------------Teste para coordenadas inválidas---------------------
         String[] resultInvalid = jogo.getSquareInfo(10, 20);
         assertNull(resultInvalid);
@@ -133,6 +136,9 @@ public class TestGameManager {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
         // -------------------Teste para peça inválida---------------------
         String[] resultInvalid = jogo.getPieceInfo(11);
         assertArrayEquals(new String[]{}, resultInvalid);
@@ -151,6 +157,9 @@ public class TestGameManager {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
         // -------------------Teste para peça inválida---------------------
         String resultInvalid = jogo.getPieceInfoAsString(11);
         assertNull(resultInvalid);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
     public class GameManager {
 
-      static   Tabuleiro tabuleiro;
+        Tabuleiro tabuleiro;
 
         boolean loadGame(File file) {
             BufferedReader reader;
@@ -23,8 +23,8 @@ import java.util.ArrayList;
                 boolean primeiraLinha = true;
                 boolean segundaLinha = false;
                 int tamanhoTabuleiro = 0;
-                int countLinhasFicheiro = 0;
-                int countLinhasTabuleiro = 0;
+                int count = 0;
+                int countColunas = 0;
                 int numeroPecas = 0;
                 ArrayList<Peca> pecas = new ArrayList<>();
 
@@ -44,7 +44,7 @@ import java.util.ArrayList;
                         continue;
                     }
 
-                    if(primeiraLinha== false && segundaLinha == false && countLinhasFicheiro<numeroPecas){
+                    if(primeiraLinha== false && segundaLinha == false && count<numeroPecas){
                         String[] partes = linha.split(":");
                         int idPeca = Integer.parseInt(partes[0]);
                         int tipoPeca = Integer.parseInt(partes[1]);
@@ -53,28 +53,28 @@ import java.util.ArrayList;
 
                         Peca peca = new Peca(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                         pecas.add(peca);
-                        countLinhasFicheiro++;
+                        count++;
                         continue;
                     }
 
-                    if(countLinhasFicheiro==numeroPecas){
+                    if(count==numeroPecas){
                         String[] partes = linha.split(":");
-                        int countColunas = 0;
+                        int countlinhas = 0;
                         for(String parte : partes){
                             int parteInt = Integer.parseInt(parte);
                             if(parteInt==0){
-                                countColunas++;
+                                countlinhas++;
                             }else{
                                 for(Peca peca : pecas){
                                     if(peca.getID()==parteInt){
-                                        peca.setCoordenadas(countColunas,countLinhasTabuleiro);
-                                        countColunas++;
+                                        peca.setCoordenadas(countlinhas,countColunas);
+                                        countlinhas++;
                                         break;
                                     }
                                 }
                             }
                         }
-                        countLinhasTabuleiro++;
+                        countColunas++;
                     }
                 }
                 tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
@@ -101,14 +101,17 @@ import java.util.ArrayList;
 
 
         boolean move( int x0, int y0, int x1, int y1){
+
             return true;
         }
 
         String[] getSquareInfo(int x, int y){
+            tabuleiro.inicializarTabuleiro();
             return tabuleiro.buscarInformacaoQuadrado(x,y);
         }
 
         String[] getPieceInfo(int ID){
+            tabuleiro.inicializarTabuleiro();
             return tabuleiro.buscarInfomacaoPeca(ID);
         }
 
@@ -117,10 +120,12 @@ import java.util.ArrayList;
         }
 
         int getCurrentTeamID(){
+
             return 1;
         }
 
         boolean gameOver(){
+
             return true;
         }
 
@@ -130,6 +135,7 @@ import java.util.ArrayList;
         }
 
         JPanel getAuthorsPanel(){
+
             return new JPanel();
         }
 
