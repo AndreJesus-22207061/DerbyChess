@@ -30,6 +30,10 @@ public class Tabuleiro {
         }
     }
 
+    Peca getPeca(int x , int y){
+        return tabuleiro[x][y];
+    }
+
 
     int getTamanho(){
         return tamanho;
@@ -45,6 +49,11 @@ public class Tabuleiro {
         }else{
             equipaAjogar=0;
         }
+    }
+
+     void movePeca(int x0, int y0, int x1, int y1) {
+        tabuleiro[x1][y1] = tabuleiro[x0][y0];
+        tabuleiro[x0][y0] = null;
     }
 
 

@@ -9,7 +9,7 @@ public class GameManager {
 
     Tabuleiro tabuleiro;
 
-    boolean loadGame(File file) {
+ public boolean loadGame(File file) {
         BufferedReader reader;
 
         try {
@@ -91,66 +91,78 @@ public class GameManager {
     }
 
 
-    void reset(){
+    public void reset(){
         tabuleiro = new Tabuleiro(0,null);
     }
 
-    int getBoardSize(){
+    public int getBoardSize(){
         return tabuleiro.getTamanho();
     }
 
 
 
-    boolean move( int x0, int y0, int x1, int y1){
+    public boolean move( int x0, int y0, int x1, int y1){
+        Peca peca = tabuleiro.getPeca(x0,y0);
         String[] informacaoPeca = tabuleiro.buscarInformacaoQuadrado(x0,y0);
         int equipaPeca = Integer.parseInt(informacaoPeca[2]);
 
+
         String[] informacaoDestino = tabuleiro.buscarInformacaoQuadrado(x1,y1);
-        int equipaDestino = Integer.parseInt(informacaoDestino[2]);
+        if(informacaoDestino.length>0){
+            int equipaDestino = Integer.parseInt(informacaoDestino[2]);
+
+            if(equipaPeca == equipaDestino){
+                //jogada invalida peca da mesma equipa no destino
+                return false;
+            }
+        }
+
 
         if (equipaPeca!=tabuleiro.getEquipaAjogar()) {
             //jogada invalida turno invalido
             return false;
         }
 
-        if(equipaPeca == equipaDestino){
-            //jogada invalida peca da mesma equipa no destino
+
+        if(!(peca.validMove(x1,y1,tabuleiro))){
+            //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
-
+        tabuleiro.movePeca( x0, y0, x1, y1);
+        peca.setCoordenadas(x1,y1);
 
         return true;
     }
 
-    String[] getSquareInfo(int x, int y){
+    public  String[] getSquareInfo(int x, int y){
         return tabuleiro.buscarInformacaoQuadrado(x,y);
     }
 
-    String[] getPieceInfo(int ID){
+    public String[] getPieceInfo(int ID){
         return tabuleiro.buscarInfomacaoPeca(ID);
     }
 
-    String getPieceInfoAsString(int ID){
+    public String getPieceInfoAsString(int ID){
         return tabuleiro.buscarInformacaoPecaAsString(ID);
     }
 
-    int getCurrentTeamID(){
+    public int getCurrentTeamID(){
 
         return 1;
     }
 
-    boolean gameOver(){
+    public boolean gameOver(){
 
         return true;
     }
 
-    ArrayList<String> getGameResults(){
+    public ArrayList<String> getGameResults(){
         ArrayList<String> aaa = new ArrayList<>();
         return aaa;
     }
 
-    JPanel getAuthorsPanel(){
+    public JPanel getAuthorsPanel(){
 
         return new JPanel();
     }
