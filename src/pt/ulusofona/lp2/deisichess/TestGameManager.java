@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 public class TestGameManager {
 
     public GameManager jogo = new GameManager();
@@ -174,6 +177,45 @@ public class TestGameManager {
     }
 
 
+    @Test
+    public void movePosicaoInvalida() {
+        File file = new File("test-files","4x4.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+
+
+        boolean jogada = jogo.move(2,1,0,3 );
+        String[] resultComPeca = jogo.getPieceInfo(3);
+        assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","1"}, resultComPeca); //A peca mantem se igual pois é jogada invalida
+        assertFalse(jogada);                                                                               // Logo a peca nao se move fica nas mesmas coordenadas
+
+
+
+    }
+
+    @Test
+    public void moveCorreto() {
+        File file = new File("test-files","4x4.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+
+
+        boolean jogada = jogo.move(2,1,2,2 );
+        String[] resultComPeca = jogo.getPieceInfo(3);
+        assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","2"}, resultComPeca); //Peca move se e as coordenadas mudam
+        String[] resultCasaAnterior = jogo.getSquareInfo(2,1);
+        assertArrayEquals(new String[]{}, resultCasaAnterior);     // A casa onde a Peca estava fica a 0 (sem informaçao)
+        assertTrue(jogada);
+
+
+
+    }
 
 
 

@@ -134,7 +134,7 @@ public class GameManager {
         else{
             tabuleiro.movePeca( x0, y0, x1, y1);
             peca.setCoordenadas(x1,y1);
-
+            tabuleiro.mudarEquipaAjogar();
             return true;
         }
 
@@ -153,13 +153,12 @@ public class GameManager {
     }
 
     public int getCurrentTeamID(){
-
-        return 1;
+        return tabuleiro.getEquipaAjogar();
     }
 
     public boolean gameOver(){
 
-        return true;
+        return false;
     }
 
     public ArrayList<String> getGameResults(){

@@ -88,8 +88,8 @@ public class Peca {
     }
 
     boolean validMove(int x, int y, Tabuleiro tabuleiro) {
-        if (!(x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
-            return true;
+        if ((x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
+            return false;
         }
 
         if ((x == this.x && (y == this.y + 1 || y == this.y - 1))) {
