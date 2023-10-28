@@ -87,6 +87,8 @@ public class GameManager {
         }
 
 
+
+
         return true;
     }
 
@@ -127,12 +129,13 @@ public class GameManager {
         if(!(peca.validMove(x1,y1,tabuleiro))){
             //jogada invalida nao se pode mover para essa coordenada
             return false;
+        }else{
+            tabuleiro.movePeca( x0, y0, x1, y1);
+            peca.setCoordenadas(x1,y1);
+
+            return true;
         }
 
-        tabuleiro.movePeca( x0, y0, x1, y1);
-        peca.setCoordenadas(x1,y1);
-
-        return true;
     }
 
     public  String[] getSquareInfo(int x, int y){

@@ -27,15 +27,15 @@ public class Peca {
 
     @Override
     public String toString() {
-        return  id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + ", " + y +")" ;
+        return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + ", " + y + ")";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Peca peca = (Peca) o;
@@ -43,47 +43,45 @@ public class Peca {
     }
 
 
-
-    int getID (){
+    int getID() {
         return id;
     }
 
-    int getTipo(){
+    int getTipo() {
         return tipo;
     }
 
-    int getEquipa(){
+    int getEquipa() {
         return equipa;
     }
 
-    String getAlcunha(){
+    String getAlcunha() {
         return alcunha;
     }
 
-    boolean getEstado(){
+    boolean getEstado() {
         return estado;
     }
 
-    int getX(){
+    int getX() {
         return x;
     }
 
-    int getY(){
+    int getY() {
         return y;
     }
 
 
-
-    void setCoordenadas (int coordenadaX, int coordenadaY ){
+    void setCoordenadas(int coordenadaX, int coordenadaY) {
         this.x = coordenadaX;
         this.y = coordenadaY;
     }
 
 
-    String estaEmJogo (){
-        if(!estado){
+    String estaEmJogo() {
+        if (!estado) {
             return "Capturada";
-        }else{
+        } else {
             return "em jogo";
         }
 
@@ -94,19 +92,19 @@ public class Peca {
             return true;
         }
 
-        if ((x == this.x && (y == this.y + 1 || y == this.y - 1))){
+        if ((x == this.x && (y == this.y + 1 || y == this.y - 1))) {
             // Movimento vertical //
 
             return true;
         }
 
-       if (y == this.y && (x == this.x + 1 || x == this.x - 1)){
-           // Movimento horizontal //
-           return true;
-       }
+        if (y == this.y && (x == this.x + 1 || x == this.x - 1)) {
+            // Movimento horizontal //
+            return true;
+        }
 
-       if ((x == this.x + 1 || x == this.x - 1) && (y == this.y + 1 || y == this.y - 1)) {
-           // Movimento diagonal //
+        if ((x == this.x + 1 || x == this.x - 1) && (y == this.y + 1 || y == this.y - 1)) {
+            // Movimento diagonal //
             return true;
         }
 
