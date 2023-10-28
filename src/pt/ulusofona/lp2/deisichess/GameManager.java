@@ -129,7 +129,9 @@ public class GameManager {
         if(!(peca.validMove(x1,y1,tabuleiro))){
             //jogada invalida nao se pode mover para essa coordenada
             return false;
-        }else{
+        }
+
+        else{
             tabuleiro.movePeca( x0, y0, x1, y1);
             peca.setCoordenadas(x1,y1);
 
