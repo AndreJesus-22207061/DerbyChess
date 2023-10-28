@@ -102,6 +102,14 @@ public class GameManager {
 
 
     boolean move( int x0, int y0, int x1, int y1){
+        String[] informascaoPeca = tabuleiro.buscarInformacaoQuadrado(x0,y0);
+        int equipaPeca = Integer.parseInt(informascaoPeca[2]);
+        if (equipaPeca!=tabuleiro.getEquipaAjogar()) {
+            //jogada invalida
+            return false;
+        }
+
+
 
         return true;
     }

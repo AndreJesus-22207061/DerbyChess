@@ -8,10 +8,15 @@ public class Tabuleiro {
 
     ArrayList<Peca> pecas;
 
+    int equipaAjogar;
+
+
+
     public Tabuleiro(int tamanho,ArrayList<Peca>pecas) {
         this.tamanho = tamanho;
         this.tabuleiro = new Peca[tamanho][tamanho];
         this.pecas = pecas;
+        this.equipaAjogar = 0; //Começa a 0 (preta)
     }
 
     public void inicializarTabuleiro() {
@@ -29,6 +34,20 @@ public class Tabuleiro {
     int getTamanho(){
         return tamanho;
     }
+
+    int getEquipaAjogar(){
+        return this.equipaAjogar;
+    }
+
+    void mudarEquipaAjogar(){
+        if(equipaAjogar==0){
+            equipaAjogar=1;
+        }else{
+            equipaAjogar=0;
+        }
+    }
+
+
 
     String[] buscarInfomacaoPeca(int ID) {
         String[] informacaoPeca = new String[7];
@@ -85,7 +104,6 @@ public class Tabuleiro {
         }
         return null;
     }
-
 
 
 
