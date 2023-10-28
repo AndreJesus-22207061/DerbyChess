@@ -102,10 +102,19 @@ public class GameManager {
 
 
     boolean move( int x0, int y0, int x1, int y1){
-        String[] informascaoPeca = tabuleiro.buscarInformacaoQuadrado(x0,y0);
-        int equipaPeca = Integer.parseInt(informascaoPeca[2]);
+        String[] informacaoPeca = tabuleiro.buscarInformacaoQuadrado(x0,y0);
+        int equipaPeca = Integer.parseInt(informacaoPeca[2]);
+
+        String[] informacaoDestino = tabuleiro.buscarInformacaoQuadrado(x1,y1);
+        int equipaDestino = Integer.parseInt(informacaoDestino[2]);
+
         if (equipaPeca!=tabuleiro.getEquipaAjogar()) {
-            //jogada invalida
+            //jogada invalida turno invalido
+            return false;
+        }
+
+        if(equipaPeca == equipaDestino){
+            //jogada invalida peca da mesma equipa no destino
             return false;
         }
 
