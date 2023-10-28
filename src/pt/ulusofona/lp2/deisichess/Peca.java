@@ -89,6 +89,12 @@ public class Peca {
 
     }
 
+    boolean validMove(int x, int y, Tabuleiro tabuleiro) {
+
+
+        return false;
+    }
+
 
 
 
