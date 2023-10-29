@@ -80,7 +80,7 @@ public class Tabuleiro {
                 informacaoPeca[3] = peca.getAlcunha();
                 informacaoPeca[4] = peca.estaEmJogo();
 
-                if (peca.estaEmJogo().equals("Capturada")) {
+                if (peca.estaEmJogo().equals("capturado")) {
                     informacaoPeca[5] = "";
                     informacaoPeca[6] = "";
                 } else {

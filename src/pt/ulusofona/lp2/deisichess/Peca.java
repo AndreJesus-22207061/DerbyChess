@@ -80,7 +80,7 @@ public class Peca {
 
     String estaEmJogo() {
         if (!estado) {
-            return "capturada";
+            return "capturado";
         } else {
             return "em jogo";
         }
