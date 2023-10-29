@@ -194,10 +194,6 @@ public class GameManager {
         int pecasCapturadasBranca = informacoes[1];
         int numeroDePecas = informacoes[2];
 
-        if(numeroDePecas <= 2){
-            return true;
-        }
-
         if (pecasCapturadasPreta == (numeroDePecas / 2)) {
             contadorJogadas.defineResultado("VENCERAM AS BRANCAS");
             return true;
