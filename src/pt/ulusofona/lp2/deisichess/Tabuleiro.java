@@ -10,6 +10,8 @@ public class Tabuleiro {
 
     int equipaAjogar;
 
+    ContadorJogadas contadorJogadas;
+
 
 
     public Tabuleiro(int tamanho,ArrayList<Peca>pecas) {
@@ -17,6 +19,7 @@ public class Tabuleiro {
         this.tabuleiro = new Peca[tamanho][tamanho];
         this.pecas = pecas;
         this.equipaAjogar = 0; //Começa a 0 (preta)
+        this.contadorJogadas = new ContadorJogadas();
     }
 
     public void inicializarTabuleiro() {
@@ -32,6 +35,10 @@ public class Tabuleiro {
 
     Peca getPeca(int x , int y){
         return tabuleiro[x][y];
+    }
+
+    ContadorJogadas getContadorJogadas(){
+        return this.contadorJogadas;
     }
 
 

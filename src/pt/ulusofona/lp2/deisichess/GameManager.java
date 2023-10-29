@@ -105,9 +105,12 @@ public class GameManager {
 
     public boolean move( int x0, int y0, int x1, int y1){
         //------------Confirmacoes Peca--------------------//
+        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+
         Peca peca = tabuleiro.getPeca(x0,y0);
 
         if(peca == null){
+            contadorJogadas.jogadaInvalida(tabuleiro.getEquipaAjogar());
             //jogada invalida esta a mover o vazio
             return false;
         }
@@ -116,29 +119,33 @@ public class GameManager {
 
 
         if(!(peca.validMove(x1,y1,tabuleiro))){
+            contadorJogadas.jogadaInvalida(equipaPeca);
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
         if (equipaPeca!=tabuleiro.getEquipaAjogar()) {
+            contadorJogadas.jogadaInvalida(equipaPeca);
             //jogada invalida turno invalido
             return false;
         }
 
        //------------Confirmacoes destino--------------------//
 
-        Peca destino = tabuleiro.getPeca(x1,y1);
+        Peca pecaDestino = tabuleiro.getPeca(x1,y1);
 
-        if(destino != null){  //Se no destino houver peca
+        if(pecaDestino != null){  //Se no destino houver peca
 
-            int equipaDestino = destino.getEquipa();
+            int equipaDestino = pecaDestino.getEquipa();
 
             if(equipaPeca == equipaDestino){
+                contadorJogadas.jogadaInvalida(equipaPeca);
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             }else{
-                Peca pecaCapturada = tabuleiro.getPeca(x1,y1);
-                pecaCapturada.capturada();
+
+                pecaDestino.capturada();
+                contadorJogadas.pecaFoiCapturada(equipaDestino);
                 tabuleiro.removerPeca(x1,y1);
             }
         }
@@ -146,6 +153,7 @@ public class GameManager {
 
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
+        contadorJogadas.jogadaValida(equipaPeca);
         tabuleiro.mudarEquipaAjogar();
         return true;
 
@@ -164,10 +172,14 @@ public class GameManager {
     }
 
     public int getCurrentTeamID(){
-        return tabuleiro.getEquipaAjogar();
+     return tabuleiro.getEquipaAjogar();
     }
 
     public boolean gameOver(){
+
+
+
+
 
         return false;
     }
