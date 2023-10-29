@@ -27,7 +27,12 @@ public class Peca {
 
     @Override
     public String toString() {
-        return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + ", " + y + ")";
+        if(!estado) {
+            return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (n/a)";
+        }
+            return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + ", " + y + ")";
+
+
     }
 
     @Override
