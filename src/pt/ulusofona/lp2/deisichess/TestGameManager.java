@@ -54,6 +54,44 @@ public class TestGameManager {
         assertEquals(pecasTeste,tabuleiro.pecas);
 
     }
+    @Test
+    public void loadGame4x4jaVitoria(){
+        File file = new File("test-files","4x4jaVitoria.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+        jogo.gameOver();
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        ArrayList<Peca> pecasTeste = new ArrayList<>();
+
+        Peca peca1 = new Peca(1,0,0,"Chefe");
+        peca1.setCoordenadas(1,0);
+        pecasTeste.add(peca1);
+
+        Peca peca2 = new Peca(2,0,0,"Selvagem");
+        peca2.setCoordenadas(3,0);
+        pecasTeste.add(peca2);
+
+        Peca peca3 = new Peca(3,0,0,"Grande Artista");
+        peca3.setCoordenadas(2,1);
+        pecasTeste.add(peca3);
+
+        Peca peca4 = new Peca(4,0,1,"O Maior");
+        peca4.setCoordenadas(2,3);
+        pecasTeste.add(peca4);
+
+        Peca peca5 = new Peca(5,0,1,"O Amigo");
+        peca5.setCoordenadas(1,3);
+        pecasTeste.add(peca5);
+
+        Peca peca6 = new Peca(6,0,1,"O Beberolas");
+        peca6.setCoordenadas(1,2);
+        pecasTeste.add(peca6);
+
+        assertEquals(pecasTeste,tabuleiro.pecas);
+
+    }
+
 
 
     @Test

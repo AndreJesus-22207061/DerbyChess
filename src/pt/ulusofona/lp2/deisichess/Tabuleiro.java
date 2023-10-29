@@ -24,8 +24,8 @@ public class Tabuleiro {
 
     public void inicializarTabuleiro() {
         for (Peca peca : pecas) {
-            int x = peca.getX();
-            int y = peca.getY();
+            Integer x = peca.getX();
+            Integer y = peca.getY();
 
             if (x >= 0 && x < tamanho && y >= 0 && y < tamanho) {
                 tabuleiro[x][y] = peca;
@@ -36,6 +36,23 @@ public class Tabuleiro {
     Peca getPeca(int x , int y){
         return tabuleiro[x][y];
     }
+
+     Peca getPecaPorID(int id) {
+        for (int x = 0; x < tamanho; x++) {
+            for (int y = 0; y < tamanho; y++) {
+                Peca peca = tabuleiro[x][y];
+                if (peca != null && peca.getID() == id) {
+                    return peca;
+                }
+            }
+        }
+        return null;
+    }
+
+    ArrayList<Peca> getListaPecas(){
+        return this.pecas;
+    }
+
 
     ContadorJogadas getContadorJogadas(){
         return this.contadorJogadas;

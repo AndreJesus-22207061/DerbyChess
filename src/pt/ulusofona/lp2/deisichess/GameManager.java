@@ -77,8 +77,17 @@ public class GameManager {
                     countColunas++;
                 }
             }
+
             tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
             tabuleiro.inicializarTabuleiro();
+
+            for(Peca peca : tabuleiro.getListaPecas()){
+                int id = peca.getID();
+
+                if(tabuleiro.getPecaPorID(id)== null){
+                    peca.capturada();
+                }
+            }
 
 
             reader.close();
