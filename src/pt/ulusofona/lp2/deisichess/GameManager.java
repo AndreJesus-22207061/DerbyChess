@@ -70,6 +70,8 @@ public class GameManager {
                                     peca.setCoordenadas(countlinhas,countColunas);
                                     countlinhas++;
                                     break;
+                                }else{
+                                    peca.capturada();
                                 }
                             }
                         }
