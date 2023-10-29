@@ -72,30 +72,26 @@ public class Tabuleiro {
     String[] buscarInfomacaoPeca(int ID) {
         String[] informacaoPeca = new String[7];
 
-        for (int x = 0; x < tamanho; x++) {
-            for (int y = 0; y < tamanho; y++) {
-                Peca peca = tabuleiro[x][y];
+        for (Peca peca : pecas) {
+            if (peca.getID() == ID) {
+                informacaoPeca[0] = String.valueOf(peca.getID());
+                informacaoPeca[1] = String.valueOf(peca.getTipo());
+                informacaoPeca[2] = String.valueOf(peca.getEquipa());
+                informacaoPeca[3] = peca.getAlcunha();
+                informacaoPeca[4] = peca.estaEmJogo();
 
-                if (peca != null && peca.getID() == ID) {
-                    informacaoPeca[0] = String.valueOf(peca.getID());
-                    informacaoPeca[1] = String.valueOf(peca.getTipo());
-                    informacaoPeca[2] = String.valueOf(peca.getEquipa());
-                    informacaoPeca[3] = peca.getAlcunha();
-                    informacaoPeca[4] = peca.estaEmJogo();
-
-                    if(peca.estaEmJogo().equals("capturada")){
-                        informacaoPeca[5] = "";
-                        informacaoPeca[6] = "";
-                    }else{
-                        informacaoPeca[5] = String.valueOf(x);
-                        informacaoPeca[6] = String.valueOf(y);
-                    }
-
-                    return informacaoPeca;
+                if (peca.estaEmJogo().equals("Capturada")) {
+                    informacaoPeca[5] = "";
+                    informacaoPeca[6] = "";
+                } else {
+                    informacaoPeca[5] = String.valueOf(peca.getX());
+                    informacaoPeca[6] = String.valueOf(peca.getY());
                 }
+
+                return informacaoPeca;
             }
         }
-        return new String[0];
+        return informacaoPeca;
     }
 
 
