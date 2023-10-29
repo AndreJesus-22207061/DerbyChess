@@ -87,6 +87,10 @@ public class Peca {
 
     }
 
+    void capturada(){
+        this.estado = false;
+    }
+
     boolean validMove(int x, int y, Tabuleiro tabuleiro) {
         if ((x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
             return false;

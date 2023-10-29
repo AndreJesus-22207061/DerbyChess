@@ -56,6 +56,10 @@ public class Tabuleiro {
         tabuleiro[x0][y0] = null;
     }
 
+    void removerPeca(int x , int y){
+        tabuleiro[x][y]= null;
+    }
+
 
 
     String[] buscarInfomacaoPeca(int ID) {
