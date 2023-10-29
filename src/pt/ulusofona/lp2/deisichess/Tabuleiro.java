@@ -82,8 +82,15 @@ public class Tabuleiro {
                     informacaoPeca[2] = String.valueOf(peca.getEquipa());
                     informacaoPeca[3] = peca.getAlcunha();
                     informacaoPeca[4] = peca.estaEmJogo();
-                    informacaoPeca[5] = String.valueOf(x);
-                    informacaoPeca[6] = String.valueOf(y);
+
+                    if(peca.estaEmJogo().equals("Capturada")){
+                        informacaoPeca[5] = "";
+                        informacaoPeca[6] = "";
+                    }else{
+                        informacaoPeca[5] = String.valueOf(x);
+                        informacaoPeca[6] = String.valueOf(y);
+                    }
+
                     return informacaoPeca;
                 }
             }
