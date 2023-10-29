@@ -83,7 +83,7 @@ public class ContadorJogadas {
         String linha1 = "JOGO DE CRAZY CHESS";
         String linha2 = "Resultado: " +resultado;
         String linha3 = "---";
-        String linha4="Equipa das Pretas ";
+        String linha4="Equipa das Pretas";
         String linha5= Integer.toString(pecasBrancasCapturadas);
         String linha6=Integer.toString(jogadasValidasPreta);
         String linha7=Integer.toString(jogadasInvalidasPreta);
