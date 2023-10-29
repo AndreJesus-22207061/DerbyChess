@@ -195,26 +195,31 @@ public class GameManager {
         int numeroDePecas = informacoes[2];
 
         if (pecasCapturadasPreta == (numeroDePecas / 2)) {
+            contadorJogadas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
 
         if (pecasCapturadasBranca == (numeroDePecas / 2)) {
+            contadorJogadas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
         if (pecasCapturadasPreta == ((numeroDePecas / 2) - 1) && pecasCapturadasBranca == ((numeroDePecas / 2) - 1)) {
+            contadorJogadas.defineResultado("EMPATE");
             return true;
         }
 
         if(contadorJogadas.getContadorSemCaptura() == 10){
+            contadorJogadas.defineResultado("EMPATE");
             return true;
         }
         return false;
     }
 
     public ArrayList<String> getGameResults(){
-        ArrayList<String> aaa = new ArrayList<>();
-        return aaa;
+        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+
+        return contadorJogadas.menuFinal();
     }
 
     public JPanel getAuthorsPanel(){
