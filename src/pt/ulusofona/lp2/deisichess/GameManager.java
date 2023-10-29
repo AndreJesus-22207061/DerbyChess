@@ -104,6 +104,13 @@ public class GameManager {
 
 
     public boolean move( int x0, int y0, int x1, int y1){
+
+
+        int[] informacoes = tabuleiro.informacaoPecasCapturadas();
+        int pecasCapturadasPreta = informacoes[0];
+        int pecasCapturadasBranca = informacoes[1];
+
+     boolean foiCapturada = false;
         //------------Confirmacoes Peca--------------------//
         ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
@@ -143,17 +150,21 @@ public class GameManager {
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             }else{
-
+                foiCapturada = true;
+                contadorJogadas.resetContadorSemCaptura();
                 pecaDestino.capturada();
                 contadorJogadas.pecaFoiCapturada(equipaDestino);
                 tabuleiro.removerPeca(x1,y1);
             }
         }
         //Se no destino não houver peca é so mover
-
+        if((!foiCapturada && pecasCapturadasBranca >= 1) || (!foiCapturada && pecasCapturadasPreta >=1)){
+            contadorJogadas.jogadaConcluidaSemCaptura();
+        }
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
         contadorJogadas.jogadaValida(equipaPeca);
+        contadorJogadas.jogadaConcluida();
         tabuleiro.mudarEquipaAjogar();
         return true;
 
@@ -175,12 +186,29 @@ public class GameManager {
      return tabuleiro.getEquipaAjogar();
     }
 
-    public boolean gameOver(){
+    public boolean gameOver() {
+        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
+        int[] informacoes = tabuleiro.informacaoPecasCapturadas();
+        int pecasCapturadasPreta = informacoes[0];
+        int pecasCapturadasBranca = informacoes[1];
+        int numeroDePecas = informacoes[2];
 
+        if (pecasCapturadasPreta == (numeroDePecas / 2)) {
+            return true;
+        }
 
+        if (pecasCapturadasBranca == (numeroDePecas / 2)) {
+            return true;
+        }
 
+        if (pecasCapturadasPreta == ((numeroDePecas / 2) - 1) && pecasCapturadasBranca == ((numeroDePecas / 2) - 1)) {
+            return true;
+        }
 
+        if(contadorJogadas.getContadorSemCaptura() == 10){
+            return true;
+        }
         return false;
     }
 

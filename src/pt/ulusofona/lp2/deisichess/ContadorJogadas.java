@@ -4,6 +4,7 @@ public class ContadorJogadas {
 
     int capturasPreta=0;
 
+    int contadorSemCaptura = 0;
     int jogadasValidasPreta=0;
 
     int jogadasInvalidasPreta=0;
@@ -21,7 +22,7 @@ public class ContadorJogadas {
         return this.contadorDeJogadas;
     }
 
-    void contadorDeJogada(){
+    void jogadaConcluida(){
         this.contadorDeJogadas++;
     }
 
@@ -51,7 +52,18 @@ public class ContadorJogadas {
     }
 
 
+    int getContadorSemCaptura(){
+        return this.contadorSemCaptura;
+    }
 
+    void jogadaConcluidaSemCaptura(){
+        this.contadorSemCaptura++;
+    }
+
+
+    void resetContadorSemCaptura(){
+        contadorSemCaptura = 0;
+    }
 
 
 

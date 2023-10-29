@@ -125,6 +125,28 @@ public class Tabuleiro {
         return null;
     }
 
+    int[] informacaoPecasCapturadas() {
+        int[] arrayInfo = new int[3];
+        int countEquipaPreta = 0;
+        int countEquipaBranca = 0;
+        int numeroPecasTotal = pecas.size();
+
+
+        for (Peca peca : pecas) {
+            if (!(peca.getEstado())) {
+                if (peca.getEquipa() == 0) {
+                    countEquipaPreta++;
+                } else {
+                    countEquipaBranca++;
+                }
+            }
+        }
+
+        arrayInfo[0] = countEquipaPreta;
+        arrayInfo[1] = countEquipaBranca;
+        arrayInfo[2] = numeroPecasTotal;
+        return arrayInfo;
+    }
 
 
 
