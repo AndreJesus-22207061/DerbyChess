@@ -234,9 +234,16 @@ public class GameManager {
         return contadorJogadas.menuFinal();
     }
 
-    public JPanel getAuthorsPanel(){
+    public JPanel getAuthorsPanel() {
+        JPanel creditos = new JPanel();
+        JLabel imageLabel = new JLabel();
 
-        return new JPanel();
+        ImageIcon imageIcon = new ImageIcon("src/images/powerpuffboys.png");
+        imageLabel.setIcon(imageIcon);
+
+        creditos.add(imageLabel);
+
+        return creditos;
     }
 
 
