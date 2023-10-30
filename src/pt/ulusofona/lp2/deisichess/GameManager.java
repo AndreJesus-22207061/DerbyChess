@@ -87,6 +87,7 @@ public class GameManager {
                 if(tabuleiro.getPecaPorID(id)== null){
                     peca.capturada();
                 }
+                tabuleiro.adicionarPecaAEquipa(peca); //adicionar as pecas a lista de cada equipa
             }
 
 
@@ -197,23 +198,25 @@ public class GameManager {
 
     public boolean gameOver() {
         ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+        ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
+        ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
 
         int[] informacoes = tabuleiro.informacaoPecasCapturadas();
         int pecasCapturadasPreta = informacoes[0];
         int pecasCapturadasBranca = informacoes[1];
         int numeroDePecas = informacoes[2];
 
-        if (pecasCapturadasPreta == (numeroDePecas / 2)) {
+        if (pecasCapturadasPreta == equipaPreta.size()) {
             contadorJogadas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
 
-        if (pecasCapturadasBranca == (numeroDePecas / 2)) {
+        if (pecasCapturadasBranca == equipaBranca.size()) {
             contadorJogadas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
-        if (pecasCapturadasPreta == ((numeroDePecas / 2) - 1) && pecasCapturadasBranca == ((numeroDePecas / 2) - 1)) {
+        if (pecasCapturadasPreta == (equipaPreta.size() - 1) && pecasCapturadasBranca == (equipaBranca.size() - 1)) {
             contadorJogadas.defineResultado("EMPATE");
             return true;
         }

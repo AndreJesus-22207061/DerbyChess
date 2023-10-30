@@ -8,6 +8,10 @@ public class Tabuleiro {
 
     ArrayList<Peca> pecas;
 
+    ArrayList<Peca> pecasPretas;
+
+    ArrayList<Peca> pecasBrancas;
+
     int equipaAjogar;
 
     ContadorJogadas contadorJogadas;
@@ -18,6 +22,8 @@ public class Tabuleiro {
         this.tamanho = tamanho;
         this.tabuleiro = new Peca[tamanho][tamanho];
         this.pecas = pecas;
+        this.pecasPretas = new ArrayList<>();
+        this.pecasBrancas   = new ArrayList<>();
         this.equipaAjogar = 0; //Começa a 0 (preta)
         this.contadorJogadas = new ContadorJogadas();
     }
@@ -51,6 +57,22 @@ public class Tabuleiro {
 
     ArrayList<Peca> getListaPecas(){
         return this.pecas;
+    }
+
+    ArrayList<Peca> getListaPretas(){
+        return this.pecasPretas;
+    }
+
+    ArrayList<Peca> getListaBrancas(){
+        return this.pecasBrancas;
+    }
+
+    void adicionarPecaAEquipa(Peca peca){
+        if(peca.equipa==0){
+            this.pecasPretas.add(peca);
+        }else{
+            this.pecasBrancas.add(peca);
+        }
     }
 
 
