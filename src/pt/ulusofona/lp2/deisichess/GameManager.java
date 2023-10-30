@@ -243,6 +243,7 @@ public class GameManager {
 
         creditos.add(imageLabel);
 
+
         return creditos;
     }
 
