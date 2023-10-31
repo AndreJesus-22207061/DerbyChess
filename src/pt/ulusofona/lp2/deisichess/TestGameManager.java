@@ -220,6 +220,70 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void jogoVitoriaBranca(){
+        File file = new File("test-files","4x4pequeno.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        jogo.move(1,0,1,1 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        jogo.move(1,2,1,1 );
+        boolean jogada2 =jogo.gameOver();
+        assertFalse(jogada2);
+
+        jogo.move(3,0,2,0 );
+        boolean jogada3 =jogo.gameOver();
+        assertFalse(jogada3);
+
+        jogo.move(1,1,2,0 );
+        boolean jogada4 =jogo.gameOver();
+        assertTrue(jogada4);
+
+
+    }
+
+    @Test
+    public void jogoEmpate1x1(){
+        File file = new File("test-files","4x4pequeno.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        jogo.move(1,0,1,1 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        jogo.move(1,2,1,1 );
+        boolean jogada2 =jogo.gameOver();
+        assertFalse(jogada2);
+
+        jogo.move(3,0,2,0 );
+        boolean jogada3 =jogo.gameOver();
+        assertFalse(jogada3);
+
+        jogo.move(1,1,2,1 );
+        boolean jogada4 =jogo.gameOver();
+        assertFalse(jogada4);
+
+        jogo.move(2,0,2,1 );
+        boolean jogada5 =jogo.gameOver();
+        assertFalse(jogada5);
+
+        jogo.move(2,3,2,2 );
+        boolean jogada6 =jogo.gameOver();
+        assertFalse(jogada6);
+
+        jogo.move(2,1,2,2 );
+        boolean jogada7 =jogo.gameOver();
+        assertTrue(jogada7);
+
+
+    }
+
 
 
 

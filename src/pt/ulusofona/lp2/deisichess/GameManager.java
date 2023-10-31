@@ -127,7 +127,7 @@ public class GameManager {
         Peca peca = tabuleiro.getPeca(x0,y0);
 
         if(peca == null){
-            contadorJogadas.jogadaInvalida(tabuleiro.getEquipaAjogar());
+            contadorJogadas.jogadaInvalida(tabuleiro.getEquipaAJogar());
             //jogada invalida esta a mover o vazio
             return false;
         }
@@ -141,7 +141,7 @@ public class GameManager {
             return false;
         }
 
-        if (equipaPeca!=tabuleiro.getEquipaAjogar()) {
+        if (equipaPeca!=tabuleiro.getEquipaAJogar()) {
             contadorJogadas.jogadaInvalida(equipaPeca);
             //jogada invalida turno invalido
             return false;
@@ -192,7 +192,7 @@ public class GameManager {
     }
 
     public int getCurrentTeamID(){
-     return tabuleiro.getEquipaAjogar();
+     return tabuleiro.getEquipaAJogar();
     }
 
     public boolean gameOver() {
