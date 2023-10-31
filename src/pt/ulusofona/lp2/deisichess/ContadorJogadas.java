@@ -17,18 +17,11 @@ public class ContadorJogadas {
 
     int jogadasInvalidasBranca= 0;
 
-    int contadorDeJogadas= 0;
-
     String resultado;
 
 
-    int getContador(){
-        return this.contadorDeJogadas;
-    }
 
-    void jogadaConcluida(){
-        this.contadorDeJogadas++;
-    }
+
 
     void pecaFoiCapturada(int equipa){
         if(equipa == 0){
@@ -71,10 +64,6 @@ public class ContadorJogadas {
 
     void defineResultado(String resultado){
         this.resultado = resultado;
-    }
-
-    String getResultado(){
-        return resultado;
     }
 
     ArrayList<String> menuFinal(){

@@ -174,7 +174,6 @@ public class GameManager {
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
         contadorJogadas.jogadaValida(equipaPeca);
-        contadorJogadas.jogadaConcluida();
         tabuleiro.mudarEquipaAjogar();
         return true;
 
@@ -204,7 +203,7 @@ public class GameManager {
         int[] informacoes = tabuleiro.informacaoPecasCapturadas();
         int pecasCapturadasPreta = informacoes[0];
         int pecasCapturadasBranca = informacoes[1];
-        int numeroDePecas = informacoes[2];
+
 
         if (pecasCapturadasPreta == equipaPreta.size()) {
             contadorJogadas.defineResultado("VENCERAM AS BRANCAS");
