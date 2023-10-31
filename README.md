@@ -11,5 +11,6 @@ Imagem Créditos Costum:
 
 Diagrama UML:
 
+![GráficoUML drawio](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127041806/b6651fd7-9a3b-45e7-98c3-f3fc2f0171bf)
 
 
