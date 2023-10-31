@@ -13,4 +13,5 @@ Diagrama UML:
 
 
 
+![UML drawio](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/21a703d0-33ea-4ccb-b378-838e5b1fd60b)
 
