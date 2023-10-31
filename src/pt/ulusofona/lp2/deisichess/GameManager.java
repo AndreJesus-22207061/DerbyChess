@@ -9,7 +9,10 @@ public class GameManager {
 
     Tabuleiro tabuleiro;
 
- public boolean loadGame(File file) {
+    public GameManager() {
+    }
+
+    public boolean loadGame(File file) {
         BufferedReader reader;
 
         try {
