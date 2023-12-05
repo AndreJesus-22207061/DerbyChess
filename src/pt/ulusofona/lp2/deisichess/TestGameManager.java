@@ -51,7 +51,7 @@ public class TestGameManager {
         peca6.setCoordenadas(1,2);
         pecasTeste.add(peca6);
 
-        assertEquals(pecasTeste,tabuleiro.pecas);
+        assertEquals(pecasTeste,tabuleiro.getListaPecas());
 
     }
 
@@ -109,7 +109,7 @@ public class TestGameManager {
         peca10.setCoordenadas(4,7);
         pecasTeste.add(peca10);
 
-        assertEquals(pecasTeste,tabuleiro.pecas);
+        assertEquals(pecasTeste,tabuleiro.getListaPecas());
 
     }
 

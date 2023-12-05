@@ -2,20 +2,22 @@ package pt.ulusofona.lp2.deisichess;
 
 import java.util.Objects;
 
-public class Peca {
-    int id;
+public abstract class Peca {
+   private int id;
 
-    int tipo;
+    private int tipo;
 
-    int equipa;
+    private int equipa;
 
-    String alcunha;
+   private String alcunha;
 
-    boolean estado;
+   private boolean estado;
 
-    int x = -1; //linhas
+   private int x = -1; //linhas
 
-    int y = -1; //colunas
+    private int y = -1; //colunas
+
+    protected int valor;
 
     public Peca(int id, int tipo, int equipa, String alcunha) {
         this.id = id;
@@ -76,6 +78,12 @@ public class Peca {
         return y;
     }
 
+    int getValor() {
+        return valor;
+    }
+
+    abstract void definirPontos();
+
 
     void setCoordenadas(int coordenadaX, int coordenadaY) {
         this.x = coordenadaX;
@@ -96,29 +104,7 @@ public class Peca {
         this.estado = false;
     }
 
-    boolean validMove(int x, int y, Tabuleiro tabuleiro) {
-        if ((x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
-            return false;
-        }
+     abstract boolean validMove(int x, int y, Tabuleiro tabuleiro);
 
-        if ((x == this.x && (y == this.y + 1 || y == this.y - 1))) {
-            // Movimento vertical //
-
-            return true;
-        }
-
-        if (y == this.y && (x == this.x + 1 || x == this.x - 1)) {
-            // Movimento horizontal //
-            return true;
-        }
-
-        if ((x == this.x + 1 || x == this.x - 1) && (y == this.y + 1 || y == this.y - 1)) {
-            // Movimento diagonal //
-            return true;
-        }
-
-
-        return false;
-    }
 
 }

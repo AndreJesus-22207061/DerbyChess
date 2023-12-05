@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class ContadorJogadas {
 
-    int pecasPretasCapturadas =0;
+    private int pecasPretasCapturadas =0;
 
-    int contadorSemCaptura = 0;
-    int jogadasValidasPreta=0;
+    private int contadorSemCaptura = 0;
+    private int jogadasValidasPreta=0;
 
-    int jogadasInvalidasPreta=0;
+    private int jogadasInvalidasPreta=0;
 
-    int pecasBrancasCapturadas =0;
+    private int pecasBrancasCapturadas =0;
 
-    int jogadasValidasBranca=0;
+    private int jogadasValidasBranca=0;
 
-    int jogadasInvalidasBranca= 0;
+    private int jogadasInvalidasBranca= 0;
 
-    String resultado;
+    private String resultado;
 
 
 

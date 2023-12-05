@@ -3,18 +3,18 @@ package pt.ulusofona.lp2.deisichess;
 import java.util.ArrayList;
 
 public class Tabuleiro {
-    int tamanho;
-    Peca[][] tabuleiro;
+    private  int tamanho;
+    private Peca[][] tabuleiro;
 
-    ArrayList<Peca> pecas;
+    private ArrayList<Peca> pecas;
 
-    ArrayList<Peca> pecasPretas;
+    private ArrayList<Peca> pecasPretas;
 
-    ArrayList<Peca> pecasBrancas;
+    private ArrayList<Peca> pecasBrancas;
 
-    int equipaAJogar;
+    private int equipaAJogar;
 
-    ContadorJogadas contadorJogadas;
+    private ContadorJogadas contadorJogadas;
 
 
 
@@ -24,7 +24,7 @@ public class Tabuleiro {
         this.pecas = pecas;
         this.pecasPretas = new ArrayList<>();
         this.pecasBrancas   = new ArrayList<>();
-        this.equipaAJogar = 0; //Começa a 0 (preta)
+        this.equipaAJogar = 10; //Começa a 10 (preta)
         this.contadorJogadas = new ContadorJogadas();
     }
 
@@ -68,7 +68,7 @@ public class Tabuleiro {
     }
 
     void adicionarPecaAEquipa(Peca peca){
-        if(peca.equipa==0){
+        if(peca.getEquipa()==10){
             this.pecasPretas.add(peca);
         }else{
             this.pecasBrancas.add(peca);
@@ -90,10 +90,10 @@ public class Tabuleiro {
     }
 
     void mudarEquipaAjogar(){
-        if(equipaAJogar ==0){
-            equipaAJogar =1;
+        if(equipaAJogar ==10){
+            equipaAJogar =20;
         }else{
-            equipaAJogar =0;
+            equipaAJogar =10;
         }
     }
 
