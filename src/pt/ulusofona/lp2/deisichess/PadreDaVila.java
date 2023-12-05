@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess;
 
 public class PadreDaVila extends Peca{
 
-    public PadreDaVila(int id, int equipa, String alcunha,int valor) {
+    public PadreDaVila(int id, int equipa, String alcunha) {
         super(id, 3, equipa, alcunha);
         definirPontos();
     }

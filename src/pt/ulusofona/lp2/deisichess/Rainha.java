@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess;
 
 public class Rainha extends Peca{
 
-    public Rainha(int id, int equipa, String alcunha,int valor) {
+    public Rainha(int id, int equipa, String alcunha) {
         super(id, 1, equipa, alcunha);
         definirPontos();
     }

@@ -1,7 +1,7 @@
 package pt.ulusofona.lp2.deisichess;
 
 public class TorreVertical extends Peca{
-    public TorreVertical(int id, int equipa, String alcunha,int valor) {
+    public TorreVertical(int id, int equipa, String alcunha) {
         super(id, 5, equipa, alcunha);
         definirPontos();
     }

@@ -1,7 +1,7 @@
 package pt.ulusofona.lp2.deisichess;
 
 public class HomerSimpson extends Peca{
-    public HomerSimpson(int id, int equipa, String alcunha,int valor) {
+    public HomerSimpson(int id, int equipa, String alcunha) {
         super(id, 6, equipa, alcunha);
         definirPontos();
     }
