@@ -13,9 +13,9 @@ public abstract class Peca {
 
    private boolean estado;
 
-   private int x = -1; //linhas
+   protected int x = -1; //linhas
 
-    private int y = -1; //colunas
+    protected int y = -1; //colunas
 
     protected int valor;
 
@@ -70,11 +70,11 @@ public abstract class Peca {
         return estado;
     }
 
-    int getX() {
+   protected int getX() {
         return x;
     }
 
-    int getY() {
+    protected int getY() {
         return y;
     }
 
