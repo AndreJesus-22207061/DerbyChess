@@ -66,6 +66,10 @@ public class ContadorJogadas {
         this.resultado = resultado;
     }
 
+    int getRondaAtual(){
+        return this.jogadasValidasPreta + this.jogadasValidasBranca;
+    }
+
     ArrayList<String> menuFinal(){
         ArrayList<String> menuFinal = new ArrayList<>();
 
