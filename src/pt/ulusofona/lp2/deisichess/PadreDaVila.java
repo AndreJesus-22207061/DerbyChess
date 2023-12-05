@@ -1,21 +1,19 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class Rei extends Peca {
+public class PadreDaVila extends Peca{
 
-    public Rei(int id, int equipa, String alcunha,int valor) {
-        super(id, 0, equipa, alcunha);
+    public PadreDaVila(int id, int equipa, String alcunha,int valor) {
+        super(id, 3, equipa, alcunha);
         definirPontos();
     }
 
     @Override
     void definirPontos() {
-        this.valor = 1000;
+        this.valor = 3;
     }
 
     @Override
     boolean validMove(int x, int y, Tabuleiro tabuleiro) {
         return false;
     }
-
-
 }
