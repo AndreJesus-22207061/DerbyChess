@@ -19,6 +19,8 @@ public class ContadorJogadas {
 
     private String resultado;
 
+    private int rondasJoker= 1;
+
 
 
 
@@ -46,6 +48,18 @@ public class ContadorJogadas {
         }else{
             this.jogadasInvalidasBranca++;
         }
+    }
+
+    int getRondasJoker(){
+        return this.rondasJoker;
+    }
+
+    void incrementaRondaJoker(){
+        this.rondasJoker++;
+    }
+
+    void resetRondaJoker(){
+        this.rondasJoker = 1;
     }
 
 

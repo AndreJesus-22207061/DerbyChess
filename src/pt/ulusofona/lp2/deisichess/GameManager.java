@@ -54,7 +54,37 @@ public class GameManager {
                     int equipaPeca = Integer.parseInt(partes[2]);
                     String alcunhaPeca = partes[3];
 
-                    Peca peca = new Peca(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                    Peca peca;
+
+                    switch (tipoPeca) {
+                        case 0 :
+                            peca = new Rei(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 1 :
+                            peca = new Rainha(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 2 :
+                            peca = new PoneiMagico(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 3 :
+                            peca = new PadreDaVila(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 4 :
+                            peca = new TorreHorizontal(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 5 :
+                            peca = new TorreVertical(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 6 :
+                            peca = new HomerSimpson(idPeca,equipaPeca,alcunhaPeca);
+                            break;
+                        case 7 :
+                             peca = new Joker(idPeca,equipaPeca,alcunhaPeca);
+                             break;
+                        default:
+                            throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
+                    }
+
                     pecas.add(peca);
                     count++;
                     continue;
@@ -174,9 +204,16 @@ public class GameManager {
         if((!foiCapturada && pecasCapturadasBranca >= 1) || (!foiCapturada && pecasCapturadasPreta >=1)){
             contadorJogadas.jogadaConcluidaSemCaptura();
         }
+
+        if(contadorJogadas.getRondasJoker() == 6){
+            contadorJogadas.resetRondaJoker();
+        }
+
+
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
         contadorJogadas.jogadaValida(equipaPeca);
+        contadorJogadas.incrementaRondaJoker();
         tabuleiro.mudarEquipaAjogar();
         return true;
 

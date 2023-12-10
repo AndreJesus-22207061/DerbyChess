@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Peca {
    private int id;
 
-    private int tipo;
+    private TipoPeca tipo;
 
     private int equipa;
 
@@ -19,9 +19,8 @@ public abstract class Peca {
 
     protected int valor;
 
-    public Peca(int id, int tipo, int equipa, String alcunha) {
+    public Peca(int id, int equipa, String alcunha) {
         this.id = id;
-        this.tipo = tipo;
         this.equipa = equipa;
         this.alcunha = alcunha;
         this.estado = true;
@@ -49,12 +48,16 @@ public abstract class Peca {
         return id == peca.id && tipo == peca.tipo && equipa == peca.equipa && x == peca.x && y == peca.y && Objects.equals(alcunha, peca.alcunha);
     }
 
+    protected void setTipo(TipoPeca tipo){
+        this.tipo = tipo;
+    }
+
 
     int getID() {
         return id;
     }
 
-    int getTipo() {
+    TipoPeca getTipo() {
         return tipo;
     }
 

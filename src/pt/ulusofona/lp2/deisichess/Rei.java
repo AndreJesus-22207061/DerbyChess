@@ -2,9 +2,10 @@ package pt.ulusofona.lp2.deisichess;
 
 public class Rei extends Peca {
 
-    public Rei(int id, int equipa, String alcunha) {
-        super(id, 0, equipa, alcunha);
+    public Rei(int id , int equipa, String alcunha) {
+        super(id,equipa, alcunha);
         definirPontos();
+        setTipo(TipoPeca.REI);
 
     }
 
@@ -14,24 +15,24 @@ public class Rei extends Peca {
     }
 
     @Override
-    boolean validMove(int x, int y, Tabuleiro tabuleiro) {
+    boolean validMove(int xFinal, int y, Tabuleiro tabuleiro) {
 
-            if ((x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
+            if ((xFinal < 0 || xFinal >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho())) {
                 return false;
             }
 
-            if ((x == this.x && (y == this.y + 1 || y == this.y - 1))) {
+            if ((xFinal == getX() && (y == getY() + 1 || y == getY() - 1))) {
                 // Movimento vertical //
 
                 return true;
             }
 
-            if (y == this.y && (x == this.x + 1 || x == this.x - 1)) {
+            if (y == getY() && (xFinal == getX() + 1 || xFinal == getX() - 1)) {
                 // Movimento horizontal //
                 return true;
             }
 
-            if ((x == this.x + 1 || x == this.x - 1) && (y == this.y + 1 || y == this.y - 1)) {
+            if ((xFinal == getX() + 1 || xFinal == getX() - 1) && (y == getY() + 1 || y == getY() - 1)) {
                 // Movimento diagonal //
                 return true;
             }
