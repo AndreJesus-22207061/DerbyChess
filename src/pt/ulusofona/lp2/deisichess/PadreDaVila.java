@@ -9,6 +9,20 @@ public class PadreDaVila extends Peca{
     }
 
     @Override
+    String toString(Tabuleiro tabuleiro) {
+
+        if(!getEstado()) {
+            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }
+        return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+    }
+
+    @Override
+    String getTipoString() {
+        return "Padre da Vila";
+    }
+
+    @Override
     void definirPontos() {
         this.valor = 3;
     }

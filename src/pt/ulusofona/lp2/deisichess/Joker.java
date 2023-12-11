@@ -8,6 +8,24 @@ public class Joker extends Peca {
     }
 
     @Override
+    String toString(Tabuleiro tabuleiro) {
+        ContadorJogadas contador = tabuleiro.getContadorJogadas();
+        int rondas = contador.getRondasJoker();
+        Peca pecaAtual = obterPecaCorrespondente(rondas);
+        TipoPeca tipoPeca = pecaAtual.getTipo();
+
+        if(!getEstado()) {
+            return getID() + " | "+getTipoString()+ pecaAtual.getTipoString() + " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }
+        return  getID() + " | Joker/" + pecaAtual.getTipoString() + " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
+    }
+
+    @Override
+    String getTipoString() {
+        return "Joker/";
+    }
+
+    @Override
     void definirPontos() {
         this.valor = 4;
     }

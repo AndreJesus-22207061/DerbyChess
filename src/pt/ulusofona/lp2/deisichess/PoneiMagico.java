@@ -9,6 +9,19 @@ public class PoneiMagico extends Peca{
     }
 
     @Override
+    String toString(Tabuleiro tabuleiro) {
+        if(!getEstado()) {
+            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }
+        return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+    }
+
+    @Override
+    String getTipoString() {
+        return "Ponei Magico";
+    }
+
+    @Override
     void definirPontos() {
         this.valor = 5;
     }

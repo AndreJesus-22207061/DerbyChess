@@ -26,15 +26,9 @@ public abstract class Peca {
         this.estado = true;
     }
 
-    @Override
-    public String toString() {
-        if(!estado) {
-            return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (n/a)";
-        }
-            return id + " | " + tipo + " | " + equipa + " | " + alcunha + " @ (" + x + ", " + y + ")";
 
+    abstract String toString(Tabuleiro tabuleiro);
 
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -80,6 +74,8 @@ public abstract class Peca {
     protected int getY() {
         return y;
     }
+
+    abstract String getTipoString();
 
     int getValor() {
         return valor;

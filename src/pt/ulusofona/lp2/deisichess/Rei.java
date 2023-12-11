@@ -10,8 +10,21 @@ public class Rei extends Peca {
     }
 
     @Override
+    String toString(Tabuleiro tabuleiro) {
+        if(!getEstado()) {
+          return  getID() + " | " +getTipoString()+  " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }
+        return getID() + " | "+getTipoString()+ " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
+    }
+
+    @Override
     void definirPontos() {
         this.valor = 1000;
+    }
+
+    @Override
+    String getTipoString() {
+        return "Rei";
     }
 
     @Override

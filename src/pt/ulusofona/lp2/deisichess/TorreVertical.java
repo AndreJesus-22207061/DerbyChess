@@ -8,6 +8,19 @@ public class TorreVertical extends Peca{
     }
 
     @Override
+    String toString(Tabuleiro tabuleiro) {
+        if(!getEstado()) {
+            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }
+        return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+    }
+
+    @Override
+    String getTipoString() {
+        return "TorreVert";
+    }
+
+    @Override
     void definirPontos() {
         this.valor = 3;
     }

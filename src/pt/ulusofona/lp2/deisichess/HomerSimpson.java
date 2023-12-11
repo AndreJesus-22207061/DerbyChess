@@ -4,7 +4,30 @@ public class HomerSimpson extends Peca{
     public HomerSimpson(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.HOMMER);
+        setTipo(TipoPeca.HOMER);
+    }
+
+    @Override
+    String toString(Tabuleiro tabuleiro) {
+        if(!getEstado()) {
+            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+        }else {
+            ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+            int ronda = contadorJogadas.getRondaAtual();
+
+            if(estaADormir(ronda)){
+                return "Doh! zzzzzz";
+            }
+
+            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+
+        }
+
+    }
+
+    @Override
+    String getTipoString() {
+        return "Homer Simpson";
     }
 
     @Override
@@ -23,7 +46,7 @@ public class HomerSimpson extends Peca{
             return false;
         }
 
-        if(ronda%3==0){
+        if(estaADormir(ronda)){
             return false;
         }
 
@@ -45,15 +68,21 @@ public class HomerSimpson extends Peca{
             return true;
         }
 
-
-
-
-
-
-
-
-
-
         return false;
     }
+
+
+    boolean estaADormir(int ronda){
+        if(ronda%3==0){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+
 }
