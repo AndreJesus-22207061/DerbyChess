@@ -20,7 +20,7 @@ public class PadreDaVila extends Peca{
     @Override
     String getTipoString() {
         return "Padre da Vila";
-    }
+    } //testeeeeeeeeeeeee
 
     @Override
     void definirPontos() {
