@@ -164,7 +164,7 @@ public class Tabuleiro {
     String buscarInformacaoPecaAsString(int ID){
         for (Peca peca : pecas) {
             if(peca.getID() ==ID){
-                return peca.toString();
+                return peca.toString(contadorJogadas);
             }
 
         }

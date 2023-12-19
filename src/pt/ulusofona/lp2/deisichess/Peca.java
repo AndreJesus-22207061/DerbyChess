@@ -28,7 +28,7 @@ public abstract class Peca {
     }
 
 
-    abstract String toString(Tabuleiro tabuleiro);
+    abstract String toString(ContadorJogadas contadorJogadas);
 
 
     @Override

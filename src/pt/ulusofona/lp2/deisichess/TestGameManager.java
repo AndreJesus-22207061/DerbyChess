@@ -129,13 +129,13 @@ public class TestGameManager {
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
         // -------------------Teste para peça inválida---------------------
-        String[] resultInvalid = jogo.getPieceInfo(11);
+        String[] resultInvalid = jogo.getPieceInfo(20);
         assertArrayEquals(new String[7], resultInvalid);
 
 
         // -------------------Teste para peça válida-------------------------------
         String[] resultComPeca = jogo.getPieceInfo(1);
-        assertArrayEquals(new String[]{"1", "0", "0", "Chefe","em jogo","1","0"}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao","em jogo","0","0"}, resultComPeca);
 
 
 
@@ -150,13 +150,13 @@ public class TestGameManager {
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
         // -------------------Teste para peça inválida---------------------
-        String resultInvalid = jogo.getPieceInfoAsString(11);
+        String resultInvalid = jogo.getPieceInfoAsString(20);
         assertNull(resultInvalid);
 
 
         // -------------------Teste para peça válida-------------------------------
         String resultComPeca = jogo.getPieceInfoAsString(1);
-        assertEquals("1 | 0 | 0 | Chefe @ (1, 0)", resultComPeca);
+        assertEquals("1 | Rei | (infinito) | 10 | O Poderoso Chefao @ (0, 0)", resultComPeca);
 
 
 

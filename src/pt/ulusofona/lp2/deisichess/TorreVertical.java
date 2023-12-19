@@ -8,7 +8,7 @@ public class TorreVertical extends Peca{
     }
 
     @Override
-    String toString(Tabuleiro tabuleiro) {
+    String toString(ContadorJogadas contadorJogadas) {
         if(!getEstado()) {
             return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
