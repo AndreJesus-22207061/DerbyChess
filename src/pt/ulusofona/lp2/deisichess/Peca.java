@@ -19,8 +19,9 @@ public abstract class Peca {
 
     protected int valor;
 
-    public Peca(int id, int equipa, String alcunha) {
+    public Peca(int id,int tipo, int equipa, String alcunha) {
         this.id = id;
+        this.tipo = tipo;
         this.equipa = equipa;
         this.alcunha = alcunha;
         this.estado = true;
@@ -31,15 +32,15 @@ public abstract class Peca {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Peca peca = (Peca) o;
-        return id == peca.id && tipo == peca.tipo && equipa == peca.equipa && x == peca.x && y == peca.y && Objects.equals(alcunha, peca.alcunha);
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) return true;
+        if (otherObject == null || getClass() != otherObject.getClass()) return false;
+        Peca peca = (Peca) otherObject;
+        return id == peca.getID() && equipa == peca.getEquipa() && estado == peca.getEstado() && x == peca.getX() && y == peca.getY() && valor == peca.getValor() && tipo == peca.getTipo() && Objects.equals(alcunha, peca.getAlcunha());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, tipo, equipa, alcunha, estado, x, y, valor);
     }
 
     protected void setTipo(int tipo){

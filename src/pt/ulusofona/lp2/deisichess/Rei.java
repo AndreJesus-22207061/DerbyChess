@@ -2,8 +2,8 @@ package pt.ulusofona.lp2.deisichess;
 
 public class Rei extends Peca {
 
-    public Rei(int id, int equipa, String alcunha) {
-        super(id, equipa, alcunha);
+    public Rei(int id,int tipo, int equipa, String alcunha) {
+        super(id,tipo, equipa, alcunha);
         definirPontos();
 
 

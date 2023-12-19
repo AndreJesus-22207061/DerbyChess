@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisichess;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +18,7 @@ public class TestGameManager {
 
 
     @Test
-    public void loadGame8x8(){
+    public void loadGame8x8() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -96,7 +97,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void testGetSquareInfo() {
+    public void testGetSquareInfo() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -109,8 +110,8 @@ public class TestGameManager {
 
 
         // -------------------Teste para coordenadas com peça-------------------------------
-        String[] resultComPeca = jogo.getSquareInfo(1, 0);
-        assertArrayEquals(new String[]{"1", "0", "0", "Chefe", "pecaPreta.png"}, resultComPeca);
+        String[] resultComPeca = jogo.getSquareInfo(0, 0);
+        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", "pecaPreta.png"}, resultComPeca);
 
 
         // ------------------ Teste para coordenadas sem peça-----------------------------
@@ -120,7 +121,7 @@ public class TestGameManager {
 
 
     @Test
-    public void testGetPieceInfo() {
+    public void testGetPieceInfo() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -141,7 +142,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void testGetPieceInfoAsString() {
+    public void testGetPieceInfoAsString() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -163,7 +164,7 @@ public class TestGameManager {
 
 
     @Test
-    public void movePosicaoInvalida() {
+    public void movePosicaoInvalida() throws IOException, InvalidGameInputException {
         File file = new File("test-files","4x4.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -182,7 +183,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void moveCorreto() {
+    public void moveCorreto() throws IOException, InvalidGameInputException {
         File file = new File("test-files","4x4.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -203,7 +204,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void jogoVitoriaBranca(){
+    public void jogoVitoriaBranca() throws IOException, InvalidGameInputException {
         File file = new File("test-files","4x4pequeno.txt");
         jogo.reset();
         jogo.loadGame(file);
@@ -229,7 +230,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void jogoEmpate1x1(){
+    public void jogoEmpate1x1() throws IOException, InvalidGameInputException {
         File file = new File("test-files","4x4pequeno.txt");
         jogo.reset();
         jogo.loadGame(file);

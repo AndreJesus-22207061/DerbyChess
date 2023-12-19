@@ -2,10 +2,9 @@ package pt.ulusofona.lp2.deisichess;
 
 public class PoneiMagico extends Peca{
 
-    public PoneiMagico(int id, int equipa, String alcunha) {
-        super(id, equipa, alcunha);
+    public PoneiMagico(int id,int tipo, int equipa, String alcunha) {
+        super(id,tipo, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.PONEI);
     }
 
     @Override

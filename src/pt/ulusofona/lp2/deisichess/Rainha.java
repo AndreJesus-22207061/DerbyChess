@@ -1,9 +1,11 @@
 package pt.ulusofona.lp2.deisichess;
 
+import java.util.Objects;
+
 public class Rainha extends Peca{
 
-    public Rainha(int id, int equipa, String alcunha) {
-        super(id, equipa, alcunha);
+    public Rainha(int id, int tipo, int equipa, String alcunha) {
+        super(id, tipo, equipa, alcunha);
         definirPontos();
 
     }
@@ -16,6 +18,8 @@ public class Rainha extends Peca{
         }
         return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
     }
+
+
 
     @Override
     String getTipoString() {

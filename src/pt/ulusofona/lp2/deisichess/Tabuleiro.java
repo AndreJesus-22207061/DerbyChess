@@ -149,7 +149,7 @@ public class Tabuleiro {
             informacaoQuadrado[1] = String.valueOf(peca.getTipo());
             informacaoQuadrado[2] = String.valueOf(peca.getEquipa());
             informacaoQuadrado[3] = peca.getAlcunha();
-            if(peca.getEquipa()==0){
+            if(peca.getEquipa()==10){
                 informacaoQuadrado[4] = "pecaPreta.png";
             }else{
                 informacaoQuadrado[4] = "pecaBranca.png";
