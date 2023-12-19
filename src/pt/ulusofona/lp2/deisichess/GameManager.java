@@ -4,6 +4,9 @@ package pt.ulusofona.lp2.deisichess;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GameManager {
 
@@ -12,13 +15,14 @@ public class GameManager {
     public GameManager() {
     }
 
-    public boolean loadGame(File file) {
-        BufferedReader reader;
+    public void loadGame(File file) throws
+            InvalidGameInputException, IOException{
+        BufferedReader reader = null;
 
         try {
             reader = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException e) {
-            return false;
+
         }
 
         try{
@@ -126,13 +130,10 @@ public class GameManager {
 
             reader.close();
         } catch (IOException e) {
-            return false;
+
         }
 
 
-
-
-        return true;
     }
 
 
@@ -285,6 +286,31 @@ public class GameManager {
 
         return creditos;
     }
+
+
+    public void saveGame(File file) throws IOException{
+
+    }
+
+
+    public void undo(){
+
+    }
+
+
+    public List<Comparable> getHints(int x, int y){
+
+        List<Comparable> aaa = new ArrayList<>();
+        return aaa;
+    }
+
+    public Map<String,String> customizeBoard(){
+
+        Map<String,String> aaa = new HashMap<>();
+
+        return aaa;
+    }
+
 
 
 }
