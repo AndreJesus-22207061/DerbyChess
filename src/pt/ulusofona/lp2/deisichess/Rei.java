@@ -5,7 +5,7 @@ public class Rei extends Peca {
     public Rei(int id,int tipo, int equipa, String alcunha) {
         super(id,tipo, equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
 
     }
 
@@ -20,6 +20,15 @@ public class Rei extends Peca {
     @Override
     void definirPontos() {
         this.valor = 1000;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "icons8-king-50-black.png";
+        }else{
+            this.imagem = "icons8-king-50-white.png";
+        }
     }
 
     @Override

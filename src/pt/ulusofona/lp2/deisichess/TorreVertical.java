@@ -4,7 +4,7 @@ public class TorreVertical extends Peca{
     public TorreVertical(int id, int tipo ,int equipa, String alcunha) {
         super(id,tipo ,equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
     }
 
     @Override
@@ -23,6 +23,15 @@ public class TorreVertical extends Peca{
     @Override
     void definirPontos() {
         this.valor = 3;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
     }
 
     @Override

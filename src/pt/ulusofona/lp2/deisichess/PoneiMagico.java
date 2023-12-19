@@ -5,6 +5,7 @@ public class PoneiMagico extends Peca{
     public PoneiMagico(int id,int tipo, int equipa, String alcunha) {
         super(id,tipo, equipa, alcunha);
         definirPontos();
+        defenirImagem();
     }
 
     @Override
@@ -23,6 +24,15 @@ public class PoneiMagico extends Peca{
     @Override
     void definirPontos() {
         this.valor = 5;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
     }
 
     @Override

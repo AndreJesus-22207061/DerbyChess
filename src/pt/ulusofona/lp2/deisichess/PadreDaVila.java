@@ -5,7 +5,7 @@ public class PadreDaVila extends Peca{
     public PadreDaVila(int id,int tipo, int equipa, String alcunha) {
         super(id,tipo, equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
     }
 
     @Override
@@ -25,6 +25,15 @@ public class PadreDaVila extends Peca{
     @Override
     void definirPontos() {
         this.valor = 3;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
     }
 
     @Override

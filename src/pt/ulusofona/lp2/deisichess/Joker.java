@@ -4,7 +4,7 @@ public class Joker extends Peca {
     public Joker(int id,int tipo ,int equipa, String alcunha) {
         super(id,tipo ,equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
     }
 
     @Override
@@ -27,6 +27,15 @@ public class Joker extends Peca {
     @Override
     void definirPontos() {
         this.valor = 4;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
     }
 
     @Override

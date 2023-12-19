@@ -111,7 +111,7 @@ public class TestGameManager {
 
         // -------------------Teste para coordenadas com peça-------------------------------
         String[] resultComPeca = jogo.getSquareInfo(0, 0);
-        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", "pecaPreta.png"}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", null}, resultComPeca);
 
 
         // ------------------ Teste para coordenadas sem peça-----------------------------

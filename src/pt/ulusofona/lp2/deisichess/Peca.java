@@ -19,6 +19,8 @@ public abstract class Peca {
 
     protected int valor;
 
+    protected String imagem;
+
     public Peca(int id,int tipo, int equipa, String alcunha) {
         this.id = id;
         this.tipo = tipo;
@@ -82,7 +84,13 @@ public abstract class Peca {
         return valor;
     }
 
+    String getImagem(){
+        return imagem;
+    }
+
     abstract void definirPontos();
+
+    abstract void defenirImagem();
 
 
     void setCoordenadas(int coordenadaX, int coordenadaY) {

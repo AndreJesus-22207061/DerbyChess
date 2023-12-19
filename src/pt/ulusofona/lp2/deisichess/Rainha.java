@@ -7,7 +7,7 @@ public class Rainha extends Peca{
     public Rainha(int id, int tipo, int equipa, String alcunha) {
         super(id, tipo, equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
     }
 
     @Override
@@ -22,13 +22,23 @@ public class Rainha extends Peca{
 
 
     @Override
-    String getTipoString() {
-        return "Rainha";
+    void definirPontos() {
+        this.valor = 8;
     }
 
     @Override
-    void definirPontos() {
-        this.valor = 8;
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
+    }
+
+
+    @Override
+    String getTipoString() {
+        return "Rainha";
     }
 
     @Override

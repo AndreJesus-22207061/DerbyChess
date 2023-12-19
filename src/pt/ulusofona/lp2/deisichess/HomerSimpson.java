@@ -4,7 +4,7 @@ public class HomerSimpson extends Peca{
     public HomerSimpson(int id,int tipo ,int equipa, String alcunha) {
         super(id,tipo ,equipa, alcunha);
         definirPontos();
-
+        defenirImagem();
     }
 
     @Override
@@ -32,6 +32,15 @@ public class HomerSimpson extends Peca{
     @Override
     void definirPontos() {
         this.valor = 2;
+    }
+
+    @Override
+    void defenirImagem(){
+        if(getEquipa()==10){
+            this.imagem = "";
+        }else{
+            this.imagem = "";
+        }
     }
 
     @Override
