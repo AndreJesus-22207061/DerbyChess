@@ -57,24 +57,30 @@ public class Joker extends Peca {
 
         switch (ronda) {
             case 1:
-                Peca peca1 = new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
+                Rainha peca1 = new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca1.setCoordenadas(getX(),getY());
                 return peca1;
 
             case 2:
-                Peca peca2 = new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
+                PoneiMagico peca2 = new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca2.setCoordenadas(getX(),getY());
                 return peca2;
             case 3:
-                Peca peca3 = new PadreDaVila(getID(),getTipo(), getEquipa(), getAlcunha());
+                PadreDaVila peca3 = new PadreDaVila(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca3.setCoordenadas(getX(),getY());
                 return peca3;
             case 4:
-                return new TorreHorizontal(getID(),getTipo(), getEquipa(), getAlcunha());
+                TorreHorizontal peca4 = new TorreHorizontal(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca4.setCoordenadas(getX(),getY());
+                return peca4;
             case 5:
-                return new TorreVertical(getID(),getTipo(), getEquipa(), getAlcunha());
+                TorreVertical peca5 = new TorreVertical(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca5.setCoordenadas(getX(),getY());
+                return peca5;
             case 6:
-                return new HomerSimpson(getID(),getTipo(), getEquipa(), getAlcunha());
+                HomerSimpson peca6 = new HomerSimpson(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca6.setCoordenadas(getX(),getY());
+                return peca6;
 
             default:
                 throw new IllegalArgumentException("Tipo de peça inválido");
