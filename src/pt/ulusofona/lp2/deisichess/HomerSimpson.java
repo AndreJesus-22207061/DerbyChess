@@ -4,7 +4,7 @@ public class HomerSimpson extends Peca{
     public HomerSimpson(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.HOMER);
+
     }
 
     @Override

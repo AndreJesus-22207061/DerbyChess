@@ -5,7 +5,7 @@ public class Rei extends Peca {
     public Rei(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.REI);
+
 
     }
 

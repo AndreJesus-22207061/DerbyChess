@@ -5,7 +5,7 @@ public class PadreDaVila extends Peca{
     public PadreDaVila(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.PADRE);
+
     }
 
     @Override

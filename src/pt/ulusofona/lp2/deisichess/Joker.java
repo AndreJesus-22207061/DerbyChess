@@ -4,7 +4,7 @@ public class Joker extends Peca {
     public Joker(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.J0KER);
+
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Joker extends Peca {
         ContadorJogadas contador = tabuleiro.getContadorJogadas();
         int rondas = contador.getRondasJoker();
         Peca pecaAtual = obterPecaCorrespondente(rondas);
-        TipoPeca tipoPeca = pecaAtual.getTipo();
+        int tipoPeca = pecaAtual.getTipo();
 
         if(!getEstado()) {
             return getID() + " | "+getTipoString()+ pecaAtual.getTipoString() + " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";

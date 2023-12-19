@@ -4,7 +4,7 @@ public class TorreVertical extends Peca{
     public TorreVertical(int id, int equipa, String alcunha) {
         super(id, equipa, alcunha);
         definirPontos();
-        setTipo(TipoPeca.TORREVERTICAL);
+
     }
 
     @Override

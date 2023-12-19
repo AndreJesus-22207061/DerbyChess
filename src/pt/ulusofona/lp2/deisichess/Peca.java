@@ -5,7 +5,7 @@ import java.util.Objects;
 public abstract class Peca {
    private int id;
 
-    private TipoPeca tipo;
+    private int tipo;
 
     private int equipa;
 
@@ -42,7 +42,7 @@ public abstract class Peca {
         return id == peca.id && tipo == peca.tipo && equipa == peca.equipa && x == peca.x && y == peca.y && Objects.equals(alcunha, peca.alcunha);
     }
 
-    protected void setTipo(TipoPeca tipo){
+    protected void setTipo(int tipo){
         this.tipo = tipo;
     }
 
@@ -51,7 +51,7 @@ public abstract class Peca {
         return id;
     }
 
-    TipoPeca getTipo() {
+    int getTipo() {
         return tipo;
     }
 
