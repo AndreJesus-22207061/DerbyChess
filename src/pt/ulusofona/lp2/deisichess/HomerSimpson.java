@@ -60,17 +60,6 @@ public class HomerSimpson extends Peca{
 
 
 
-        if ((xFinal == getX() && (yFinal == getY() + 1 || yFinal == getY() - 1))) {
-            // Movimento vertical //
-
-            return true;
-        }
-
-        if (yFinal == getY() && (xFinal == getX() + 1 || xFinal == getX() - 1)) {
-            // Movimento horizontal //
-            return true;
-        }
-
         if ((xFinal == getX() + 1 || xFinal == getX() - 1) && (yFinal == getY() + 1 || yFinal == getY() - 1)) {
             // Movimento diagonal //
             return true;
@@ -82,10 +71,12 @@ public class HomerSimpson extends Peca{
 
     boolean estaADormir(int ronda){
         if(ronda%3==0){
+            return false;
+        }else{
             return true;
         }
-        return false;
     }
+
 
 
 
