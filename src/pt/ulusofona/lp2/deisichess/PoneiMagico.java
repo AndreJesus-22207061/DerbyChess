@@ -56,13 +56,16 @@ public class PoneiMagico extends Peca{
         int xIncial = getX();
         int yInicial = getY();
 
+        boolean primeiroMovimento = true;
+        boolean segundoMovimento = true;
+
        //-----------------Movimento eixo Y --------------------------//
         for (int i = 1; i < 3; i++) {
             int currentY = getY() + i * sentidoMovimentoEixoY(yFinal);
 
             // Verificar se há uma peça na posição atual do caminho
             if (tabuleiro.getPeca(xIncial, currentY) != null) {
-                return false; // Movimento inválido devido a uma peça no caminho
+                primeiroMovimento = false; // Movimento inválido devido a uma peça no caminho
             }
         }
 
@@ -73,7 +76,7 @@ public class PoneiMagico extends Peca{
 
             // Verificar se há uma peça na posição atual do caminho
             if (tabuleiro.getPeca(currentX, yFinal ) != null) {
-                return false;
+                primeiroMovimento = false;
             }
         }
 
@@ -85,7 +88,7 @@ public class PoneiMagico extends Peca{
 
             // Verificar se há uma peça na posição atual do caminho
             if (tabuleiro.getPeca(currentX, yInicial) != null) {
-                return false;
+                segundoMovimento = false;
             }
         }
 
@@ -95,11 +98,11 @@ public class PoneiMagico extends Peca{
 
             // Verificar se há uma peça na posição atual do caminho
             if (tabuleiro.getPeca(xFinal, currentY) != null) {
-                return false;
+                segundoMovimento = false;
             }
         }
 
-        return true;
+        return (primeiroMovimento || segundoMovimento);
     }
 
     private int sentidoMovimentoEixoY(int yFinal ){

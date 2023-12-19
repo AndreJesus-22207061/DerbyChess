@@ -71,9 +71,9 @@ public class HomerSimpson extends Peca{
 
     boolean estaADormir(int ronda){
         if(ronda%3==0){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 

@@ -57,11 +57,18 @@ public class Joker extends Peca {
 
         switch (ronda) {
             case 1:
-                return new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
+                Peca peca1 = new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca1.setCoordenadas(getX(),getY());
+                return peca1;
+
             case 2:
-                return new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
+                Peca peca2 = new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca2.setCoordenadas(getX(),getY());
+                return peca2;
             case 3:
-                return new PadreDaVila(getID(),getTipo(), getEquipa(), getAlcunha());
+                Peca peca3 = new PadreDaVila(getID(),getTipo(), getEquipa(), getAlcunha());
+                peca3.setCoordenadas(getX(),getY());
+                return peca3;
             case 4:
                 return new TorreHorizontal(getID(),getTipo(), getEquipa(), getAlcunha());
             case 5:

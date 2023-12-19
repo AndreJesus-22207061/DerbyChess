@@ -268,6 +268,32 @@ public class TestGameManager {
 
 
 
+    @Test
+    public void movePoneiMagico() throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        jogo.move(2,0,4,2 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+    }
+    @Test
+    public void Joker() throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        jogo.move(7,0,7,1 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+    }
+
+
 
 
 }
