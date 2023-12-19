@@ -27,67 +27,67 @@ public class TestGameManager {
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
-        Peca peca1 = new Rei(1,10,"O Poderoso Chefao");
+        Peca peca1 = new Rei(1,0,10,"O Poderoso Chefao");
         peca1.setCoordenadas(0,0);
         pecasTeste.add(peca1);
 
-        Peca peca2 = new Rainha(2,10,"A Dama Selvagem");
+        Peca peca2 = new Rainha(2,1,10,"A Dama Selvagem");
         peca2.setCoordenadas(1,0);
         pecasTeste.add(peca2);
 
-        Peca peca3 = new PoneiMagico(3,10,"O Grande Artista");
+        Peca peca3 = new PoneiMagico(3,2,10,"O Grande Artista");
         peca3.setCoordenadas(2,0);
         pecasTeste.add(peca3);
 
-        Peca peca4 = new PadreDaVila(4,10,"Amante de Praia");
+        Peca peca4 = new PadreDaVila(4,3,10,"Amante de Praia");
         peca4.setCoordenadas(3,0);
         pecasTeste.add(peca4);
 
-        Peca peca5 = new TorreHorizontal(5,10,"Artolas");
+        Peca peca5 = new TorreHorizontal(5,4,10,"Artolas");
         peca5.setCoordenadas(4,0);
         pecasTeste.add(peca5);
 
-        Peca peca6 = new TorreVertical(6,10,"O Maior Grande");
+        Peca peca6 = new TorreVertical(6,5,10,"O Maior Grande");
         peca6.setCoordenadas(5,0);
         pecasTeste.add(peca6);
 
-        Peca peca7 = new HomerSimpson(7,10,"Hommie");
+        Peca peca7 = new HomerSimpson(7,6,10,"Hommie");
         peca7.setCoordenadas(6,0);
         pecasTeste.add(peca7);
 
-        Peca peca8 = new Joker(8,10,"O Beberolas");
+        Peca peca8 = new Joker(8,7,10,"O Beberolas");
         peca8.setCoordenadas(7,0);
         pecasTeste.add(peca8);
 
-        Peca peca9 = new Rei(9,20,"Chefe dos Indios");
+        Peca peca9 = new Rei(9,0,20,"Chefe dos Indios");
         peca9.setCoordenadas(0,7);
         pecasTeste.add(peca9);
 
-        Peca peca10 = new Rainha(10,20,"A Barulhenta do Bairro");
+        Peca peca10 = new Rainha(10,1,20,"A Barulhenta do Bairro");
         peca10.setCoordenadas(1,7);
         pecasTeste.add(peca10);
 
-        Peca peca11 = new PoneiMagico(11,20,"My Little Pony");
+        Peca peca11 = new PoneiMagico(11,2,20,"My Little Pony");
         peca8.setCoordenadas(2,7);
         pecasTeste.add(peca11);
 
-        Peca peca12 = new PadreDaVila(12,20,"Padreco");
+        Peca peca12 = new PadreDaVila(12,3,20,"Padreco");
         peca8.setCoordenadas(3,7);
         pecasTeste.add(peca12);
 
-        Peca peca13 = new TorreHorizontal(13,20,"Torre Padreco");
+        Peca peca13 = new TorreHorizontal(13,4,20,"Torre Padreco");
         peca8.setCoordenadas(4,7);
         pecasTeste.add(peca13);
 
-        Peca peca14 = new TorreVertical(14,20,"Torre Trapalhona");
+        Peca peca14 = new TorreVertical(14,5,20,"Torre Trapalhona");
         peca8.setCoordenadas(5,7);
         pecasTeste.add(peca14);
 
-        Peca peca15 = new HomerSimpson(15,20,"Homer Jay Simpson");
+        Peca peca15 = new HomerSimpson(15,6,20,"Homer Jay Simpson");
         peca8.setCoordenadas(6,7);
         pecasTeste.add(peca15);
 
-        Peca peca16 = new Joker(16,20,"O Bobo da Corte");
+        Peca peca16 = new Joker(16,7,20,"O Bobo da Corte");
         peca8.setCoordenadas(7,7);
         pecasTeste.add(peca16);
 

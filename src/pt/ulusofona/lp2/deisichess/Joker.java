@@ -49,17 +49,17 @@ public class Joker extends Peca {
 
         switch (ronda) {
             case 1:
-                return new Rainha(getID(), getEquipa(), getAlcunha());
+                return new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
             case 2:
-                return new PoneiMagico(getID(), getEquipa(), getAlcunha());
+                return new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
             case 3:
-                return new PadreDaVila(getID(), getEquipa(), getAlcunha());
+                return new PadreDaVila(getID(),getTipo(), getEquipa(), getAlcunha());
             case 4:
-                return new TorreHorizontal(getID(), getEquipa(), getAlcunha());
+                return new TorreHorizontal(getID(),getTipo(), getEquipa(), getAlcunha());
             case 5:
-                return new TorreVertical(getID(), getEquipa(), getAlcunha());
+                return new TorreVertical(getID(),getTipo(), getEquipa(), getAlcunha());
             case 6:
-                return new HomerSimpson(getID(), getEquipa(), getAlcunha());
+                return new HomerSimpson(getID(),getTipo(), getEquipa(), getAlcunha());
 
             default:
                 throw new IllegalArgumentException("Tipo de peça inválido");

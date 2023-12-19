@@ -62,28 +62,28 @@ public class GameManager {
 
                     switch (tipoPeca) {
                         case 0 :
-                            peca = new Rei(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new Rei(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 1 :
-                            peca = new Rainha(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new Rainha(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 2 :
-                            peca = new PoneiMagico(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new PoneiMagico(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 3 :
-                            peca = new PadreDaVila(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new PadreDaVila(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 4 :
-                            peca = new TorreHorizontal(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new TorreHorizontal(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 5 :
-                            peca = new TorreVertical(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new TorreVertical(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 6 :
-                            peca = new HomerSimpson(idPeca,equipaPeca,alcunhaPeca);
+                            peca = new HomerSimpson(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                             break;
                         case 7 :
-                             peca = new Joker(idPeca,equipaPeca,alcunhaPeca);
+                             peca = new Joker(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                              break;
                         default:
                             throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
