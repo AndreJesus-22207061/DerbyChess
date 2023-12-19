@@ -1,8 +1,8 @@
 package pt.ulusofona.lp2.deisichess;
 
 public class Joker extends Peca {
-    public Joker(int id, int equipa, String alcunha) {
-        super(id, equipa, alcunha);
+    public Joker(int id,int tipo ,int equipa, String alcunha) {
+        super(id,tipo ,equipa, alcunha);
         definirPontos();
 
     }
