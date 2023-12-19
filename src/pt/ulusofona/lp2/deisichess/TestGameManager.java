@@ -171,8 +171,6 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-
-
         boolean jogada = jogo.move(2,1,0,3 );
         String[] resultComPeca = jogo.getPieceInfo(3);
         assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","1"}, resultComPeca); //A peca mantem se igual pois é jogada invalida

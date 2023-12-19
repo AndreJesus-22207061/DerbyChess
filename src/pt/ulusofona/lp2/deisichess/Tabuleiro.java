@@ -143,48 +143,15 @@ public class Tabuleiro {
         }
 
         Peca peca = tabuleiro[x][y];
-        int tipoPeca = peca.getTipo();
+
 
         if (peca != null) {
             informacaoQuadrado[0] = String.valueOf(peca.getID());
             informacaoQuadrado[1] = String.valueOf(peca.getTipo());
             informacaoQuadrado[2] = String.valueOf(peca.getEquipa());
             informacaoQuadrado[3] = peca.getAlcunha();
-            if(peca.getEquipa()==10){
-                switch (tipoPeca) {
-                    case 0 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 1 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 2 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 3 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 4 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 5 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 6 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    case 7 :
-                        informacaoQuadrado[4] = "";
-                        break;
-                    default:
+            informacaoQuadrado[4] = peca.getImagem();
 
-                }
-
-
-                informacaoQuadrado[4] = "";
-            }else{
-                informacaoQuadrado[4] = null;
-            }
             return informacaoQuadrado;
         }else{
             return new String[0];
