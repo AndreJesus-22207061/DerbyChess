@@ -28,9 +28,9 @@ public class TorreVertical extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "";
+            this.imagem = "torre_v_black.png";
         }else{
-            this.imagem = "";
+            this.imagem = "torre_v_white.png";
         }
     }
 
