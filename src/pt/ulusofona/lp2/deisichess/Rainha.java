@@ -29,9 +29,9 @@ public class Rainha extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "";
+            this.imagem = "rainha_black.png";
         }else{
-            this.imagem = "";
+            this.imagem = "rainha_white.png";
         }
     }
 

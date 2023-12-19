@@ -29,9 +29,9 @@ public class PoneiMagico extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "";
+            this.imagem = "ponei_magico_black.png";
         }else{
-            this.imagem = "";
+            this.imagem = "ponei_magico_white.png";
         }
     }
 
