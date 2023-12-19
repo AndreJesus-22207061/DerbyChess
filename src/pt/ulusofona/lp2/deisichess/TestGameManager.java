@@ -26,15 +26,15 @@ public class TestGameManager {
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
-        Peca peca1 = new Rei(1,10,"Poderoso Chefao");
+        Peca peca1 = new Rei(1,10,"O Poderoso Chefao");
         peca1.setCoordenadas(0,0);
         pecasTeste.add(peca1);
 
-        Peca peca2 = new Rainha(2,10,"Dama Selvagem");
+        Peca peca2 = new Rainha(2,10,"A Dama Selvagem");
         peca2.setCoordenadas(1,0);
         pecasTeste.add(peca2);
 
-        Peca peca3 = new PoneiMagico(3,10,"Grande Artista");
+        Peca peca3 = new PoneiMagico(3,10,"O Grande Artista");
         peca3.setCoordenadas(2,0);
         pecasTeste.add(peca3);
 
@@ -46,7 +46,7 @@ public class TestGameManager {
         peca5.setCoordenadas(4,0);
         pecasTeste.add(peca5);
 
-        Peca peca6 = new TorreVertical(6,10,"Maior Grande");
+        Peca peca6 = new TorreVertical(6,10,"O Maior Grande");
         peca6.setCoordenadas(5,0);
         pecasTeste.add(peca6);
 
@@ -54,7 +54,7 @@ public class TestGameManager {
         peca7.setCoordenadas(6,0);
         pecasTeste.add(peca7);
 
-        Peca peca8 = new Joker(8,10,"Beberolas");
+        Peca peca8 = new Joker(8,10,"O Beberolas");
         peca8.setCoordenadas(7,0);
         pecasTeste.add(peca8);
 
