@@ -16,49 +16,6 @@ public class TestGameManager {
     public GameManager jogo = new GameManager();
 
 
-
-    @Test
-    public void loadGame4x4(){
-        File file = new File("test-files","4x4.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-        ArrayList<Peca> pecasTeste = new ArrayList<>();
-
-        Peca peca1 = new Peca(1,0,0,"Chefe");
-        peca1.setCoordenadas(1,0);
-        pecasTeste.add(peca1);
-
-        Peca peca2 = new Peca(2,0,0,"Selvagem");
-        peca2.setCoordenadas(3,0);
-        pecasTeste.add(peca2);
-
-        Peca peca3 = new Peca(3,0,0,"Grande Artista");
-        peca3.setCoordenadas(2,1);
-        pecasTeste.add(peca3);
-
-        Peca peca4 = new Peca(4,0,1,"O Maior");
-        peca4.setCoordenadas(2,3);
-        pecasTeste.add(peca4);
-
-        Peca peca5 = new Peca(5,0,1,"O Amigo");
-        peca5.setCoordenadas(1,3);
-        pecasTeste.add(peca5);
-
-        Peca peca6 = new Peca(6,0,1,"O Beberolas");
-        peca6.setCoordenadas(1,2);
-        pecasTeste.add(peca6);
-
-        assertEquals(pecasTeste,tabuleiro.getListaPecas());
-
-    }
-
-
-
-
-
     @Test
     public void loadGame8x8(){
         File file = new File("test-files","8x8.txt");
@@ -69,45 +26,70 @@ public class TestGameManager {
 
         ArrayList<Peca> pecasTeste = new ArrayList<>();
 
-        Peca peca1 = new Peca(1,0,0,"Chefe");
+        Peca peca1 = new Rei(1,10,"Poderoso Chefao");
         peca1.setCoordenadas(1,0);
         pecasTeste.add(peca1);
 
-        Peca peca2 = new Peca(2,0,0,"Selvagem");
-        peca2.setCoordenadas(3,0);
+        Peca peca2 = new Rainha(2,10,"Dama Selvagem");
+        peca2.setCoordenadas(2,0);
         pecasTeste.add(peca2);
 
-        Peca peca3 = new Peca(3,0,0,"Grande Artista");
-        peca3.setCoordenadas(2,1);
+        Peca peca3 = new PoneiMagico(3,10,"Grande Artista");
+        peca3.setCoordenadas(3,0);
         pecasTeste.add(peca3);
 
-        Peca peca4 = new Peca(4,0,0,"Amante de Praia");
-        peca4.setCoordenadas(4,1);
+        Peca peca4 = new PadreDaVila(4,10,"Amante de Praia");
+        peca4.setCoordenadas(4,0);
         pecasTeste.add(peca4);
 
-        Peca peca5 = new Peca(5,0,0,"Artolas");
-        peca5.setCoordenadas(6,1);
+        Peca peca5 = new TorreHorizontal(5,10,"Artolas");
+        peca5.setCoordenadas(5,0);
         pecasTeste.add(peca5);
 
-        Peca peca6 = new Peca(6,0,1,"O Maior");
+        Peca peca6 = new TorreVertical(6,10,"Maior Grande");
         peca6.setCoordenadas(4,5);
         pecasTeste.add(peca6);
 
-        Peca peca7 = new Peca(7,0,1,"O Amigo");
+        Peca peca7 = new HomerSimpson(7,10,"Hommie");
         peca7.setCoordenadas(2,6);
         pecasTeste.add(peca7);
 
-        Peca peca8 = new Peca(8,0,1,"O Beberolas");
+        Peca peca8 = new Joker(8,10,"Beberolas");
         peca8.setCoordenadas(6,6);
         pecasTeste.add(peca8);
 
-        Peca peca9 = new Peca(9,0,1,"O Esperto");
+        Peca peca9 = new Rei(9,20,"Chefe dos Indios");
         peca9.setCoordenadas(2,7);
         pecasTeste.add(peca9);
 
-        Peca peca10 = new Peca(10,0,1,"O Barulhento");
+        Peca peca10 = new Rainha(10,20,"A Barulhenta do Bairro");
         peca10.setCoordenadas(4,7);
         pecasTeste.add(peca10);
+
+        Peca peca11 = new PoneiMagico(11,20,"My Little Pony");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca11);
+
+        Peca peca12 = new PadreDaVila(12,20,"Padreco");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca12);
+
+        Peca peca13 = new TorreHorizontal(13,20,"Torre Padreco");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca13);
+
+        Peca peca14 = new TorreVertical(14,20,"Torre Trapalhona");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca14);
+
+        Peca peca15 = new HomerSimpson(15,20,"Homer Jay Simpson");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca15);
+
+        Peca peca16 = new Joker(16,20,"O Bobo da Corte");
+        peca8.setCoordenadas(6,6);
+        pecasTeste.add(peca16);
+
 
         assertEquals(pecasTeste,tabuleiro.getListaPecas());
 
