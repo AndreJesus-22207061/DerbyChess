@@ -8,8 +8,8 @@ public class Joker extends Peca {
     }
 
     @Override
-    String toString(ContadorJogadas contadorJogadas) {
-        int rondas = contadorJogadas.getRondasJoker();
+    String toString(ContadorRondas contadorRondas) {
+        int rondas = contadorRondas.getRondasJokerE();
         Peca pecaAtual = obterPecaCorrespondente(rondas);
         String tipoPecaString = pecaAtual.getTipoString();
 
@@ -41,9 +41,9 @@ public class Joker extends Peca {
     @Override
     boolean validMove(int xFinal, int yFinal, Tabuleiro tabuleiro) {
 
-        ContadorJogadas contador = tabuleiro.getContadorJogadas();
+        ContadorRondas contador = tabuleiro.getContadorRondas();
 
-        int rondaJoker = contador.getRondasJoker();
+        int rondaJoker = contador.getRondasJokerE();
 
         Peca pecaAtual = obterPecaCorrespondente(rondaJoker);
 
@@ -60,7 +60,6 @@ public class Joker extends Peca {
                 Rainha peca1 = new Rainha(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca1.setCoordenadas(getX(),getY());
                 return peca1;
-
             case 2:
                 PoneiMagico peca2 = new PoneiMagico(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca2.setCoordenadas(getX(),getY());

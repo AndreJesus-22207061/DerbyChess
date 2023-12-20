@@ -14,7 +14,9 @@ public class Tabuleiro {
 
     private int equipaAJogar;
 
-    private ContadorJogadas contadorJogadas;
+    private ArrayList<CountJogadas> contadoresJogadas;
+
+    private ContadorRondas contadorRondas;
 
 
 
@@ -25,7 +27,8 @@ public class Tabuleiro {
         this.pecasPretas = new ArrayList<>();
         this.pecasBrancas   = new ArrayList<>();
         this.equipaAJogar = 10; //Começa a 10 (preta)
-        this.contadorJogadas = new ContadorJogadas();
+        this.contadoresJogadas = new ArrayList<>();
+        this.contadorRondas = new ContadorRondas();
     }
 
     public void inicializarTabuleiro() {
@@ -75,9 +78,30 @@ public class Tabuleiro {
         }
     }
 
+    ContadorRondas getContadorRondas(){
+        return this.contadorRondas;
+    }
 
-    ContadorJogadas getContadorJogadas(){
-        return this.contadorJogadas;
+    CountJogadas getContadorEquipa(int equipa){
+        for(CountJogadas contador : contadoresJogadas){
+            if(contador.getEquipa() == equipa){
+                return contador;
+            }
+        }
+        return null;
+    }
+
+    void adicionarNovoContador(int equipa){
+        boolean existe = false;
+        for(CountJogadas contador : contadoresJogadas){
+            if(equipa == contador.getEquipa()){
+                existe = true;
+            }
+        }
+        if(!existe){
+            CountJogadas novoContador = new CountJogadas(equipa);
+            contadoresJogadas.add(novoContador);
+        }
     }
 
 
@@ -162,13 +186,50 @@ public class Tabuleiro {
     String buscarInformacaoPecaAsString(int ID){
         for (Peca peca : pecas) {
             if(peca.getID() ==ID){
-                return peca.toString(contadorJogadas);
+                return peca.toString(contadorRondas);
             }
 
         }
         return null;
     }
 
+
+    ArrayList<String> menuFinal(){
+        ArrayList<String> menuFinal = new ArrayList<>();
+
+        CountJogadas contadorBrancas = getContadorEquipa(20);
+        CountJogadas contadorPretas = getContadorEquipa(10);
+
+
+        String linha1 = "JOGO DE CRAZY CHESS";
+        String linha2 = "Resultado: " +contadorRondas.getResultado();
+        String linha3 = "---";
+        String linha4="Equipa das Pretas";
+        String linha5= Integer.toString(contadorBrancas.getPecasCapturadas());
+        String linha6=Integer.toString(contadorPretas.getJogadasValidas());
+        String linha7=Integer.toString(contadorPretas.getJogadasInvalidas());
+        String linha8="Equipa das Brancas";
+        String linha9=Integer.toString(contadorPretas.getPecasCapturadas());
+        String linha10 =Integer.toString(contadorBrancas.getJogadasValidas());
+        String linha11 = Integer.toString(contadorBrancas.getJogadasInvalidas());
+
+        menuFinal.add(linha1);
+        menuFinal.add(linha2);
+        menuFinal.add(linha3);
+        menuFinal.add(linha4);
+        menuFinal.add(linha5);
+        menuFinal.add(linha6);
+        menuFinal.add(linha7);
+        menuFinal.add(linha8);
+        menuFinal.add(linha9);
+        menuFinal.add(linha10);
+        menuFinal.add(linha11);
+
+        return menuFinal;
+    }
+
+
+    /*
     int[] informacaoPecasCapturadas() {
         int[] arrayInfo = new int[3];
         int countEquipaPreta = 0;
@@ -191,7 +252,7 @@ public class Tabuleiro {
         arrayInfo[2] = numeroPecasTotal;
         return arrayInfo;
     }
-
+*/
 
 
 

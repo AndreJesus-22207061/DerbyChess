@@ -58,6 +58,9 @@ public class GameManager {
                     int equipaPeca = Integer.parseInt(partes[2]);
                     String alcunhaPeca = partes[3];
 
+                    // vai criar um novo contador para cada equipa nova
+
+
                     Peca peca;
 
                     switch (tipoPeca) {
@@ -124,6 +127,7 @@ public class GameManager {
                 if(tabuleiro.getPecaPorID(id)== null){
                     peca.capturada();
                 }
+                tabuleiro.adicionarNovoContador(peca.getEquipa());
                 tabuleiro.adicionarPecaAEquipa(peca); //adicionar as pecas a lista de cada equipa
             }
 
@@ -149,34 +153,45 @@ public class GameManager {
 
     public boolean move( int x0, int y0, int x1, int y1){
 
-
+/*
         int[] informacoes = tabuleiro.informacaoPecasCapturadas();
         int pecasCapturadasPreta = informacoes[0];
         int pecasCapturadasBranca = informacoes[1];
+*/
+        boolean foiCapturada = false;
 
-     boolean foiCapturada = false;
+        CountJogadas contadorEquipaAJogar = tabuleiro.getContadorEquipa(tabuleiro.getEquipaAJogar());
+
+        ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+
         //------------Confirmacoes Peca--------------------//
-        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+
+        //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
         Peca peca = tabuleiro.getPeca(x0,y0);
 
+        int equipaPeca = peca.getEquipa();
+
+        CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
+
+
+
+
         if(peca == null){
-            contadorJogadas.jogadaInvalida(tabuleiro.getEquipaAJogar());
+            contadorEquipaAJogar.jogadaInvalidaE();
             //jogada invalida esta a mover o vazio
             return false;
         }
 
-        int equipaPeca = peca.getEquipa();
-
 
         if(!(peca.validMove(x1,y1,tabuleiro))){
-            contadorJogadas.jogadaInvalida(equipaPeca);
+            contadorEquipaPeca.jogadaInvalidaE();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
         if (equipaPeca!=tabuleiro.getEquipaAJogar()) {
-            contadorJogadas.jogadaInvalida(equipaPeca);
+            contadorEquipaPeca.jogadaInvalidaE();
             //jogada invalida turno invalido
             return false;
         }
@@ -189,32 +204,41 @@ public class GameManager {
 
             int equipaDestino = pecaDestino.getEquipa();
 
+            CountJogadas contadorEquipaPecaDestino = tabuleiro.getContadorEquipa(equipaDestino);
+
+
             if(equipaPeca == equipaDestino){
-                contadorJogadas.jogadaInvalida(equipaPeca);
+                contadorEquipaPeca.jogadaInvalidaE();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             }else{
                 foiCapturada = true;
-                contadorJogadas.resetContadorSemCaptura();
+                contadorRondas.resetRondasSemCapturaE();
                 pecaDestino.capturada();
-                contadorJogadas.pecaFoiCapturada(equipaDestino);
+                contadorEquipaPecaDestino.pecaFoiCapturadaE();
                 tabuleiro.removerPeca(x1,y1);
             }
         }
+
+        CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
+        CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
+
         //Se no destino não houver peca é so mover
-        if((!foiCapturada && pecasCapturadasBranca >= 1) || (!foiCapturada && pecasCapturadasPreta >=1)){
-            contadorJogadas.jogadaConcluidaSemCaptura();
+        if((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >=1)){
+            contadorRondas.jogadaConcluidaSemCapturaE();
         }
 
-        if(contadorJogadas.getRondasJoker() == 6){
-            contadorJogadas.resetRondaJoker();
+
+
+        if(contadorRondas.getRondasJokerE() == 6){
+            contadorRondas.resetRondaJokerE();
         }
 
 
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
-        contadorJogadas.jogadaValida(equipaPeca);
-        contadorJogadas.incrementaRondaJoker();
+        contadorEquipaPeca.jogadaValidaE();
+        contadorRondas.incrementaRondaJokerE();
         tabuleiro.mudarEquipaAjogar();
         return true;
 
@@ -237,41 +261,43 @@ public class GameManager {
     }
 
     public boolean gameOver() {
-        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+
+        ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+
+        CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
+        int pecasCapturadasPreta = contadorPretas.getPecasCapturadas();
+
+        CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
+        int pecasCapturadasBranca = contadorBrancas.getPecasCapturadas();
+
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
         ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
 
-        int[] informacoes = tabuleiro.informacaoPecasCapturadas();
-        int pecasCapturadasPreta = informacoes[0];
-        int pecasCapturadasBranca = informacoes[1];
-
 
         if (pecasCapturadasPreta == equipaPreta.size()) {
-            contadorJogadas.defineResultado("VENCERAM AS BRANCAS");
+            contadorRondas.defineResultadoE("VENCERAM AS BRANCAS");
             return true;
         }
 
         if (pecasCapturadasBranca == equipaBranca.size()) {
-            contadorJogadas.defineResultado("VENCERAM AS PRETAS");
+            contadorRondas.defineResultadoE("VENCERAM AS PRETAS");
             return true;
         }
 
         if (pecasCapturadasPreta == (equipaPreta.size() - 1) && pecasCapturadasBranca == (equipaBranca.size() - 1)) {
-            contadorJogadas.defineResultado("EMPATE");
+            contadorRondas.defineResultadoE("EMPATE");
             return true;
         }
 
-        if(contadorJogadas.getContadorSemCaptura() == 10){
-            contadorJogadas.defineResultado("EMPATE");
+        if(contadorRondas.getRondasSemCaptura() == 10){
+            contadorRondas.defineResultadoE("EMPATE");
             return true;
         }
         return false;
     }
 
     public ArrayList<String> getGameResults(){
-        ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
-
-        return contadorJogadas.menuFinal();
+        return tabuleiro.menuFinal();
     }
 
     public JPanel getAuthorsPanel() {

@@ -9,7 +9,7 @@ public class PoneiMagico extends Peca{
     }
 
     @Override
-    String toString(ContadorJogadas contadorJogadas) {
+    String toString(ContadorRondas contadorRondas) {
         if(!getEstado()) {
             return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }

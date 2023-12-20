@@ -30,7 +30,7 @@ public abstract class Peca {
     }
 
 
-    abstract String toString(ContadorJogadas contadorJogadas);
+    abstract String toString(ContadorRondas contadorRondas);
 
 
     @Override

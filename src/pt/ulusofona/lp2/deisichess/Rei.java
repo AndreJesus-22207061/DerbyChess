@@ -10,7 +10,7 @@ public class Rei extends Peca {
     }
 
     @Override
-    String toString(ContadorJogadas contadorJogadas) {
+    String toString(ContadorRondas contadorRondas) {
         if (!getEstado()) {
             return getID() + " | " + getTipoString() + " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
