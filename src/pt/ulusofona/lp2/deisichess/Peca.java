@@ -35,8 +35,12 @@ public abstract class Peca {
 
     @Override
     public boolean equals(Object otherObject) {
-        if (this == otherObject) return true;
-        if (otherObject == null || getClass() != otherObject.getClass()) return false;
+        if (this == otherObject){
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()){
+            return false;
+        }
         Peca peca = (Peca) otherObject;
         return id == peca.getID() && equipa == peca.getEquipa() && estado == peca.getEstado() && x == peca.getX() && y == peca.getY() && valor == peca.getValor() && tipo == peca.getTipo() && Objects.equals(alcunha, peca.getAlcunha());
     }
