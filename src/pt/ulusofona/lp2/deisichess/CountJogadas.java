@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess;
 
 public class CountJogadas {
 
-    private int equipa = 0;
+    private int equipa;
 
     private int pecasCapturadas =0;
 
