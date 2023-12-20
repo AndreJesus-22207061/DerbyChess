@@ -153,11 +153,7 @@ public class GameManager {
 
     public boolean move( int x0, int y0, int x1, int y1){
 
-/*
-        int[] informacoes = tabuleiro.informacaoPecasCapturadas();
-        int pecasCapturadasPreta = informacoes[0];
-        int pecasCapturadasBranca = informacoes[1];
-*/
+
         boolean foiCapturada = false;
 
         CountJogadas contadorEquipaAJogar = tabuleiro.getContadorEquipa(tabuleiro.getEquipaAJogar());
@@ -239,6 +235,7 @@ public class GameManager {
         peca.setCoordenadas(x1,y1);
         contadorEquipaPeca.jogadaValidaE();
         contadorRondas.incrementaRondaJokerE();
+        contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
         return true;
 

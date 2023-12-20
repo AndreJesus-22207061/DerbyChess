@@ -11,16 +11,16 @@ public class HomerSimpson extends Peca{
     String toString(ContadorRondas contadorRondas) {
         if(!getEstado()) {
             return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
-        }/*else {
-         //   int ronda = contadorRondas.getRondaAtual();
+        }else{
+            int ronda = contadorRondas.getRondaAtual();
 
-        //    if(estaADormir(ronda)){
+            if(estaADormir(ronda)){
                 return "Doh! zzzzzz";
             }
-  */
+
             return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
 
-       // }
+        }
 
     }
 
@@ -46,18 +46,17 @@ public class HomerSimpson extends Peca{
     @Override
     boolean validMove(int xFinal, int yFinal, Tabuleiro tabuleiro) {
 
-      //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
+        ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
-      //  int ronda = contadorJogadas.getRondaAtual();
+        int ronda = contadorRondas.getRondaAtual();
 
         if ((xFinal < 0 || xFinal >= tabuleiro.getTamanho() || yFinal < 0 || yFinal >= tabuleiro.getTamanho())) {
             return false;
         }
 
-      /*  if(estaADormir(ronda)){
+        if(estaADormir(ronda)){
             return false;
         }
-*/
 
 
         if ((xFinal == getX() + 1 || xFinal == getX() - 1) && (yFinal == getY() + 1 || yFinal == getY() - 1)) {
