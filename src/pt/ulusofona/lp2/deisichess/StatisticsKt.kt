@@ -20,11 +20,6 @@ class StatisticsKt {
     }
 
 
-    fun main() {
-        val statistics = StatisticsKt()
-        val calculator = statistics.getStatsCalculator(StatType.TOP_5_PONTOS)
-        // Faça algo com o "calculator"...
-    }
 
 
 }
