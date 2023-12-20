@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess
 
 class StatisticsKt {
 
-    fun getStatsCalculator(tipo: StatType): Function1<Array<Int>,Int> {
+    fun  getStatsCalculator(tipo: StatType): Function1<GameManager,ArrayList<String>> {
         when (tipo) {
             StatType.TOP_5_PONTOS -> return ::calculaMaximo
             StatType.TOP_5_CAPTURAS -> return ::calculaMaximo
@@ -14,14 +14,9 @@ class StatisticsKt {
     }
 
 
-    fun calculaMaximo(numeros: Array<Int>) : Int {
-        var max = Int.MIN_VALUE
-        for (numero in numeros) {
-            if (numero > max) {
-                max = numero
-            }
-        }
-        return max
+    fun calculaMaximo(numeros: GameManager) : ArrayList<String> {
+        val arrayList = ArrayList<String>()
+        return  arrayList
     }
 
 
