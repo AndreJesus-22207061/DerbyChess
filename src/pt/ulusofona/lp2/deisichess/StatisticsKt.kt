@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisichess
 
-class Statistics {
+class StatisticsKt {
 
     fun getFuncaoCalculadora(tipo: StatType): Function1<Array<Int>,Int> {
         when (tipo) {
