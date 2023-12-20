@@ -174,20 +174,20 @@ public class GameManager {
 
 
         if(peca == null){
-            contadorEquipaAJogar.jogadaInvalidaE();
+            contadorEquipaAJogar.jogadaInvalida();
             //jogada invalida esta a mover o vazio
             return false;
         }
 
 
         if(!(peca.validMove(x1,y1,tabuleiro))){
-            contadorEquipaPeca.jogadaInvalidaE();
+            contadorEquipaPeca.jogadaInvalida();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
         if (equipaPeca!=tabuleiro.getEquipaAJogar()) {
-            contadorEquipaPeca.jogadaInvalidaE();
+            contadorEquipaPeca.jogadaInvalida();
             //jogada invalida turno invalido
             return false;
         }
@@ -204,14 +204,14 @@ public class GameManager {
 
 
             if(equipaPeca == equipaDestino){
-                contadorEquipaPeca.jogadaInvalidaE();
+                contadorEquipaPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             }else{
                 foiCapturada = true;
-                contadorRondas.resetRondasSemCapturaE();
+                contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
-                contadorEquipaPecaDestino.pecaFoiCapturadaE();
+                contadorEquipaPecaDestino.pecaFoiCapturada();
                 tabuleiro.removerPeca(x1,y1);
             }
         }
@@ -221,20 +221,21 @@ public class GameManager {
 
         //Se no destino não houver peca é so mover
         if((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >=1)){
-            contadorRondas.jogadaConcluidaSemCapturaE();
+            contadorRondas.jogadaConcluidaSemCaptura();
         }
 
 
 
-        if(contadorRondas.getRondasJokerE() == 6){
-            contadorRondas.resetRondaJokerE();
+        if(contadorRondas.getRondasJoker() == 6){
+            contadorRondas.resetRondaJoker();
         }
 
 
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
-        contadorEquipaPeca.jogadaValidaE();
-        contadorRondas.incrementaRondaJokerE();
+        contadorEquipaPeca.jogadaValida();
+        contadorRondas.incrementaRondaJoker();
+        contadorRondas.incrementaRondaAtual();
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
         return true;
@@ -272,22 +273,22 @@ public class GameManager {
 
 
         if (pecasCapturadasPreta == equipaPreta.size()) {
-            contadorRondas.defineResultadoE("VENCERAM AS BRANCAS");
+            contadorRondas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
 
         if (pecasCapturadasBranca == equipaBranca.size()) {
-            contadorRondas.defineResultadoE("VENCERAM AS PRETAS");
+            contadorRondas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
         if (pecasCapturadasPreta == (equipaPreta.size() - 1) && pecasCapturadasBranca == (equipaBranca.size() - 1)) {
-            contadorRondas.defineResultadoE("EMPATE");
+            contadorRondas.defineResultado("EMPATE");
             return true;
         }
 
         if(contadorRondas.getRondasSemCaptura() == 10){
-            contadorRondas.defineResultadoE("EMPATE");
+            contadorRondas.defineResultado("EMPATE");
             return true;
         }
         return false;

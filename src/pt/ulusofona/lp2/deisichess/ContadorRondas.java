@@ -12,15 +12,19 @@ public class ContadorRondas {
 
 
 
-    int getRondasJokerE(){
+    int getRondasJoker(){
         return this.rondasJoker;
     }
 
-    void incrementaRondaJokerE(){
+    void incrementaRondaJoker(){
         this.rondasJoker++;
     }
 
-    void resetRondaJokerE(){
+    void decrementaRondaJoker(){
+        this.rondasJoker--;
+    }
+
+    void resetRondaJoker(){
         this.rondasJoker = 1;
     }
 
@@ -28,16 +32,16 @@ public class ContadorRondas {
         return this.rondasSemCaptura;
     }
 
-    void jogadaConcluidaSemCapturaE(){
+    void jogadaConcluidaSemCaptura(){
         this.rondasSemCaptura++;
     }
 
 
-    void resetRondasSemCapturaE(){
+    void resetRondasSemCaptura(){
         rondasSemCaptura = 0;
     }
 
-    void defineResultadoE(String resultado){
+    void defineResultado(String resultado){
         this.resultado = resultado;
     }
 

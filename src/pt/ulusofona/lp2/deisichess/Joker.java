@@ -9,7 +9,7 @@ public class Joker extends Peca {
 
     @Override
     String toString(ContadorRondas contadorRondas) {
-        int rondas = contadorRondas.getRondasJokerE();
+        int rondas = contadorRondas.getRondasJoker();
         Peca pecaAtual = obterPecaCorrespondente(rondas);
         String tipoPecaString = pecaAtual.getTipoString();
 
@@ -43,7 +43,7 @@ public class Joker extends Peca {
 
         ContadorRondas contador = tabuleiro.getContadorRondas();
 
-        int rondaJoker = contador.getRondasJokerE();
+        int rondaJoker = contador.getRondasJoker();
 
         Peca pecaAtual = obterPecaCorrespondente(rondaJoker);
 

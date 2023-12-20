@@ -16,15 +16,15 @@ public class CountJogadas {
 
     }
 
-    void pecaFoiCapturadaE() {
+    void pecaFoiCapturada() {
         this.pecasCapturadas++;
     }
 
-    void jogadaValidaE() {
+    void jogadaValida() {
         this.jogadasValidas++;
     }
 
-    void jogadaInvalidaE(){
+    void jogadaInvalida(){
         this.jogadasInvalidas++;
     }
     int getEquipa(){
@@ -42,11 +42,6 @@ public class CountJogadas {
     int getJogadasInvalidas(){
         return this.jogadasInvalidas;
     }
-
-
-
-
-
 
 
 }
