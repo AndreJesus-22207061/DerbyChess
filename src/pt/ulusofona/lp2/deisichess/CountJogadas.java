@@ -26,13 +26,7 @@ public class CountJogadas {
 
     void jogadaInvalidaE(){
         this.jogadasInvalidas++;
-
     }
-
-    int getRondaAtual(){
-        return this.jogadasValidas;
-    }
-
     int getEquipa(){
         return this.equipa;
     }

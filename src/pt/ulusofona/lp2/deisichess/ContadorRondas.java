@@ -6,6 +6,8 @@ public class ContadorRondas {
 
     private int rondasSemCaptura = 0;
 
+    private int rondaAtual = 0;
+
     private String resultado;
 
 
@@ -41,6 +43,18 @@ public class ContadorRondas {
 
     String getResultado(){
         return this.resultado;
+    }
+
+    int getRondaAtual(){
+        return this.rondaAtual;
+    }
+
+    void incrementaRondaAtual(){
+        this.rondaAtual++;
+    }
+
+    void decrementaRondaAtual(){
+        this.rondaAtual--;
     }
 
 
