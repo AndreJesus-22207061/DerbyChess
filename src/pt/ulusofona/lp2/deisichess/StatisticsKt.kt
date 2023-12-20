@@ -15,7 +15,7 @@ class StatisticsKt {
 
 
     fun calculaMaximo(numeros: GameManager) : ArrayList<String> {
-        var arrayList = ArrayList<String>()
+        val arrayList = ArrayList<String>()
         return  arrayList
     }
 
