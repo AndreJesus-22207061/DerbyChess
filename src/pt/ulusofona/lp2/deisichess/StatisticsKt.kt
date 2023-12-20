@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess
 
 class StatisticsKt {
 
-    fun getFuncaoCalculadora(tipo: StatType): Function1<Array<Int>,Int> {
+    fun getStatsCalculator(tipo: StatType): Function1<Array<Int>,Int> {
         when (tipo) {
             StatType.TOP_5_PONTOS -> return ::calculaMaximo
             StatType.TOP_5_CAPTURAS -> return ::calculaMaximo
