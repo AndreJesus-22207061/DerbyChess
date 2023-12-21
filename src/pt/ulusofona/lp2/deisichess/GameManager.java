@@ -333,14 +333,11 @@ public class GameManager {
                 CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
 
 
-                if(ultimaJogada.houveCaptura()) {
+                if(!ultimaJogada.houveCaptura()&&( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1)) {
+                    contadorRondas.decrementaRondasSemCaptura();
+                }else{
                     countPecaQueJogou.decrementaPecaFoiCapturada();
                 }
-
-                if( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1){
-                        contadorRondas.decrementaRondasSemCaptura();
-                }
-
 
                 countPecaQueJogou.decrementaJogadaValida();
                 contadorRondas.decrementaRondaAtual();
