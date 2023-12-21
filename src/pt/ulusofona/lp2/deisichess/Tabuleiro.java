@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisichess;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Tabuleiro {
     private  int tamanho;
@@ -18,6 +19,8 @@ public class Tabuleiro {
 
     private ContadorRondas contadorRondas;
 
+    private Stack<Jogada> historicoJogadas;
+
 
 
     public Tabuleiro(int tamanho,ArrayList<Peca>pecas) {
@@ -29,6 +32,7 @@ public class Tabuleiro {
         this.equipaAJogar = 10; //Começa a 10 (preta)
         this.contadoresJogadas = new ArrayList<>();
         this.contadorRondas = new ContadorRondas();
+        this.historicoJogadas = new Stack<>();
     }
 
     public void inicializarTabuleiro() {
@@ -102,6 +106,13 @@ public class Tabuleiro {
             CountJogadas novoContador = new CountJogadas(equipa);
             contadoresJogadas.add(novoContador);
         }
+    }
+
+    Jogada obterUltimaJogada() {
+        if (!historicoJogadas.isEmpty()) {
+            return historicoJogadas.peek();
+        }
+        return null;
     }
 
 
@@ -192,6 +203,29 @@ public class Tabuleiro {
         }
         return null;
     }
+
+
+
+    void restaurarTabuleiro(Jogada ultimaJogada) {
+        int xOrigem = ultimaJogada.getXOrigem();
+        int yOrigem = ultimaJogada.getYOrigem();
+        int xDestino = ultimaJogada.getXDestino();
+        int yDestino = ultimaJogada.getYDestino();
+
+        movePeca(xDestino, yDestino, xOrigem, yOrigem);
+
+        if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
+            Peca pecaCapturada = getPeca(xDestino, yDestino);
+            pecaCapturada.reativar();
+        }
+
+        historicoJogadas.pop(); // Remove a última jogada do histórico
+    }
+
+    void adicionarJogadaAoHistorico(Jogada ultimaJogada) {
+        historicoJogadas.push(ultimaJogada);
+    }
+
 
 
 

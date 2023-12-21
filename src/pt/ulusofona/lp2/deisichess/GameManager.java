@@ -317,8 +317,28 @@ public class GameManager {
     }
 
 
-    public void undo(){
+    public void undo() {
+        if (tabuleiro != null) {
+            Jogada ultimaJogada = tabuleiro.obterUltimaJogada();
 
+            ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+            contadorRondas.decrementaRondaAtual();
+            contadorRondas.decrementaRondaJoker();
+
+            if(!ultimaJogada.houveCaptura()){
+                contadorRondas.decrementaRondasSemCaptura();
+            }
+
+
+
+
+
+            if (ultimaJogada != null) { // Se existe uma jogada no historico
+                tabuleiro.restaurarTabuleiro(ultimaJogada);
+
+                tabuleiro.mudarEquipaAjogar();
+            }
+        }
     }
 
 

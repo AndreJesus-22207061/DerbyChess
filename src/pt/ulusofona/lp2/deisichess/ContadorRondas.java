@@ -61,7 +61,9 @@ public class ContadorRondas {
         this.rondaAtual--;
     }
 
-
+    void decrementaRondasSemCaptura(){
+        this.rondasSemCaptura--;
+    }
 
 
 

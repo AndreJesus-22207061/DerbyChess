@@ -115,6 +115,12 @@ public abstract class Peca {
     void capturada(){
         this.estado = false;
     }
+
+    void reativar() {
+        this.estado = true;
+    }
+
+
     abstract boolean validMove(int x, int y, Tabuleiro tabuleiro);
 
 
