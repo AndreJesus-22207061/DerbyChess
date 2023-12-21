@@ -20,6 +20,11 @@ public class CountJogadas {
         this.pecasCapturadas++;
     }
 
+    void decrementaPecaFoiCapturada() {
+        this.pecasCapturadas--;
+    }
+
+
     void jogadaValida() {
         this.jogadasValidas++;
     }

@@ -332,12 +332,14 @@ public class GameManager {
 
 
 
+
                 }else{
                     CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
                     CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
 
                     if( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1){
                         contadorRondas.decrementaRondasSemCaptura();
+
                     }
 
                 }
