@@ -322,23 +322,30 @@ public class GameManager {
             Jogada ultimaJogada = tabuleiro.obterUltimaJogada();
 
             if (ultimaJogada != null) { // Se existe uma jogada no historico
+
                 ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
                 contadorRondas.decrementaRondaAtual();
                 contadorRondas.decrementaRondaJoker();
 
-                CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
-                CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
+                if(ultimaJogada.houveCaptura()){
 
-                if((!ultimaJogada.houveCaptura() && countBranca.getPecasCapturadas() >= 1) || ((!ultimaJogada.houveCaptura() && countPreta.getPecasCapturadas() >=1))){
-                    contadorRondas.decrementaRondasSemCaptura();
+
+
+
+                }else{
+                    CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
+                    CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
+
+                    if( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1){
+                        contadorRondas.decrementaRondasSemCaptura();
+                    }
+
                 }
 
 
 
 
-
                 tabuleiro.restaurarTabuleiro(ultimaJogada);
-
                 tabuleiro.mudarEquipaAjogar();
             }
         }
