@@ -124,7 +124,7 @@ public class GameManager {
             for(Peca peca : tabuleiro.getListaPecas()){
                 int id = peca.getID();
 
-                if(tabuleiro.getPecaPorID(id)== null){
+                if(tabuleiro.getPecaPorIDTabuleiro(id)== null){
                     peca.capturada();
                 }
                 tabuleiro.adicionarNovoContador(peca.getEquipa());
@@ -211,7 +211,7 @@ public class GameManager {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
-                contadorEquipaPecaDestino.pecaFoiCapturada();
+                contadorEquipaPeca.pecaFoiCapturada();   //!!!!!!!!!!!!!! pode estar erro aqui !!!!!!!!!!!!!!!!
                 tabuleiro.removerPeca(x1,y1);
             }
         }
@@ -235,11 +235,19 @@ public class GameManager {
         peca.setCoordenadas(x1,y1);
         contadorEquipaPeca.jogadaValida();
         contadorRondas.incrementaRondaJoker();
-        contadorRondas.incrementaRondaAtual();
+        //contadorRondas.incrementaRondaAtual();     //!!!!!!!!! pode estar errado !!!!!!!!//
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
-        return true;
 
+        Jogada jogada = new Jogada(x0,y0,x1,y1,foiCapturada);
+
+        if(foiCapturada){
+            jogada.addIDPecaCapturada(pecaDestino.getID());
+        }
+
+        tabuleiro.adicionarJogadaAoHistorico(jogada);
+
+        return true;
 
     }
     public  String[] getSquareInfo(int x, int y){
@@ -325,7 +333,7 @@ public class GameManager {
 
                 ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
-                Peca pecaQueJogou = tabuleiro.getPeca(ultimaJogada.getXOrigem(), ultimaJogada.getYOrigem());
+                Peca pecaQueJogou = tabuleiro.getPeca(ultimaJogada.getXDestino(), ultimaJogada.getYDestino());
 
                 CountJogadas countPecaQueJogou = tabuleiro.getContadorEquipa(pecaQueJogou.getEquipa());
 
@@ -335,7 +343,9 @@ public class GameManager {
 
                 if(!ultimaJogada.houveCaptura()&&( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1)) {
                     contadorRondas.decrementaRondasSemCaptura();
-                }else{
+                }
+
+                if(ultimaJogada.houveCaptura()){
                     countPecaQueJogou.decrementaPecaFoiCapturada();
                 }
 

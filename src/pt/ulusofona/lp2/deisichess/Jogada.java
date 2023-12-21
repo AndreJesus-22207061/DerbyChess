@@ -8,7 +8,9 @@ public class Jogada {
     private int yDestino;
     private boolean captura;
 
-    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura) {
+    private int idPecaCapturada;
+
+    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura ) {
         this.xOrigem = xOrigem;
         this.yOrigem = yOrigem;
         this.xDestino = xDestino;
@@ -36,7 +38,13 @@ public class Jogada {
         return captura;
     }
 
+    public void addIDPecaCapturada(int id){
+        this.idPecaCapturada = id;
+    }
 
+    public int getIdPecaCapturada() {
+        return idPecaCapturada;
+    }
 
 
 

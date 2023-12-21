@@ -116,8 +116,9 @@ public abstract class Peca {
         this.estado = false;
     }
 
-    void reativar() {
+    void reativar(int x , int y) {
         this.estado = true;
+        setCoordenadas(x,y);
     }
 
 

@@ -294,6 +294,27 @@ public class TestGameManager {
     }
 
 
+    @Test
+    public void Undo() throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        jogo.move(1,0,1,5 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+        jogo.move(1,7,1,5 );
+        boolean jogada2 = jogo.gameOver();
+        assertFalse(jogada2);
+        jogo.undo();
+        jogo.undo();
+
+    }
+
+
+
 
 
 }

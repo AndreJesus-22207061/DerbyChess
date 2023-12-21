@@ -50,15 +50,24 @@ public class Tabuleiro {
         return tabuleiro[x][y];
     }
 
-     Peca getPecaPorID(int id) {
+     Peca getPecaPorIDTabuleiro(int id) {        // buscar peca especifica que tem que estar em jogo
         for (int x = 0; x < tamanho; x++) {
-            for (int y = 0; y < tamanho; y++) {
-                Peca peca = tabuleiro[x][y];
+            for (int y = 0; y < tamanho; y++) {   //usado para verificar ao inicio se o ficheiro ja vem
+                Peca peca = tabuleiro[x][y];      // com peca capturada ou não
                 if (peca != null && peca.getID() == id) {
                     return peca;
                 }
             }
         }
+        return null;
+    }
+
+    Peca getPecaPorIDLista(int id) {       // buscar peca especifica que pode estar ou nao em jogo
+        for (Peca peca : pecas) {
+            if (peca != null && peca.getID() == id) {
+                return peca;
+                }
+            }
         return null;
     }
 
@@ -211,14 +220,14 @@ public class Tabuleiro {
         int yOrigem = ultimaJogada.getYOrigem();
         int xDestino = ultimaJogada.getXDestino();
         int yDestino = ultimaJogada.getYDestino();
+        int idPecaCapturada = ultimaJogada.getIdPecaCapturada();
 
         movePeca(xDestino, yDestino, xOrigem, yOrigem);
 
         if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
-            Peca pecaCapturada = getPeca(xDestino, yDestino);
-            pecaCapturada.reativar();
+            Peca pecaCapturada = getPecaPorIDLista(idPecaCapturada);
+            pecaCapturada.reativar(xDestino,yDestino);
         }
-
         historicoJogadas.pop(); // Remove a última jogada do histórico
     }
 
