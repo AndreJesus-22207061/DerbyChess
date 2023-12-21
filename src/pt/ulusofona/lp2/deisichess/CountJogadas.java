@@ -24,8 +24,16 @@ public class CountJogadas {
         this.jogadasValidas++;
     }
 
+    void decrementaJogadaValida() {
+        this.jogadasValidas--;
+    }
+
     void jogadaInvalida(){
         this.jogadasInvalidas++;
+    }
+
+    void decrementaJogadaInvalida(){
+        this.jogadasInvalidas--;
     }
     int getEquipa(){
         return this.equipa;
