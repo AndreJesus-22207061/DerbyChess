@@ -51,7 +51,7 @@ public class Tabuleiro {
     }
 
     void colocaPecaNoTabuleiro(Peca peca, int x, int y){
-        if(tabuleiro[x][y]== null){
+        if(tabuleiro[x][y] == null){
             tabuleiro[x][y] = peca;
         }
     }
@@ -235,7 +235,7 @@ public class Tabuleiro {
         if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
             Peca pecaCapturada = getPecaPorIDLista(idPecaCapturada);
             pecaCapturada.reativar(xDestino,yDestino);
-            colocaPecaNoTabuleiro(pecaCapturada, xDestino,yDestino);
+            colocaPecaNoTabuleiro(pecaCapturada,xDestino,yDestino);
         }
         historicoJogadas.pop(); // Remove a última jogada do histórico
     }

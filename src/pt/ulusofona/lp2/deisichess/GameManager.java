@@ -228,13 +228,14 @@ public class GameManager {
 
         if(contadorRondas.getRondasJoker() == 6){
             contadorRondas.resetRondaJoker();
+        }else{
+            contadorRondas.incrementaRondaJoker();
         }
 
 
         tabuleiro.movePeca( x0, y0, x1, y1);
         peca.setCoordenadas(x1,y1);
         contadorEquipaPeca.jogadaValida();
-        contadorRondas.incrementaRondaJoker();
         //contadorRondas.incrementaRondaAtual();     //!!!!!!!!! pode estar errado !!!!!!!!//
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
@@ -351,7 +352,7 @@ public class GameManager {
 
                 countPecaQueJogou.decrementaJogadaValida();
                 contadorRondas.decrementaRondaAtual();
-                contadorRondas.decrementaRondaJoker();
+                contadorRondas.decrementaRondaJoker(contadorRondas.getRondasJoker());
 
 
                 tabuleiro.restaurarTabuleiro(ultimaJogada);

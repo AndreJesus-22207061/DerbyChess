@@ -20,8 +20,12 @@ public class ContadorRondas {
         this.rondasJoker++;
     }
 
-    void decrementaRondaJoker(){
-        this.rondasJoker--;
+    void decrementaRondaJoker(int rondaJokerAtual){
+        if(rondaJokerAtual == 1){
+            this.rondasJoker = 6;
+        }else{
+            this.rondasJoker--;
+        }
     }
 
     void resetRondaJoker(){

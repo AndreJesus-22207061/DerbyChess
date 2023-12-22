@@ -314,6 +314,41 @@ public class TestGameManager {
     }
 
 
+    @Test
+    public void rainhaUndo() throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        jogo.move(1,0,1,5 );
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+        jogo.move(1,7,1,5 );
+        boolean jogada2 = jogo.gameOver();
+        assertFalse(jogada2);
+        jogo.move(2,0,4,2 );
+        boolean jogada3 = jogo.gameOver();
+        assertFalse(jogada3);
+        jogo.move(3,7,6,4 );
+        boolean jogada4 = jogo.gameOver();
+        assertFalse(jogada4);
+        jogo.move(5,0,5,1 );
+        boolean jogada5 = jogo.gameOver();
+        assertFalse(jogada5);
+        jogo.move(6,4,4,2 );
+        boolean jogada6 = jogo.gameOver();
+        assertFalse(jogada6);
+        jogo.undo();
+        jogo.undo();
+        jogo.getPieceInfo(8);
+        jogo.getPieceInfoAsString(8);
+        jogo.getSquareInfo(7,0);
+
+    }
+
+
 
 
 
