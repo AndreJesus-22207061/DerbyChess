@@ -229,6 +229,8 @@ public class Tabuleiro {
         int idPecaCapturada = ultimaJogada.getIdPecaCapturada();
 
         movePeca(xDestino, yDestino, xOrigem, yOrigem);
+        Peca pecaQueJogou = getPeca(xOrigem,yOrigem);
+        pecaQueJogou.setCoordenadas(xOrigem,yOrigem);
 
         if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
             Peca pecaCapturada = getPecaPorIDLista(idPecaCapturada);
