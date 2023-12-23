@@ -362,9 +362,10 @@ public class GameManager {
     }
 
 
-    public List<Comparable> getHints(int x, int y){
+    public List<Sugestao> getHints(int x, int y){
 
         Peca pecaSelecionada = tabuleiro.getPeca(x,y);
+        List<Sugestao> listaDeSugestoes = new ArrayList<Sugestao>();
 
         if (x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho()) {
             return null;
@@ -381,21 +382,20 @@ public class GameManager {
         for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); x++) {
             for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); y++) {   //usado para verificar ao inicio se o ficheiro ja vem
                 Peca pecaSugestao = tabuleiro.getPeca(xPosicao,yPosicao);
+                int valor = pecaSugestao.getValor();
 
                 if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
                     break;
                 }
                 if(pecaSelecionada.validMove(xPosicao,yPosicao,tabuleiro)){
-
+                    Sugestao sugestao = new Sugestao(xPosicao,yPosicao,valor);
+                    listaDeSugestoes.add(sugestao);
                 }
 
 
             }
         }
-
-
-        List<Comparable> aaa = new ArrayList<>();
-        return aaa;
+        return listaDeSugestoes;
     }
 
     public Map<String, String> customizeBoard() {
