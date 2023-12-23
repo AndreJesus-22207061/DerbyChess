@@ -20,14 +20,6 @@ public class ContadorRondas {
         this.rondasJoker++;
     }
 
-    void decrementaRondaJoker(int rondaJokerAtual){
-        if(rondaJokerAtual == 1){
-            this.rondasJoker = 6;
-        }else{
-            this.rondasJoker--;
-        }
-    }
-
     void resetRondaJoker(){
         this.rondasJoker = 1;
     }
@@ -61,12 +53,16 @@ public class ContadorRondas {
         this.rondaAtual++;
     }
 
-    void decrementaRondaAtual(){
-        this.rondaAtual--;
+    void alteraRondaAtual(int ronda){
+        this.rondaAtual = ronda;
     }
 
-    void decrementaRondasSemCaptura(){
-        this.rondasSemCaptura--;
+    void alteraRondaJoker(int ronda){
+        this.rondasJoker = ronda;
+    }
+
+    void alteraRondaSemCaptural(int ronda){
+        this.rondasSemCaptura = ronda;
     }
 
 

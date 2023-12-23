@@ -160,6 +160,10 @@ public class GameManager {
 
         ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
+        int rondaAtual = contadorRondas.getRondaAtual();
+        int rondaJoker = contadorRondas.getRondasJoker();
+        int rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
         //------------Confirmacoes Peca--------------------//
 
         //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
@@ -240,7 +244,8 @@ public class GameManager {
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
 
-        Jogada jogada = new Jogada(x0,y0,x1,y1,foiCapturada);
+
+        Jogada jogada = new Jogada(x0,y0,x1,y1,foiCapturada, rondaAtual, rondaJoker , rondasSemCaptura);
 
         if(foiCapturada){
             jogada.addIDPecaCapturada(pecaDestino.getID());
@@ -338,22 +343,21 @@ public class GameManager {
 
                 CountJogadas countPecaQueJogou = tabuleiro.getContadorEquipa(pecaQueJogou.getEquipa());
 
-                CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
-                CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
-
-
-                if(!ultimaJogada.houveCaptura()&&( countBranca.getPecasCapturadas() >= 1 || countPreta.getPecasCapturadas() >=1)) {
-                    contadorRondas.decrementaRondasSemCaptura();
-                }
 
                 if(ultimaJogada.houveCaptura()){
                     countPecaQueJogou.decrementaPecaFoiCapturada();
                 }
 
                 countPecaQueJogou.decrementaJogadaValida();
-                contadorRondas.decrementaRondaAtual();
-                contadorRondas.decrementaRondaJoker(contadorRondas.getRondasJoker());
 
+
+                int rondaAtualJogada = ultimaJogada.getRondaAtualJogada();
+                int rondaJokerJogada = ultimaJogada.getRondaJokerJogada();
+                int rondaSemCapturaJogada = ultimaJogada.getRondaSemCapturaJogada();
+
+                contadorRondas.alteraRondaAtual(rondaAtualJogada);
+                contadorRondas.alteraRondaJoker(rondaJokerJogada);
+                contadorRondas.alteraRondaSemCaptural(rondaSemCapturaJogada);
 
                 tabuleiro.restaurarTabuleiro(ultimaJogada);
                 tabuleiro.mudarEquipaAjogar();

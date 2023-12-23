@@ -10,12 +10,21 @@ public class Jogada {
 
     private int idPecaCapturada;
 
-    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura ) {
+    private int rondaAtual;
+
+    private int rondaJoker;
+
+    private int rondaSemCaptura;
+
+    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura , int rondaAtual , int rondaJoker , int rondaSemCaptura ) {
         this.xOrigem = xOrigem;
         this.yOrigem = yOrigem;
         this.xDestino = xDestino;
         this.yDestino = yDestino;
         this.captura = captura;
+        this.rondaAtual = rondaAtual;
+        this.rondaJoker = rondaJoker;
+        this.rondaSemCaptura = rondaSemCaptura;
     }
 
     public int getXOrigem() {
@@ -44,6 +53,17 @@ public class Jogada {
 
     public int getIdPecaCapturada() {
         return idPecaCapturada;
+    }
+
+    public int getRondaAtualJogada() {
+        return rondaAtual;
+    }
+    public int getRondaJokerJogada() {
+        return rondaJoker;
+    }
+
+    public int getRondaSemCapturaJogada() {
+        return rondaSemCaptura;
     }
 
 

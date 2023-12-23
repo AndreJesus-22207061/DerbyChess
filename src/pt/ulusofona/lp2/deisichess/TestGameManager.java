@@ -322,26 +322,118 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        jogo.move(1,0,1,5 );
+
+
+        boolean mov1 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
         boolean jogada1 = jogo.gameOver();
         assertFalse(jogada1);
-        jogo.move(1,7,1,5 );
+
+        ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+        int rondaAtual = contadorRondas.getRondaAtual();
+        int rondaJoker = contadorRondas.getRondasJoker();
+        int rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(1,rondaAtual);
+        assertEquals(2,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
+
+
+        boolean mov2 =jogo.move(1,7,1,5 );
+        assertTrue(mov2);
         boolean jogada2 = jogo.gameOver();
         assertFalse(jogada2);
-        jogo.move(2,0,4,2 );
+
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(2,rondaAtual);
+        assertEquals(3,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
+
+
+        boolean mov3 =jogo.move(2,0,4,2 );
+        assertTrue(mov3);
         boolean jogada3 = jogo.gameOver();
         assertFalse(jogada3);
-        jogo.move(3,7,6,4 );
+
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(3,rondaAtual);
+        assertEquals(4,rondaJoker);
+        assertEquals(1,rondasSemCaptura);
+
+
+        boolean mov4 =jogo.move(3,7,6,4 );
+        assertTrue(mov4);
         boolean jogada4 = jogo.gameOver();
         assertFalse(jogada4);
-        jogo.move(5,0,5,1 );
+
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(4,rondaAtual);
+        assertEquals(5,rondaJoker);
+        assertEquals(2,rondasSemCaptura);
+
+
+        boolean mov5 =jogo.move(5,0,5,1 );
+        assertTrue(mov5);
         boolean jogada5 = jogo.gameOver();
         assertFalse(jogada5);
-        jogo.move(6,4,4,2 );
+
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(5,rondaAtual);
+        assertEquals(6,rondaJoker);
+        assertEquals(3,rondasSemCaptura);
+
+
+        boolean mov6 =jogo.move(6,4,4,2 );
+        assertTrue(mov6);
         boolean jogada6 = jogo.gameOver();
         assertFalse(jogada6);
+
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(6,rondaAtual);
+        assertEquals(1,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
+
+
         jogo.undo();
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(5,rondaAtual);
+        assertEquals(6,rondaJoker);
+        assertEquals(3,rondasSemCaptura);
+
         jogo.undo();
+        contadorRondas = tabuleiro.getContadorRondas();
+        rondaAtual = contadorRondas.getRondaAtual();
+        rondaJoker = contadorRondas.getRondasJoker();
+        rondasSemCaptura = contadorRondas.getRondasSemCaptura();
+
+        assertEquals(4,rondaAtual);
+        assertEquals(5,rondaJoker);
+        assertEquals(2,rondasSemCaptura);
+
         jogo.getPieceInfo(8);
         jogo.getPieceInfoAsString(8);
         jogo.getSquareInfo(7,0);
