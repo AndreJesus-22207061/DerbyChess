@@ -276,9 +276,22 @@ public class TestGameManager {
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
-        jogo.move(2,0,4,2 );
+        jogo.move(2,0,4,2 );  //move ponei preto
         boolean jogada1 = jogo.gameOver();
         assertFalse(jogada1);
+        jogo.move(1,7,1,5 ); // move rainha branco
+        boolean jogada2 = jogo.gameOver();
+        assertFalse(jogada2);
+        jogo.move(0,0,0,1 ); // move rei preto
+        boolean jogada3 = jogo.gameOver();
+        assertFalse(jogada3);
+        jogo.move(1,5,2,4 ); // move rainha branca
+        boolean jogada4 = jogo.gameOver();
+        assertFalse(jogada4);
+        jogo.move(4,2,2,4 ); // move ponei preto , come rainha branca
+        boolean jogada5 = jogo.gameOver();
+        assertFalse(jogada5);
+
 
     }
     @Test

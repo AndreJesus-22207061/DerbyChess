@@ -71,7 +71,7 @@ public class PoneiMagico extends Peca{
 
 
         //-----------------Movimento eixo x --------------------------//
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 2; i++) {
             int currentX = getX() + i * sentidoMovimentoEixoX(xFinal);
 
             // Verificar se há uma peça na posição atual do caminho
@@ -93,7 +93,7 @@ public class PoneiMagico extends Peca{
         }
 
         //-----------------Movimento eixo Y --------------------------//
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 2; i++) {
             int currentY = getY() + i * sentidoMovimentoEixoY(yFinal);
 
             // Verificar se há uma peça na posição atual do caminho
