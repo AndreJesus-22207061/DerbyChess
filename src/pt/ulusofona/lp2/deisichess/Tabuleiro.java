@@ -158,6 +158,9 @@ public class Tabuleiro {
 
 
 
+
+
+
     String[] buscarInfomacaoPeca(int ID) {
         String[] informacaoPeca = new String[7];
 
