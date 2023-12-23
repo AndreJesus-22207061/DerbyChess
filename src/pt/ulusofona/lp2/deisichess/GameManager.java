@@ -379,14 +379,20 @@ public class GameManager {
             return null;
         }
 
-        for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); x++) {
-            for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); y++) {   //usado para verificar ao inicio se o ficheiro ja vem
+        for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); xPosicao++) {
+            for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); yPosicao++) {   //usado para verificar ao inicio se o ficheiro ja vem
                 Peca pecaSugestao = tabuleiro.getPeca(xPosicao,yPosicao);
-                int valor = pecaSugestao.getValor();
 
-                if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
-                    break;
+                int valor = 0;
+
+                if(pecaSugestao!=null){
+                     valor = pecaSugestao.getValor();
+
+                    if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
+                        continue;
+                    }
                 }
+
                 if(pecaSelecionada.validMove(xPosicao,yPosicao,tabuleiro)){
                     Sugestao sugestao = new Sugestao(xPosicao,yPosicao,valor);
                     listaDeSugestoes.add(sugestao);

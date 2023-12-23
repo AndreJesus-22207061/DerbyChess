@@ -451,6 +451,7 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
+        jogo.getHints(1,0);
 
 
 

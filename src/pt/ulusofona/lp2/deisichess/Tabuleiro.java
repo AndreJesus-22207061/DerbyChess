@@ -47,7 +47,10 @@ public class Tabuleiro {
     }
 
     Peca getPeca(int x , int y){
-        return tabuleiro[x][y];
+        if(tabuleiro[x][y] != null){
+            return tabuleiro[x][y];
+        }
+        return null;
     }
 
     void colocaPecaNoTabuleiro(Peca peca, int x, int y){

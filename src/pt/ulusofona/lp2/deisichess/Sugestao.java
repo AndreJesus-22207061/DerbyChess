@@ -6,13 +6,15 @@ public class Sugestao implements Comparable<Sugestao>{
         int x;
         int y;
 
+        int valor;
+
     public Sugestao(int x, int y, int valor) {
         this.x = x;
         this.y = y;
         this.valor = valor;
     }
 
-    int valor;
+
 
     @Override
     public String toString() {
@@ -25,9 +27,9 @@ public class Sugestao implements Comparable<Sugestao>{
             return 0;
         }
         if(this.valor < other.valor){
-            return -1;
-        }else{
             return 1;
+        }else{
+            return -1;
         }
     }
 }
