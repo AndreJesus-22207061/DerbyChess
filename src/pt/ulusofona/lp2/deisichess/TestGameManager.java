@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -437,6 +438,23 @@ public class TestGameManager {
         jogo.getPieceInfo(8);
         jogo.getPieceInfoAsString(8);
         jogo.getSquareInfo(7,0);
+
+    }
+
+
+
+    @Test
+    public void rainhaSugestao()throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+
+
+
+
 
     }
 
