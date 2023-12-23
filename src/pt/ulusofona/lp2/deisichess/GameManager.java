@@ -16,7 +16,7 @@ public class GameManager {
     }
 
     public void loadGame(File file) throws
-            InvalidGameInputException, IOException{
+            InvalidGameInputException, IOException {
         BufferedReader reader = null;
 
         try {
@@ -25,7 +25,7 @@ public class GameManager {
 
         }
 
-        try{
+        try {
             String linha;
             boolean primeiraLinha = true;
             boolean segundaLinha = false;
@@ -36,22 +36,21 @@ public class GameManager {
             ArrayList<Peca> pecas = new ArrayList<>();
 
 
-
-            while((linha = reader.readLine()) != null){
-                if(primeiraLinha){
+            while ((linha = reader.readLine()) != null) {
+                if (primeiraLinha) {
                     tamanhoTabuleiro = Integer.parseInt(linha);
 
                     primeiraLinha = false;
-                    segundaLinha= true;
+                    segundaLinha = true;
                     continue;
                 }
-                if(segundaLinha){
+                if (segundaLinha) {
                     numeroPecas = Integer.parseInt(linha);
                     segundaLinha = false;
                     continue;
                 }
 
-                if(primeiraLinha== false && segundaLinha == false && count<numeroPecas){
+                if (primeiraLinha == false && segundaLinha == false && count < numeroPecas) {
                     String[] partes = linha.split(":");
                     int idPeca = Integer.parseInt(partes[0]);
                     int tipoPeca = Integer.parseInt(partes[1]);
@@ -64,30 +63,30 @@ public class GameManager {
                     Peca peca;
 
                     switch (tipoPeca) {
-                        case 0 :
-                            peca = new Rei(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 0:
+                            peca = new Rei(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 1 :
-                            peca = new Rainha(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 1:
+                            peca = new Rainha(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 2 :
-                            peca = new PoneiMagico(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 2:
+                            peca = new PoneiMagico(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 3 :
-                            peca = new PadreDaVila(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 3:
+                            peca = new PadreDaVila(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 4 :
-                            peca = new TorreHorizontal(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 4:
+                            peca = new TorreHorizontal(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 5 :
-                            peca = new TorreVertical(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 5:
+                            peca = new TorreVertical(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 6 :
-                            peca = new HomerSimpson(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 6:
+                            peca = new HomerSimpson(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                             break;
-                        case 7 :
-                             peca = new Joker(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
-                             break;
+                        case 7:
+                            peca = new Joker(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                            break;
                         default:
                             throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
                     }
@@ -97,17 +96,17 @@ public class GameManager {
                     continue;
                 }
 
-                if(count==numeroPecas){
+                if (count == numeroPecas) {
                     String[] partes = linha.split(":");
                     int countlinhas = 0;
-                    for(String parte : partes){
+                    for (String parte : partes) {
                         int parteInt = Integer.parseInt(parte);
-                        if(parteInt==0){
+                        if (parteInt == 0) {
                             countlinhas++;
-                        }else{
-                            for(Peca peca : pecas){
-                                if(peca.getID()==parteInt){
-                                    peca.setCoordenadas(countlinhas,countColunas);
+                        } else {
+                            for (Peca peca : pecas) {
+                                if (peca.getID() == parteInt) {
+                                    peca.setCoordenadas(countlinhas, countColunas);
                                     countlinhas++;
                                     break;
                                 }
@@ -118,13 +117,13 @@ public class GameManager {
                 }
             }
 
-            tabuleiro = new Tabuleiro(tamanhoTabuleiro,pecas);
+            tabuleiro = new Tabuleiro(tamanhoTabuleiro, pecas);
             tabuleiro.inicializarTabuleiro();
 
-            for(Peca peca : tabuleiro.getListaPecas()){
+            for (Peca peca : tabuleiro.getListaPecas()) {
                 int id = peca.getID();
 
-                if(tabuleiro.getPecaPorIDTabuleiro(id)== null){
+                if (tabuleiro.getPecaPorIDTabuleiro(id) == null) {
                     peca.capturada();
                 }
                 tabuleiro.adicionarNovoContador(peca.getEquipa());
@@ -141,17 +140,16 @@ public class GameManager {
     }
 
 
-    public void reset(){
-        tabuleiro = new Tabuleiro(0,null);
+    public void reset() {
+        tabuleiro = new Tabuleiro(0, null);
     }
 
-    public int getBoardSize(){
+    public int getBoardSize() {
         return tabuleiro.getTamanho();
     }
 
 
-
-    public boolean move( int x0, int y0, int x1, int y1){
+    public boolean move(int x0, int y0, int x1, int y1) {
 
 
         boolean foiCapturada = false;
@@ -168,55 +166,53 @@ public class GameManager {
 
         //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
-        Peca peca = tabuleiro.getPeca(x0,y0);
+        Peca peca = tabuleiro.getPeca(x0, y0);
 
         int equipaPeca = peca.getEquipa();
 
         CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
 
 
-
-
-        if(peca == null){
+        if (peca == null) {
             contadorEquipaAJogar.jogadaInvalida();
             //jogada invalida esta a mover o vazio
             return false;
         }
 
 
-        if(!(peca.validMove(x1,y1,tabuleiro))){
+        if (!(peca.validMove(x1, y1, tabuleiro))) {
             contadorEquipaPeca.jogadaInvalida();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
-        if (equipaPeca!=tabuleiro.getEquipaAJogar()) {
+        if (equipaPeca != tabuleiro.getEquipaAJogar()) {
             contadorEquipaPeca.jogadaInvalida();
             //jogada invalida turno invalido
             return false;
         }
 
-       //------------Confirmacoes destino--------------------//
+        //------------Confirmacoes destino--------------------//
 
-        Peca pecaDestino = tabuleiro.getPeca(x1,y1);
+        Peca pecaDestino = tabuleiro.getPeca(x1, y1);
 
-        if(pecaDestino != null){  //Se no destino houver peca
+        if (pecaDestino != null) {  //Se no destino houver peca
 
             int equipaDestino = pecaDestino.getEquipa();
 
             CountJogadas contadorEquipaPecaDestino = tabuleiro.getContadorEquipa(equipaDestino);
 
 
-            if(equipaPeca == equipaDestino){
+            if (equipaPeca == equipaDestino) {
                 contadorEquipaPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
-            }else{
+            } else {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
                 contadorEquipaPeca.pecaFoiCapturada();   //!!!!!!!!!!!!!! pode estar erro aqui !!!!!!!!!!!!!!!!
-                tabuleiro.removerPeca(x1,y1);
+                tabuleiro.removerPeca(x1, y1);
             }
         }
 
@@ -224,30 +220,29 @@ public class GameManager {
         CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
 
         //Se no destino não houver peca é so mover
-        if((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >=1)){
+        if ((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >= 1)) {
             contadorRondas.jogadaConcluidaSemCaptura();
         }
 
 
-
-        if(contadorRondas.getRondasJoker() == 6){
+        if (contadorRondas.getRondasJoker() == 6) {
             contadorRondas.resetRondaJoker();
-        }else{
+        } else {
             contadorRondas.incrementaRondaJoker();
         }
 
 
-        tabuleiro.movePeca( x0, y0, x1, y1);
-        peca.setCoordenadas(x1,y1);
+        tabuleiro.movePeca(x0, y0, x1, y1);
+        peca.setCoordenadas(x1, y1);
         contadorEquipaPeca.jogadaValida();
         //contadorRondas.incrementaRondaAtual();     //!!!!!!!!! pode estar errado !!!!!!!!//
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
 
 
-        Jogada jogada = new Jogada(x0,y0,x1,y1,foiCapturada, rondaAtual, rondaJoker , rondasSemCaptura);
+        Jogada jogada = new Jogada(x0, y0, x1, y1, foiCapturada, rondaAtual, rondaJoker, rondasSemCaptura);
 
-        if(foiCapturada){
+        if (foiCapturada) {
             jogada.addIDPecaCapturada(pecaDestino.getID());
         }
 
@@ -256,20 +251,21 @@ public class GameManager {
         return true;
 
     }
-    public  String[] getSquareInfo(int x, int y){
-        return tabuleiro.buscarInformacaoQuadrado(x,y);
+
+    public String[] getSquareInfo(int x, int y) {
+        return tabuleiro.buscarInformacaoQuadrado(x, y);
     }
 
-    public String[] getPieceInfo(int ID){
+    public String[] getPieceInfo(int ID) {
         return tabuleiro.buscarInfomacaoPeca(ID);
     }
 
-    public String getPieceInfoAsString(int ID){
+    public String getPieceInfoAsString(int ID) {
         return tabuleiro.buscarInformacaoPecaAsString(ID);
     }
 
-    public int getCurrentTeamID(){
-     return tabuleiro.getEquipaAJogar();
+    public int getCurrentTeamID() {
+        return tabuleiro.getEquipaAJogar();
     }
 
     public boolean gameOver() {
@@ -301,14 +297,14 @@ public class GameManager {
             return true;
         }
 
-        if(contadorRondas.getRondasSemCaptura() == 10){
+        if (contadorRondas.getRondasSemCaptura() == 10) {
             contadorRondas.defineResultado("EMPATE");
             return true;
         }
         return false;
     }
 
-    public ArrayList<String> getGameResults(){
+    public ArrayList<String> getGameResults() {
         return tabuleiro.menuFinal();
     }
 
@@ -326,7 +322,7 @@ public class GameManager {
     }
 
 
-    public void saveGame(File file) throws IOException{
+    public void saveGame(File file) throws IOException {
 
     }
 
@@ -344,7 +340,7 @@ public class GameManager {
                 CountJogadas countPecaQueJogou = tabuleiro.getContadorEquipa(pecaQueJogou.getEquipa());
 
 
-                if(ultimaJogada.houveCaptura()){
+                if (ultimaJogada.houveCaptura()) {
                     countPecaQueJogou.decrementaPecaFoiCapturada();
                 }
 
@@ -368,17 +364,46 @@ public class GameManager {
 
     public List<Comparable> getHints(int x, int y){
 
+        Peca pecaSelecionada = tabuleiro.getPeca(x,y);
+
+        if (x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho()) {
+            return null;
+        }
+
+        if(pecaSelecionada == null){
+            return null;
+        }
+
+        if(pecaSelecionada.getEquipa() != tabuleiro.getEquipaAJogar()){
+            return null;
+        }
+
+        for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); x++) {
+            for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); y++) {   //usado para verificar ao inicio se o ficheiro ja vem
+                Peca pecaSugestao = tabuleiro.getPeca(xPosicao,yPosicao);
+
+                if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
+                    break;
+                }
+                if(pecaSelecionada.validMove(xPosicao,yPosicao,tabuleiro)){
+
+                }
+
+
+            }
+        }
+
+
         List<Comparable> aaa = new ArrayList<>();
         return aaa;
     }
 
-    public Map<String,String> customizeBoard(){
+    public Map<String, String> customizeBoard() {
 
-        Map<String,String> aaa = new HashMap<>();
+        Map<String, String> aaa = new HashMap<>();
 
         return aaa;
     }
-
 
 
 }
