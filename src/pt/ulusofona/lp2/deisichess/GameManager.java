@@ -362,10 +362,10 @@ public class GameManager {
     }
 
 
-    public List<Sugestao> getHints(int x, int y){
+    public List<Comparable> getHints(int x, int y){
 
         Peca pecaSelecionada = tabuleiro.getPeca(x,y);
-        List<Sugestao> listaDeSugestoes = new ArrayList<Sugestao>();
+        List<Comparable> listaDeSugestoes = new ArrayList<Comparable>();
 
         if (x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho()) {
             return null;
@@ -394,7 +394,7 @@ public class GameManager {
                 }
 
                 if(pecaSelecionada.validMove(xPosicao,yPosicao,tabuleiro)){
-                    Sugestao sugestao = new Sugestao(xPosicao,yPosicao,valor);
+                    Comparable sugestao = new Comparable(xPosicao,yPosicao,valor);
                     listaDeSugestoes.add(sugestao);
                 }
 

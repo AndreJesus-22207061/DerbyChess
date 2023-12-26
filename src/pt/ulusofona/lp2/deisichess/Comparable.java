@@ -1,14 +1,12 @@
 package pt.ulusofona.lp2.deisichess;
 
-import org.jetbrains.annotations.NotNull;
-
-public class Sugestao implements Comparable<Sugestao>{
+public class Comparable implements java.lang.Comparable<Comparable> {
         int x;
         int y;
 
         int valor;
 
-    public Sugestao(int x, int y, int valor) {
+    public Comparable(int x, int y, int valor) {
         this.x = x;
         this.y = y;
         this.valor = valor;
@@ -22,7 +20,7 @@ public class Sugestao implements Comparable<Sugestao>{
     }
 
     @Override
-    public int compareTo( Sugestao other) {
+    public int compareTo( Comparable other) {
         if(this.valor == other.valor){
             return 0;
         }
