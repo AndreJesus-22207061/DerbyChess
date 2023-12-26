@@ -254,26 +254,26 @@ public class GameManager {
         ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
         CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
-        int pecasCapturadasPreta = contadorPretas.getPecasCapturadas();
+        int pecasCapturadasPorPreta = contadorPretas.getPecasCapturadas();
 
         CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
-        int pecasCapturadasBranca = contadorBrancas.getPecasCapturadas();
+        int pecasCapturadasPorBranca = contadorBrancas.getPecasCapturadas();
 
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
         ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
 
 
-        if (pecasCapturadasPreta == equipaPreta.size()) {
+        if (pecasCapturadasPorBranca == equipaPreta.size()) {
             contadorRondas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
 
-        if (pecasCapturadasBranca == equipaBranca.size()) {
+        if (pecasCapturadasPorPreta == equipaBranca.size()) {
             contadorRondas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
-        if (pecasCapturadasPreta == (equipaPreta.size() - 1) && pecasCapturadasBranca == (equipaBranca.size() - 1)) {
+        if (pecasCapturadasPorBranca == (equipaPreta.size() - 1) && pecasCapturadasPorPreta == (equipaBranca.size() - 1)) {
             contadorRondas.defineResultado("EMPATE");
             return true;
         }
