@@ -48,6 +48,17 @@ public class Rainha extends Peca{
             return false;
         }
 
+        Peca peca = tabuleiro.getPeca(xFinal,yFinal);
+
+        ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+
+        //Vreifica se a peca que vamos capturar é uma rainha
+        if(peca != null){
+            if(peca.getTipo()==1 || ( peca.getTipo()==7 && contadorRondas.getRondasJoker()==1 )){
+                return false;
+            }
+        }
+
         // Verificar se a posição de destino está dentro do limite de movimento (máximo 5 casas)
         int deltaX = Math.abs(xFinal - getX());
         int deltaY = Math.abs(yFinal - getY());
