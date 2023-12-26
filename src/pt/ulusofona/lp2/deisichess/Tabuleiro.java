@@ -266,11 +266,11 @@ public class Tabuleiro {
         String linha2 = "Resultado: " +contadorRondas.getResultado();
         String linha3 = "---";
         String linha4="Equipa das Pretas";
-        String linha5= Integer.toString(contadorBrancas.getPecasCapturadas());
+        String linha5= Integer.toString(contadorPretas.getPecasCapturadas());
         String linha6=Integer.toString(contadorPretas.getJogadasValidas());
         String linha7=Integer.toString(contadorPretas.getJogadasInvalidas());
         String linha8="Equipa das Brancas";
-        String linha9=Integer.toString(contadorPretas.getPecasCapturadas());
+        String linha9=Integer.toString(contadorBrancas.getPecasCapturadas());
         String linha10 =Integer.toString(contadorBrancas.getJogadasValidas());
         String linha11 = Integer.toString(contadorBrancas.getJogadasInvalidas());
 
