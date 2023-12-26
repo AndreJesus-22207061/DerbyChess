@@ -18,7 +18,7 @@ public class PoneiMagico extends Peca{
 
     @Override
     String getTipoString() {
-        return "Ponei Magico";
+        return "Ponei Mágico";
     }
 
     @Override
