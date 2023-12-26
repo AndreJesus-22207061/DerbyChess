@@ -1,5 +1,7 @@
 package pt.ulusofona.lp2.deisichess;
 
+import java.lang.reflect.Array;
+
 public class Jogada {
 
     private int xOrigem;
@@ -16,7 +18,9 @@ public class Jogada {
 
     private int rondaSemCaptura;
 
-    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura , int rondaAtual , int rondaJoker , int rondaSemCaptura ) {
+    private int jogadasInvalidas;
+
+    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura , int rondaAtual , int rondaJoker , int rondaSemCaptura, int jogadasInvalidas ) {
         this.xOrigem = xOrigem;
         this.yOrigem = yOrigem;
         this.xDestino = xDestino;
@@ -25,6 +29,7 @@ public class Jogada {
         this.rondaAtual = rondaAtual;
         this.rondaJoker = rondaJoker;
         this.rondaSemCaptura = rondaSemCaptura;
+        this.jogadasInvalidas = jogadasInvalidas;
     }
 
     public int getXOrigem() {
@@ -65,6 +70,9 @@ public class Jogada {
     public int getRondaSemCapturaJogada() {
         return rondaSemCaptura;
     }
+
+    public int getJogadasInvalidas(){return jogadasInvalidas;}
+
 
 
 

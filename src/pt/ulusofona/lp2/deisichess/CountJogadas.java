@@ -56,5 +56,9 @@ public class CountJogadas {
         return this.jogadasInvalidas;
     }
 
+    void alteraJogadasInvalidas(int jogInvalidas) {
+        this.jogadasInvalidas = jogInvalidas;
+    }
+
 
 }

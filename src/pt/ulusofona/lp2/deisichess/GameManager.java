@@ -221,7 +221,14 @@ public class GameManager {
         tabuleiro.mudarEquipaAjogar();
 
 
-        Jogada jogada = new Jogada(x0, y0, x1, y1, foiCapturada, rondaAtual, rondaJoker, rondasSemCaptura);
+        Jogada jogada = new Jogada(x0, y0, x1, y1, foiCapturada, rondaAtual, rondaJoker, rondasSemCaptura,
+                contadorEquipaAJogar.getJogadasInvalidas());
+
+        CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
+        CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
+
+
+
 
         if (foiCapturada) {
             jogada.addIDPecaCapturada(pecaDestino.getID());
@@ -344,6 +351,7 @@ public class GameManager {
                 contadorRondas.alteraRondaAtual(rondaAtualJogada);
                 contadorRondas.alteraRondaJoker(rondaJokerJogada);
                 contadorRondas.alteraRondaSemCaptural(rondaSemCapturaJogada);
+                countPecaQueJogou.alteraJogadasInvalidas(ultimaJogada.getJogadasInvalidas());
 
                 tabuleiro.restaurarTabuleiro(ultimaJogada);
                 tabuleiro.mudarEquipaAjogar();
