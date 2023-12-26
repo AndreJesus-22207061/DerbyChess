@@ -1,8 +1,9 @@
 package pt.ulusofona.lp2.deisichess
 
+
 import java.util.*
 
-class StatisticsKt {
+class Statistics {
 
     fun  getStatsCalculator(tipo: StatType): Function1<GameManager, ArrayList<String>> {
         when (tipo) {
