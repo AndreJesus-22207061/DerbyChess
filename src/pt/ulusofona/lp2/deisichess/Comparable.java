@@ -16,7 +16,7 @@ public class Comparable implements java.lang.Comparable<Comparable> {
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ") ->" + valor ;
+        return "(" + x + "," + y + ") -> " + valor ;
     }
 
     @Override
