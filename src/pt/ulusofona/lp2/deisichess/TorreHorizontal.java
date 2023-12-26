@@ -12,9 +12,9 @@ public class TorreHorizontal extends Peca {
     @Override
     String toString(ContadorRondas contadorRondas) {
         if(!getEstado()) {
-            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+            return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
-        return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+        return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
 
     }
 

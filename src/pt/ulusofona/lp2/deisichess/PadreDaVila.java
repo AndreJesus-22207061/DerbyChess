@@ -12,9 +12,9 @@ public class PadreDaVila extends Peca{
     String toString(ContadorRondas contadorRondas) {
 
         if(!getEstado()) {
-            return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+            return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
-        return getID() + " | " +getTipoString()+ "| " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+        return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
     }
 
     @Override
