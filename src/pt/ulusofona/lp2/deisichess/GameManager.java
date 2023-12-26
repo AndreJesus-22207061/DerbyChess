@@ -168,16 +168,16 @@ public class GameManager {
 
         Peca peca = tabuleiro.getPeca(x0, y0);
 
-        int equipaPeca = peca.getEquipa();
-
-        CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
-
 
         if (peca == null) {
             contadorEquipaAJogar.jogadaInvalida();
             //jogada invalida esta a mover o vazio
             return false;
         }
+
+        int equipaPeca = peca.getEquipa();
+
+        CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
 
 
         if (!(peca.validMove(x1, y1, tabuleiro))) {
