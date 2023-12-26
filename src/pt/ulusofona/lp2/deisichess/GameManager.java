@@ -262,9 +262,18 @@ public class GameManager {
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
         ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
 
+        if(tabuleiro.isXequeMate(equipaPreta)){
+            contadorRondas.defineResultado("VENCERAM AS BRANCAS");
+            return true;
+        }
 
         if (pecasCapturadasPorBranca == equipaPreta.size()) {
             contadorRondas.defineResultado("VENCERAM AS BRANCAS");
+            return true;
+        }
+
+        if(tabuleiro.isXequeMate(equipaBranca)){
+            contadorRondas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
@@ -367,7 +376,7 @@ public class GameManager {
                 int valor = 0;
 
                 if(pecaSugestao!=null){
-                     valor = pecaSugestao.getValor();
+                    valor = pecaSugestao.getValor();
 
                     if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
                         continue;

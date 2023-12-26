@@ -290,6 +290,18 @@ public class Tabuleiro {
     }
 
 
+    boolean isXequeMate(ArrayList<Peca> listaPecas){
+        for(Peca peca :listaPecas){
+            if(peca.getTipo() == 0 && !peca.getEstado()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
+
+
 }
 
 
