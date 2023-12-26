@@ -60,36 +60,17 @@ public class GameManager {
                     // vai criar um novo contador para cada equipa nova
 
 
-                    Peca peca;
-
-                    switch (tipoPeca) {
-                        case 0:
-                            peca = new Rei(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 1:
-                            peca = new Rainha(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 2:
-                            peca = new PoneiMagico(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 3:
-                            peca = new PadreDaVila(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 4:
-                            peca = new TorreHorizontal(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 5:
-                            peca = new TorreVertical(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 6:
-                            peca = new HomerSimpson(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        case 7:
-                            peca = new Joker(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
-                            break;
-                        default:
-                            throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
-                    }
+                    Peca peca = switch (tipoPeca) {
+                        case 0 -> new Rei(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 1 -> new Rainha(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 2 -> new PoneiMagico(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 3 -> new PadreDaVila(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 4 -> new TorreHorizontal(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 5 -> new TorreVertical(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 6 -> new HomerSimpson(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 7 -> new Joker(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        default -> throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
+                    };
 
                     pecas.add(peca);
                     count++;
