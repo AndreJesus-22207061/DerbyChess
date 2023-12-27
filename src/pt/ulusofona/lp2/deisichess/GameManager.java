@@ -185,7 +185,7 @@ public class GameManager {
 
 
             if (equipaPeca == equipaDestino) {
-                contadorEquipaPeca.jogadaInvalida();
+                contadorEquipaPecaDestino.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             } else {
@@ -269,7 +269,7 @@ public class GameManager {
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
         ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
 
-        if(tabuleiro.isXequeMate(equipaPreta)){
+        if (tabuleiro.isXequeMate(equipaPreta)) {
             contadorRondas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
@@ -279,7 +279,7 @@ public class GameManager {
             return true;
         }
 
-        if(tabuleiro.isXequeMate(equipaBranca)){
+        if (tabuleiro.isXequeMate(equipaBranca)) {
             contadorRondas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
@@ -360,39 +360,39 @@ public class GameManager {
     }
 
 
-    public List<Comparable> getHints(int x, int y){
+    public List<Comparable> getHints(int x, int y) {
 
-        Peca pecaSelecionada = tabuleiro.getPeca(x,y);
+        Peca pecaSelecionada = tabuleiro.getPeca(x, y);
         List<Comparable> listaDeSugestoes = new ArrayList<Comparable>();
 
         if (x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho()) {
             return null;
         }
 
-        if(pecaSelecionada == null){
+        if (pecaSelecionada == null) {
             return null;
         }
 
-        if(pecaSelecionada.getEquipa() != tabuleiro.getEquipaAJogar()){
+        if (pecaSelecionada.getEquipa() != tabuleiro.getEquipaAJogar()) {
             return null;
         }
 
         for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); xPosicao++) {
             for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); yPosicao++) {   //usado para verificar ao inicio se o ficheiro ja vem
-                Peca pecaSugestao = tabuleiro.getPeca(xPosicao,yPosicao);
+                Peca pecaSugestao = tabuleiro.getPeca(xPosicao, yPosicao);
 
                 int valor = 0;
 
-                if(pecaSugestao!=null){
+                if (pecaSugestao != null) {
                     valor = pecaSugestao.getValor();
 
-                    if(pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()){
+                    if (pecaSugestao.getEquipa() == pecaSelecionada.getEquipa()) {
                         continue;
                     }
                 }
 
-                if(pecaSelecionada.validMove(xPosicao,yPosicao,tabuleiro)){
-                    Comparable sugestao = new Comparable(xPosicao,yPosicao,valor);
+                if (pecaSelecionada.validMove(xPosicao, yPosicao, tabuleiro)) {
+                    Comparable sugestao = new Comparable(xPosicao, yPosicao, valor);
                     listaDeSugestoes.add(sugestao);
                 }
 
