@@ -473,6 +473,43 @@ public class TestGameManager {
     }
 
 
+    public void soReis()throws IOException, InvalidGameInputException {
+        File file = new File("test-files","4x4.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        boolean mov1 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        boolean mov2 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
+        boolean jogada2 = jogo.gameOver();
+        assertFalse(jogada2);
+
+        boolean mov1 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        boolean mov1 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        boolean mov1 = jogo.move(1,0,1,5 );
+        assertTrue(mov1);
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+
+
+
+    }
+
 
 
 
