@@ -185,7 +185,7 @@ public class GameManager {
 
 
             if (equipaPeca == equipaDestino) {
-                contadorEquipaPecaDestino.jogadaInvalida();
+                contadorEquipaPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             } else {
