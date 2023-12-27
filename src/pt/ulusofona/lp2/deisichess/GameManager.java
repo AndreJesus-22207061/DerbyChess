@@ -345,7 +345,7 @@ public class GameManager {
                     Peca peca = tabuleiro.getPeca(xPosicao, yPosicao);
 
                     if (peca != null) {
-                        if(xPosicao == 7){
+                        if(xPosicao == tabuleiro.getTamanho()-1){
                             writer.write(String.valueOf(peca.getID()));
                             writer.newLine();
                         }else{
@@ -353,7 +353,7 @@ public class GameManager {
                         }
 
                     }else{
-                        if(xPosicao == 7){
+                        if(xPosicao == tabuleiro.getTamanho()-1){
                             writer.write("0");
                             writer.newLine();
                         }else{
