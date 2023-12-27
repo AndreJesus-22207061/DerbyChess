@@ -472,7 +472,7 @@ public class TestGameManager {
 
     }
 
-
+    @Test
     public void soReis()throws IOException, InvalidGameInputException {
         File file = new File("test-files","4x4.txt");
         jogo.reset();
@@ -480,30 +480,35 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        boolean mov1 = jogo.move(1,0,1,5 );
+        boolean mov1 = jogo.move(2,1,1,2 );
         assertTrue(mov1);
         boolean jogada1 = jogo.gameOver();
         assertFalse(jogada1);
 
-        boolean mov2 = jogo.move(1,0,1,5 );
-        assertTrue(mov1);
+        boolean mov2 = jogo.move(1,3,1,2 );
+        assertTrue(mov2);
         boolean jogada2 = jogo.gameOver();
         assertFalse(jogada2);
 
-        boolean mov1 = jogo.move(1,0,1,5 );
-        assertTrue(mov1);
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
+        boolean mov3 = jogo.move(1,0,1,1 );
+        assertTrue(mov3);
+        boolean jogada3 = jogo.gameOver();
+        assertFalse(jogada3);
 
-        boolean mov1 = jogo.move(1,0,1,5 );
-        assertTrue(mov1);
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
+        boolean mov4 = jogo.move(1,2,2,2 );
+        assertTrue(mov4);
+        boolean jogada4 = jogo.gameOver();
+        assertFalse(jogada4);
 
-        boolean mov1 = jogo.move(1,0,1,5 );
-        assertTrue(mov1);
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
+        boolean mov5 = jogo.move(1,1,2,2 );
+        assertTrue(mov5);
+        boolean jogada5 = jogo.gameOver();
+        assertFalse(jogada5);
+
+        boolean mov6 = jogo.move(2,3,2,2 );
+        assertTrue(mov6);
+        boolean jogada6 = jogo.gameOver();
+        assertTrue(jogada6);
 
 
 
