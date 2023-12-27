@@ -320,6 +320,57 @@ public class GameManager {
 
     public void saveGame(File file) throws IOException {
 
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+        try {
+            // Write board size
+            writer.write(String.valueOf(tabuleiro.getTamanho()));
+            writer.newLine();
+
+            // Write number of pieces
+            List<Peca> pecas = tabuleiro.getListaPecas();
+            writer.write(String.valueOf(pecas.size()));
+            writer.newLine();
+
+            // Write piece information
+            for (Peca peca : pecas) {
+                writer.write(peca.getID()+":"+peca.getTipo()+":"+peca.getEquipa()+":"+peca.getAlcunha());
+                writer.newLine();
+            }
+
+            // Write board configuration
+
+            for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); yPosicao++) {
+                for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); xPosicao++) {   //usado para verificar ao inicio se o ficheiro ja vem
+                    Peca peca = tabuleiro.getPeca(xPosicao, yPosicao);
+
+                    if (peca != null) {
+                        if(xPosicao == tabuleiro.getTamanho() -1){
+                            writer.write(String.valueOf(peca.getID()));
+                            writer.newLine();
+                        }else{
+                            writer.write(peca.getID()+":");
+                        }
+
+                    }else{
+                        if(xPosicao == tabuleiro.getTamanho() -1){
+                            writer.write("0");
+                            writer.newLine();
+                        }else{
+                            writer.write("0:");
+                        }
+                    }
+
+                }
+            }
+
+
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
+
     }
 
 
