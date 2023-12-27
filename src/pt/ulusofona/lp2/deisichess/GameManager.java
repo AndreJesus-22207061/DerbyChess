@@ -160,18 +160,18 @@ public class GameManager {
 
         CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
 
+        if (equipaPeca != tabuleiro.getEquipaAJogar()) {
+            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
+            //jogada invalida turno invalido
+            return false;
+        }
 
         if (!(peca.validMove(x1, y1, tabuleiro))) {
-            contadorEquipaPeca.jogadaInvalida();
+            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
 
-        if (equipaPeca != tabuleiro.getEquipaAJogar()) {
-            contadorEquipaPeca.jogadaInvalida();
-            //jogada invalida turno invalido
-            return false;
-        }
 
         //------------Confirmacoes destino--------------------//
 
@@ -185,14 +185,14 @@ public class GameManager {
 
 
             if (equipaPeca == equipaDestino) {
-                contadorEquipaPeca.jogadaInvalida();
+                contadorEquipaAJogar.jogadaInvalida();      //contadorEquipaPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             } else {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
-                contadorEquipaPeca.pecaFoiCapturada();   //!!!!!!!!!!!!!! pode estar erro aqui !!!!!!!!!!!!!!!!
+                contadorEquipaAJogar.pecaFoiCapturada();    //contadorEquipaPeca.pecaFoiCapturada();
                 tabuleiro.removerPeca(x1, y1);
             }
         }
@@ -216,7 +216,6 @@ public class GameManager {
         tabuleiro.movePeca(x0, y0, x1, y1);
         peca.setCoordenadas(x1, y1);
         contadorEquipaPeca.jogadaValida();
-        //contadorRondas.incrementaRondaAtual();     //!!!!!!!!! pode estar errado !!!!!!!!//
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
 
