@@ -80,6 +80,26 @@ public class Tabuleiro {
         return null;
     }
 
+    int getPecasCapturadasE(int equipa){
+        if(equipa == 10){
+            int count = 0;
+            for(Peca peca : pecasPretas){
+                if(!peca.getEstado()){
+                    count++;
+                }
+            }
+            return count;
+        }else{
+            int count2 = 0;
+            for(Peca peca : pecasBrancas){
+                if(!peca.getEstado()){
+                    count2++;
+                }
+            }
+            return count2;
+        }
+    }
+
     ArrayList<Peca> getListaPecas(){
         return this.pecas;
     }
@@ -266,11 +286,11 @@ public class Tabuleiro {
         String linha2 = "Resultado: " +contadorRondas.getResultado();
         String linha3 = "---";
         String linha4="Equipa das Pretas";
-        String linha5= Integer.toString(contadorPretas.getPecasCapturadas());
+        String linha5= Integer.toString(getPecasCapturadasE(20));
         String linha6=Integer.toString(contadorPretas.getJogadasValidas());
         String linha7=Integer.toString(contadorPretas.getJogadasInvalidas());
         String linha8="Equipa das Brancas";
-        String linha9=Integer.toString(contadorBrancas.getPecasCapturadas());
+        String linha9=Integer.toString(getPecasCapturadasE(10));
         String linha10 =Integer.toString(contadorBrancas.getJogadasValidas());
         String linha11 = Integer.toString(contadorBrancas.getJogadasInvalidas());
 
