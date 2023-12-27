@@ -35,6 +35,19 @@ public class GameManager {
             int numeroPecas = 0;
             ArrayList<Peca> pecas = new ArrayList<>();
 
+            int pretaPecasCapturadas = 0;
+            int pretaJogadasInvalidas = 0;
+            int pretaJogadasValidas = 0;
+
+            int brancaPecasCapturadas = 0;
+            int brancaJogadasInvalidas = 0;
+            int brancaJogadasValidas = 0;
+
+            int rondasJoker = 0;
+            int rondasSemCaptura = 0;
+            int rondaAtual = 0;
+
+
 
             while ((linha = reader.readLine()) != null) {
                 if (primeiraLinha) {
@@ -96,7 +109,29 @@ public class GameManager {
                     }
                     countColunas++;
                 }
+
+
+                if (linha.equals("Contadores por equipe:")) {
+                    reader.readLine();
+                    pretaPecasCapturadas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    pretaJogadasInvalidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    pretaJogadasValidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+
+                    brancaPecasCapturadas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    brancaJogadasInvalidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    brancaJogadasValidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                }
+
+                if (linha.equals("Contador de Rondas:")) {
+                    reader.readLine();
+                    rondasJoker = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    rondasSemCaptura = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    rondaAtual = Integer.parseInt(reader.readLine().split(": ")[1]);
+                }
+
+
             }
+
 
             tabuleiro = new Tabuleiro(tamanhoTabuleiro, pecas);
             tabuleiro.inicializarTabuleiro();
@@ -106,10 +141,30 @@ public class GameManager {
 
                 if (tabuleiro.getPecaPorIDTabuleiro(id) == null) {
                     peca.capturada();
+
                 }
                 tabuleiro.adicionarNovoContador(peca.getEquipa());
                 tabuleiro.adicionarPecaAEquipa(peca); //adicionar as pecas a lista de cada equipa
             }
+
+
+            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);
+            CountJogadas countBranco = tabuleiro.getContadorEquipa(20);
+            ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+
+            countPreta.alteraPecasCapturadas(pretaPecasCapturadas);
+            countPreta.alteraJogadasInvalidas(pretaJogadasInvalidas);
+            countPreta.alteraJogadasValidas(pretaJogadasValidas);
+
+            countBranco.alteraPecasCapturadas(brancaPecasCapturadas);
+            countBranco.alteraJogadasInvalidas(brancaJogadasInvalidas);
+            countBranco.alteraJogadasValidas(brancaJogadasValidas);
+
+            contadorRondas.alteraRondaJoker(rondasJoker);
+            contadorRondas.alteraRondaSemCaptural(rondasSemCaptura);
+            contadorRondas.alteraRondaAtual(rondaAtual);
+
+
 
 
             reader.close();
@@ -363,6 +418,28 @@ public class GameManager {
 
                 }
             }
+            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);
+            CountJogadas countBranco = tabuleiro.getContadorEquipa(20);
+            ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
+
+            writer.write("Contadores por equipa:"+"\n");
+
+            // Equipa Preta
+            writer.write("Preta - Peças Capturadas: " + countPreta.getPecasCapturadas()+"\n");
+            writer.write("Preta - Jogadas Inválidas: " + countPreta.getJogadasInvalidas()+"\n");
+            writer.write("Preta - Jogadas Válidas: " + countPreta.getJogadasValidas()+"\n");
+
+            // Equipa Branca
+            writer.write("Branca - Peças Capturadas: " + countBranco.getPecasCapturadas()+"\n");
+            writer.write("Branca - Jogadas Inválidas: " + countBranco.getJogadasInvalidas()+"\n");
+            writer.write("Branca - Jogadas Válidas: " + countBranco.getJogadasValidas()+"\n");
+
+            // Informações de contador de rondas
+            writer.write("Contador de Rondas:"+"\n");
+            writer.write("Rondas com Joker: " + contadorRondas.getRondasJoker()+"\n");
+            writer.write("Rondas sem Captura: " + contadorRondas.getRondasSemCaptura()+"\n");
+            writer.write("Ronda Atual: " + contadorRondas.getRondaAtual());
+
 
 
         } finally {

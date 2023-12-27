@@ -60,5 +60,13 @@ public class CountJogadas {
         this.jogadasInvalidas = jogInvalidas;
     }
 
+    void alteraPecasCapturadas(int pecasCapturadas){
+        this.pecasCapturadas = pecasCapturadas;
+    }
+
+    void alteraJogadasValidas(int jogadasValidas){
+        this.jogadasValidas = jogadasValidas;
+    }
+
 
 }
