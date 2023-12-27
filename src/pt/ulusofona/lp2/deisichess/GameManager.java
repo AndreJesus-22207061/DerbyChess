@@ -145,6 +145,7 @@ public class GameManager {
 
         //------------Confirmacoes Peca--------------------//
 
+        //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
         Peca peca = tabuleiro.getPeca(x0, y0);
 
@@ -160,13 +161,13 @@ public class GameManager {
         CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
 
         if (equipaPeca != tabuleiro.getEquipaAJogar()) {
-            contadorEquipaAJogar.jogadaInvalida();
+            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
             //jogada invalida turno invalido
             return false;
         }
 
         if (!(peca.validMove(x1, y1, tabuleiro))) {
-            contadorEquipaAJogar.jogadaInvalida();
+            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
@@ -184,24 +185,23 @@ public class GameManager {
 
 
             if (equipaPeca == equipaDestino) {
-                contadorEquipaAJogar.jogadaInvalida();
+                contadorEquipaAJogar.jogadaInvalida();      //contadorEquipaPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             } else {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
-                // contadorEquipaAJogar.pecaFoiCapturada();
+                contadorEquipaAJogar.pecaFoiCapturada();    //contadorEquipaPeca.pecaFoiCapturada();
                 tabuleiro.removerPeca(x1, y1);
             }
         }
-        /*
+
         CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
         CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
-        */
 
         //Se no destino não houver peca é so mover
-        if ((!foiCapturada && tabuleiro.getPecasCapturadasE(10) >= 1) || (!foiCapturada &&  tabuleiro.getPecasCapturadasE(20) >= 1)) {
+        if ((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >= 1)) {
             contadorRondas.jogadaConcluidaSemCaptura();
         }
 
@@ -260,11 +260,10 @@ public class GameManager {
         ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
         CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
-        int pecasCapturadasPorPreta = tabuleiro.getPecasCapturadasE(20);
-
+        int pecasCapturadasPorPreta = contadorPretas.getPecasCapturadas();
 
         CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
-        int pecasCapturadasPorBranca = tabuleiro.getPecasCapturadasE(10);
+        int pecasCapturadasPorBranca = contadorBrancas.getPecasCapturadas();
 
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
         ArrayList<Peca> equipaBranca = tabuleiro.getListaBrancas();
@@ -320,56 +319,7 @@ public class GameManager {
 
 
     public void saveGame(File file) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-        try {
-            // Write board size
-            writer.write(String.valueOf(tabuleiro.getTamanho()));
-            writer.newLine();
-
-            // Write number of pieces
-            List<Peca> pecas = tabuleiro.getListaPecas();
-            writer.write(String.valueOf(pecas.size()));
-            writer.newLine();
-
-            // Write piece information
-            for (Peca peca : pecas) {
-                writer.write(peca.getID()+":"+peca.getTipo()+":"+peca.getEquipa()+":"+peca.getAlcunha());
-                writer.newLine();
-            }
-
-            // Write board configuration
-
-            for (int yPosicao = 0; yPosicao < tabuleiro.getTamanho(); yPosicao++) {
-                for (int xPosicao = 0; xPosicao < tabuleiro.getTamanho(); xPosicao++) {   //usado para verificar ao inicio se o ficheiro ja vem
-                    Peca peca = tabuleiro.getPeca(xPosicao, yPosicao);
-
-                    if (peca != null) {
-                        if(xPosicao == tabuleiro.getTamanho()-1){
-                            writer.write(String.valueOf(peca.getID()));
-                            writer.newLine();
-                        }else{
-                            writer.write(peca.getID()+":");
-                        }
-
-                    }else{
-                        if(xPosicao == tabuleiro.getTamanho()-1){
-                            writer.write("0");
-                            writer.newLine();
-                        }else{
-                            writer.write("0:");
-                        }
-                    }
-
-                }
-            }
-
-
-        } finally {
-            if (writer != null) {
-                writer.close();
-            }
-        }
     }
 
 
@@ -385,11 +335,11 @@ public class GameManager {
 
                 CountJogadas countPecaQueJogou = tabuleiro.getContadorEquipa(pecaQueJogou.getEquipa());
 
-              /*
+
                 if (ultimaJogada.houveCaptura()) {
                     countPecaQueJogou.decrementaPecaFoiCapturada();
                 }
-              */
+
                 countPecaQueJogou.decrementaJogadaValida();
 
 

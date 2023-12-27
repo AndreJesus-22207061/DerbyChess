@@ -4,6 +4,8 @@ public class CountJogadas {
 
     private int equipa;
 
+    private int pecasCapturadas =0;
+
     private int jogadasValidas=0;
 
     private int jogadasInvalidas=0;
@@ -12,6 +14,14 @@ public class CountJogadas {
     public CountJogadas(int equipa) {
         this.equipa = equipa;
 
+    }
+
+    void pecaFoiCapturada() {
+        this.pecasCapturadas++;
+    }
+
+    void decrementaPecaFoiCapturada() {
+        this.pecasCapturadas--;
     }
 
 
@@ -32,6 +42,10 @@ public class CountJogadas {
     }
     int getEquipa(){
         return this.equipa;
+    }
+
+    int getPecasCapturadas(){
+        return this.pecasCapturadas;
     }
 
     int getJogadasValidas(){

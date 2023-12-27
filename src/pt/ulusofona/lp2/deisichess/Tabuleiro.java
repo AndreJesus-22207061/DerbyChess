@@ -59,7 +59,7 @@ public class Tabuleiro {
         }
     }
 
-     Peca getPecaPorIDTabuleiro(int id) {        // buscar peca especifica que tem que estar em jogo
+    Peca getPecaPorIDTabuleiro(int id) {        // buscar peca especifica que tem que estar em jogo
         for (int x = 0; x < tamanho; x++) {
             for (int y = 0; y < tamanho; y++) {   //usado para verificar ao inicio se o ficheiro ja vem
                 Peca peca = tabuleiro[x][y];      // com peca capturada ou não
@@ -75,29 +75,9 @@ public class Tabuleiro {
         for (Peca peca : pecas) {
             if (peca != null && peca.getID() == id) {
                 return peca;
-                }
             }
-        return null;
-    }
-
-    int getPecasCapturadasE(int equipa){
-        if(equipa == 10){
-            int count = 0;
-            for(Peca peca : pecasPretas){
-                if(!peca.getEstado()){
-                    count++;
-                }
-            }
-            return count;
-        }else{
-            int count2 = 0;
-            for(Peca peca : pecasBrancas){
-                if(!peca.getEstado()){
-                    count2++;
-                }
-            }
-            return count2;
         }
+        return null;
     }
 
     ArrayList<Peca> getListaPecas(){
@@ -170,7 +150,7 @@ public class Tabuleiro {
         }
     }
 
-     void movePeca(int x0, int y0, int x1, int y1) {
+    void movePeca(int x0, int y0, int x1, int y1) {
         tabuleiro[x1][y1] = tabuleiro[x0][y0];
         tabuleiro[x0][y0] = null;
     }
@@ -286,11 +266,11 @@ public class Tabuleiro {
         String linha2 = "Resultado: " +contadorRondas.getResultado();
         String linha3 = "---";
         String linha4="Equipa das Pretas";
-        String linha5= Integer.toString(getPecasCapturadasE(20));
+        String linha5= Integer.toString(contadorPretas.getPecasCapturadas());
         String linha6=Integer.toString(contadorPretas.getJogadasValidas());
         String linha7=Integer.toString(contadorPretas.getJogadasInvalidas());
         String linha8="Equipa das Brancas";
-        String linha9=Integer.toString(getPecasCapturadasE(10));
+        String linha9=Integer.toString(contadorBrancas.getPecasCapturadas());
         String linha10 =Integer.toString(contadorBrancas.getJogadasValidas());
         String linha11 = Integer.toString(contadorBrancas.getJogadasInvalidas());
 
@@ -325,5 +305,4 @@ public class Tabuleiro {
 
 
 }
-
 
