@@ -90,7 +90,7 @@ public class GameManager {
                     continue;
                 }
 
-                if (count == numeroPecas) {
+                if (count == numeroPecas && countColunas < tamanhoTabuleiro) {
                     String[] partes = linha.split(":");
                     int countlinhas = 0;
                     for (String parte : partes) {
@@ -111,22 +111,20 @@ public class GameManager {
                 }
 
 
-                if (linha.equals("Contadores por equipe:")) {
-                    reader.readLine();
-                    pretaPecasCapturadas = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    pretaJogadasInvalidas = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    pretaJogadasValidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                if (linha.equals("Contadores por equipa:")) {
+                    pretaPecasCapturadas = Integer.parseInt(reader.readLine().split(":")[1]);
+                    pretaJogadasInvalidas = Integer.parseInt(reader.readLine().split(":")[1]);
+                    pretaJogadasValidas = Integer.parseInt(reader.readLine().split(":")[1]);
 
-                    brancaPecasCapturadas = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    brancaJogadasInvalidas = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    brancaJogadasValidas = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    brancaPecasCapturadas = Integer.parseInt(reader.readLine().split(":")[1]);
+                    brancaJogadasInvalidas = Integer.parseInt(reader.readLine().split(":")[1]);
+                    brancaJogadasValidas = Integer.parseInt(reader.readLine().split(":")[1]);
                 }
 
                 if (linha.equals("Contador de Rondas:")) {
-                    reader.readLine();
-                    rondasJoker = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    rondasSemCaptura = Integer.parseInt(reader.readLine().split(": ")[1]);
-                    rondaAtual = Integer.parseInt(reader.readLine().split(": ")[1]);
+                    rondasJoker = Integer.parseInt(reader.readLine().split(":")[1]);
+                    rondasSemCaptura = Integer.parseInt(reader.readLine().split(":")[1]);
+                    rondaAtual = Integer.parseInt(reader.readLine().split(":")[1]);
                 }
 
 
@@ -425,20 +423,20 @@ public class GameManager {
             writer.write("Contadores por equipa:"+"\n");
 
             // Equipa Preta
-            writer.write("Preta - Peças Capturadas: " + countPreta.getPecasCapturadas()+"\n");
-            writer.write("Preta - Jogadas Inválidas: " + countPreta.getJogadasInvalidas()+"\n");
-            writer.write("Preta - Jogadas Válidas: " + countPreta.getJogadasValidas()+"\n");
+            writer.write("Preta - Peças Capturadas:" + countPreta.getPecasCapturadas()+"\n");
+            writer.write("Preta - Jogadas Inválidas:" + countPreta.getJogadasInvalidas()+"\n");
+            writer.write("Preta - Jogadas Válidas:" + countPreta.getJogadasValidas()+"\n");
 
             // Equipa Branca
-            writer.write("Branca - Peças Capturadas: " + countBranco.getPecasCapturadas()+"\n");
-            writer.write("Branca - Jogadas Inválidas: " + countBranco.getJogadasInvalidas()+"\n");
-            writer.write("Branca - Jogadas Válidas: " + countBranco.getJogadasValidas()+"\n");
+            writer.write("Branca - Peças Capturadas:" + countBranco.getPecasCapturadas()+"\n");
+            writer.write("Branca - Jogadas Inválidas:" + countBranco.getJogadasInvalidas()+"\n");
+            writer.write("Branca - Jogadas Válidas:" + countBranco.getJogadasValidas()+"\n");
 
             // Informações de contador de rondas
             writer.write("Contador de Rondas:"+"\n");
-            writer.write("Rondas com Joker: " + contadorRondas.getRondasJoker()+"\n");
-            writer.write("Rondas sem Captura: " + contadorRondas.getRondasSemCaptura()+"\n");
-            writer.write("Ronda Atual: " + contadorRondas.getRondaAtual());
+            writer.write("Rondas Joker:" + contadorRondas.getRondasJoker()+"\n");
+            writer.write("Rondas sem Captura:" + contadorRondas.getRondasSemCaptura()+"\n");
+            writer.write("Ronda Atual:" + contadorRondas.getRondaAtual());
 
 
 

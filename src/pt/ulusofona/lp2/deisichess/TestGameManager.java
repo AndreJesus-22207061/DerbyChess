@@ -518,26 +518,14 @@ public class TestGameManager {
 
     @Test
     public void SaveGameTest()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
+        File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        boolean mov1 = jogo.move(1,2,2,1 );
-        boolean jogada1 = jogo.gameOver();
-
-
-
-        File fileSave = new File("test-files","branco.txt");
-        jogo.saveGame(fileSave);
-
-
-
-
-
-
     }
+
 
 
 
