@@ -518,7 +518,7 @@ public class TestGameManager {
 
     @Test
     public void SaveGameTest()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","8x8.txt");
+        File file = new File("test-files","4x4.txt");
         jogo.reset();
         jogo.loadGame(file);
 

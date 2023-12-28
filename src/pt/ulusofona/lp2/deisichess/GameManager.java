@@ -33,7 +33,7 @@ public class GameManager {
             int count = 0;
             int countColunas = 0;
             int numeroPecas = 0;
-            ArrayList<Peca> pecas = new ArrayList<>();
+
 
             int pretaPecasCapturadas = 0;
             int pretaJogadasInvalidas = 0;
@@ -43,11 +43,11 @@ public class GameManager {
             int brancaJogadasInvalidas = 0;
             int brancaJogadasValidas = 0;
 
-            int rondasJoker = 0;
+            int rondasJoker = 1;
             int rondasSemCaptura = 0;
             int rondaAtual = 0;
 
-
+            ArrayList<Peca> pecas = new ArrayList<>();
 
             while ((linha = reader.readLine()) != null) {
                 if (primeiraLinha) {
