@@ -300,10 +300,11 @@ public class Tabuleiro {
         for(Peca peca :listaPecas){
             if(peca.getTipo() == 0){
                 encontrou++;
+                if(!peca.getEstado()){
+                    estaCapturado++;
+                }
             }
-            if(!peca.getEstado()){
-                estaCapturado++;
-            }
+
         }
         if(encontrou==estaCapturado){
             return true;

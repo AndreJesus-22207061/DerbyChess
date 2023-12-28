@@ -553,7 +553,20 @@ public class TestGameManager {
     }
 
 
+    @Test
+    public void test4x4()throws IOException, InvalidGameInputException {
+        File file = new File("test-files","4x4.txt");
+        jogo.reset();
+        jogo.loadGame(file);
 
+        boolean mov1 = jogo.move(2,1,1,2 );
+        assertTrue(mov1);
+        boolean jogada1 = jogo.gameOver();
+        assertFalse(jogada1);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+    }
 
 
 
