@@ -47,6 +47,8 @@ public class GameManager {
             int rondasSemCaptura = 0;
             int rondaAtual = 0;
 
+            int equipaAJogar = 10;
+
             ArrayList<Peca> pecas = new ArrayList<>();
 
             while ((linha = reader.readLine()) != null) {
@@ -127,6 +129,10 @@ public class GameManager {
                     rondaAtual = Integer.parseInt(reader.readLine().split(":")[1]);
                 }
 
+                if (linha.equals("Equipa a Jogar:")) {
+                    equipaAJogar = Integer.parseInt(reader.readLine().split(":")[1]);
+                }
+
 
             }
 
@@ -161,6 +167,7 @@ public class GameManager {
             contadorRondas.alteraRondaJoker(rondasJoker);
             contadorRondas.alteraRondaSemCaptural(rondasSemCaptura);
             contadorRondas.alteraRondaAtual(rondaAtual);
+            tabuleiro.setEquipaAJogar(equipaAJogar);
 
 
 
@@ -436,7 +443,10 @@ public class GameManager {
             writer.write("Contador de Rondas:"+"\n");
             writer.write("Rondas Joker:" + contadorRondas.getRondasJoker()+"\n");
             writer.write("Rondas sem Captura:" + contadorRondas.getRondasSemCaptura()+"\n");
-            writer.write("Ronda Atual:" + contadorRondas.getRondaAtual());
+            writer.write("Ronda Atual:" + contadorRondas.getRondaAtual()+"\n");
+
+            writer.write("Equipa a Jogar:"+"\n");
+            writer.write("Equipa :"+ tabuleiro.getEquipaAJogar()+"\n");
 
 
 

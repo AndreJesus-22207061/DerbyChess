@@ -150,6 +150,10 @@ public class Tabuleiro {
         }
     }
 
+    void setEquipaAJogar(int equipa){
+        this.equipaAJogar = equipa;
+    }
+
     void movePeca(int x0, int y0, int x1, int y1) {
         tabuleiro[x1][y1] = tabuleiro[x0][y0];
         tabuleiro[x0][y0] = null;
