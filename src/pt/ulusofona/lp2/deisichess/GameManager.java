@@ -17,13 +17,9 @@ public class GameManager {
 
     public void loadGame(File file) throws
             InvalidGameInputException, IOException {
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        }
 
         try {
 

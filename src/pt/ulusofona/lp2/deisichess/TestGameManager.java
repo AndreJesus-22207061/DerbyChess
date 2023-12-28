@@ -206,24 +206,52 @@ public class TestGameManager {
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
-        jogo.move(2,0,4,2 );  //move ponei preto
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
-        jogo.move(1,7,1,5 ); // move rainha branco
-        boolean jogada2 = jogo.gameOver();
-        assertFalse(jogada2);
-        jogo.move(0,0,0,1 ); // move rei preto
-        boolean jogada3 = jogo.gameOver();
-        assertFalse(jogada3);
-        jogo.move(1,5,2,4 ); // move rainha branca
-        boolean jogada4 = jogo.gameOver();
-        assertFalse(jogada4);
-        jogo.move(4,2,2,4 ); // move ponei preto , come rainha branca
-        boolean jogada5 = jogo.gameOver();
-        assertFalse(jogada5);
+
+        boolean move;
+        boolean gameOver;
+
+        move =jogo.move(2,0,4,2 );  //move ponei preto
+        assertTrue(move);
+        boolean gameOver1 = jogo.gameOver();
+        assertFalse(gameOver1);
+
+
+        move = jogo.move(1,7,1,5 ); // move rainha branco
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(4,2,3,3 ); // move ponei preto
+        assertFalse(move); // Retorna false movimento invalido
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(4,2,6,0 ); // move ponei pretp
+        assertFalse(move); // Retorna false posicao com peca da mesma equipa
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+
+        move =jogo.move(0,0,0,1 ); // move rei preto
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+
+        move =jogo.move(1,5,2,4 ); // move rainha branca
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+
+        move =jogo.move(4,2,2,4 );// move ponei preto , come rainha branca
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
 
 
     }
+
     @Test
     public void Joker() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
@@ -259,7 +287,7 @@ public class TestGameManager {
 
 
     @Test
-    public void testContadorRondas() throws IOException, InvalidGameInputException {
+    public void testContadorRondasUndo() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);

@@ -1,0 +1,20 @@
+6
+12
+1:0:10:Chefe
+2:3:10:Selvagem
+3:0:20:O Maior
+4:3:20:O Amigo
+5:4:10:Artolas
+6:5:10:O Maior Grande
+7:6:10:Hommie
+8:7:10:O Beberolas
+9:0:20:Chefe dos Indios
+10:1:20:A Barulhenta do Bairro
+11:2:20:My Little Pony
+12:3:20:Padreco
+1:2:3:4:5:6
+0:0:2:0:0:0
+0:4:0:0:0:0
+0:0:3:0:0:0
+0:0:0:0:0:0
+7:8:9:10:11:12
