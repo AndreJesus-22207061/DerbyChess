@@ -305,7 +305,7 @@ public class Tabuleiro {
                 }
             }
         }
-        if(encontrou==estaCapturado){
+        if(encontrou==estaCapturado && encontrou != 0){
             return true;
         }
         return false;

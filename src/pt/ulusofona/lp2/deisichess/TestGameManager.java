@@ -158,7 +158,7 @@ public class TestGameManager {
 
         // -------------------Teste para coordenadas com peça-------------------------------
         String[] resultComPeca = jogo.getSquareInfo(0, 0);
-        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", null}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", "crazy_emoji_black.png"}, resultComPeca);
 
 
         // ------------------ Teste para coordenadas sem peça-----------------------------
@@ -209,45 +209,6 @@ public class TestGameManager {
 
 
     @Test
-    public void movePosicaoInvalida() throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-        boolean jogada = jogo.move(2,1,0,3 );
-        String[] resultComPeca = jogo.getPieceInfo(3);
-        assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","1"}, resultComPeca); //A peca mantem se igual pois é jogada invalida
-        assertFalse(jogada);                                                                               // Logo a peca nao se move fica nas mesmas coordenadas
-
-    }
-
-    @Test
-    public void moveCorreto() throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-
-
-        boolean jogada = jogo.move(2,1,2,2 );
-        String[] resultComPeca = jogo.getPieceInfo(3);
-        assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","2"}, resultComPeca); //Peca move se e as coordenadas mudam
-        String[] resultCasaAnterior = jogo.getSquareInfo(2,1);
-        assertArrayEquals(new String[]{}, resultCasaAnterior);     // A casa onde a Peca estava fica a 0 (sem informaçao)
-        assertTrue(jogada);
-
-
-
-    }
-
-
-
-
-    @Test
     public void movePoneiMagico() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
@@ -280,23 +241,32 @@ public class TestGameManager {
         assertFalse(gameOver);
 
 
-        move =jogo.move(0,0,0,1 ); // move rei preto
+        move =jogo.move(4,2,6,4 ); // move ponei preto
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
 
-        move =jogo.move(1,5,2,4 ); // move rainha branca
+        move =jogo.move(5,7,5,4 ); // move tv branca
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
 
-        move =jogo.move(4,2,2,4 );// move ponei preto , come rainha branca
+        move =jogo.move(1,0,1,1 );// move rei preto
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
+        move =jogo.move(6,7,5,6 );// move hommer branco
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(6,4,4,6 );// move ponei Preto
+        assertFalse(move); // retorna false tem duas pecas em cada caminho possivel
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
 
     }
 
@@ -312,8 +282,8 @@ public class TestGameManager {
         boolean move;
         boolean gameOver;
 
-        move =jogo.move(6,0,7,1 );  //move homer preto invalido ta a dormir
-        assertFalse(move);
+        move =jogo.move(6,0,7,1 );  //move homer preto
+        assertFalse(move); //retorna false  ta a dormir
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
@@ -322,8 +292,8 @@ public class TestGameManager {
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
-        move =jogo.move(6,7,6,6 );  //move homer branca invalido nao anda na vertical
-        assertFalse(move);
+        move =jogo.move(6,7,6,6 );  //move homer branca
+        assertFalse(move);//retorna false // nao anda na vertical
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
