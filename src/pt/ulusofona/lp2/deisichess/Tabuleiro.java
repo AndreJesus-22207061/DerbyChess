@@ -295,13 +295,17 @@ public class Tabuleiro {
 
 
     boolean isXequeMate(ArrayList<Peca> listaPecas){
-        boolean encontrou = false;
+        int encontrou = 0;
+        int estaCapturado = 0;
         for(Peca peca :listaPecas){
-            if(peca.getTipo() == 0 && !peca.getEstado()){
-                encontrou = true;
+            if(peca.getTipo() == 0){
+                encontrou++;
+            }
+            if(!peca.getEstado()){
+                estaCapturado++;
             }
         }
-        if(encontrou){
+        if(encontrou==estaCapturado){
             return true;
         }
         return false;
