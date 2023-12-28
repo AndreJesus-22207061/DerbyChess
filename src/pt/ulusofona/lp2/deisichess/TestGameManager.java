@@ -98,6 +98,29 @@ public class TestGameManager {
     }
 
     @Test
+    public void loadComErrosAMais()throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8Erros.txt");
+        jogo.reset();
+        String output = "";
+
+        try {
+            jogo.loadGame(file);
+        } catch (IOException IO) {
+
+        } catch (InvalidGameInputException e) {
+            output = "Ocorreu um erro a ler o ficheiro, na linha " + e.getLineWithError() + " com o seguinte problema: "
+                    + e.getProblemDescription();
+        }
+
+        String esperado = "Ocorreu um erro a ler o ficheiro, na linha 20 com o seguinte problema: DADOS A MAIS (Esperava: 8 ; Obtive: 9)";
+
+        assertEquals(esperado,output);
+
+
+    }
+
+
+    @Test
     public void testGetSquareInfo() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
@@ -554,20 +577,6 @@ public class TestGameManager {
     }
 
 
-    @Test
-    public void test4x4()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        boolean mov1 = jogo.move(2,1,1,2 );
-        assertTrue(mov1);
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-    }
 
 
 

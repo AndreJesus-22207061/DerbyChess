@@ -1,9 +1,9 @@
 8
 16
 1:0:10:O Poderoso Chefao
-2:1:10:A Dama Selvagem:dibil
+2:1:10:A Dama Selvagem
 3:2:10:O Grande Artista
-4:3:10
+4:3:10:A Pintainha
 5:4:10:Artolas
 6:5:10:O Maior Grande
 7:6:10:Hommie

@@ -304,7 +304,6 @@ public class Tabuleiro {
                     estaCapturado++;
                 }
             }
-
         }
         if(encontrou==estaCapturado){
             return true;

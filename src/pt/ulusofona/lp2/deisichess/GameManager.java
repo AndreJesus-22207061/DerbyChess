@@ -106,8 +106,9 @@ public class GameManager {
                 }
 
                 if (count == numeroPecas && countColunas < tamanhoTabuleiro) {
-                    String[] partes = linha.split(":");
+                    linhaAtual++;
 
+                    String[] partes = linha.split(":");
                     if(partes.length>tamanhoTabuleiro){
                         throw new InvalidGameInputException("DADOS A MAIS (Esperava: " +tamanhoTabuleiro+ " ; Obtive: "+partes.length+")",linhaAtual);
                     }else if(partes.length<tamanhoTabuleiro){
@@ -130,7 +131,6 @@ public class GameManager {
                         }
                     }
                     countColunas++;
-                    linhaAtual++;
                 }
 
 
