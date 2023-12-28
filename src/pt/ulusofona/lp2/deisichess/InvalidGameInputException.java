@@ -1,18 +1,21 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class InvalidGameInputException extends Throwable {
+public class InvalidGameInputException extends Exception {
 
-   String getProblemDescription(){
+    private  String problemDescription;
+    private  int lineWithError;
 
-       return "Dibil";
-   }
+    public InvalidGameInputException(String problemDescription, int lineWithError) {
+        this.problemDescription = problemDescription;
+        this.lineWithError = lineWithError;
+    }
 
-   int  getLineWithError(){
+    String getProblemDescription() {
+        return problemDescription;
+    }
 
-       return 0;
-   }
-
-
-
+    int getLineWithError() {
+        return lineWithError;
+    }
 
 }

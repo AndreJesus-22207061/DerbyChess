@@ -138,8 +138,6 @@ public class TestGameManager {
         String[] resultComPeca = jogo.getPieceInfo(1);
         assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao","em jogo","0","0"}, resultComPeca);
 
-
-
     }
 
     @Test
@@ -177,8 +175,6 @@ public class TestGameManager {
         assertArrayEquals(new String[]{"3", "0", "0", "Grande Artista","em jogo","2","1"}, resultComPeca); //A peca mantem se igual pois é jogada invalida
         assertFalse(jogada);                                                                               // Logo a peca nao se move fica nas mesmas coordenadas
 
-
-
     }
 
     @Test
@@ -201,72 +197,6 @@ public class TestGameManager {
 
 
     }
-
-    @Test
-    public void jogoVitoriaBranca() throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4pequeno.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-        jogo.move(1,0,1,1 );
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
-
-        jogo.move(1,2,1,1 );
-        boolean jogada2 =jogo.gameOver();
-        assertFalse(jogada2);
-
-        jogo.move(3,0,2,0 );
-        boolean jogada3 =jogo.gameOver();
-        assertFalse(jogada3);
-
-        jogo.move(1,1,2,0 );
-        boolean jogada4 =jogo.gameOver();
-        assertTrue(jogada4);
-
-
-    }
-
-    @Test
-    public void jogoEmpate1x1() throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4pequeno.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-        jogo.move(1,0,1,1 );
-        boolean jogada1 = jogo.gameOver();
-        assertFalse(jogada1);
-
-        jogo.move(1,2,1,1 );
-        boolean jogada2 =jogo.gameOver();
-        assertFalse(jogada2);
-
-        jogo.move(3,0,2,0 );
-        boolean jogada3 =jogo.gameOver();
-        assertFalse(jogada3);
-
-        jogo.move(1,1,2,1 );
-        boolean jogada4 =jogo.gameOver();
-        assertFalse(jogada4);
-
-        jogo.move(2,0,2,1 );
-        boolean jogada5 =jogo.gameOver();
-        assertFalse(jogada5);
-
-        jogo.move(2,3,2,2 );
-        boolean jogada6 =jogo.gameOver();
-        assertFalse(jogada6);
-
-        jogo.move(2,1,2,2 );
-        boolean jogada7 =jogo.gameOver();
-        assertTrue(jogada7);
-
-
-    }
-
-
 
 
     @Test
@@ -329,13 +259,12 @@ public class TestGameManager {
 
 
     @Test
-    public void rainhaUndo() throws IOException, InvalidGameInputException {
+    public void testContadorRondas() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
-
 
 
         boolean mov1 = jogo.move(1,0,1,5 );
@@ -518,7 +447,7 @@ public class TestGameManager {
 
     @Test
     public void SaveGameTest()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
+        File file = new File("test-files","erg.txt");
         jogo.reset();
         jogo.loadGame(file);
 

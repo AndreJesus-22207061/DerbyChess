@@ -26,6 +26,11 @@ public class GameManager {
         }
 
         try {
+
+            if(reader == null){
+                throw new IOException();
+            }
+
             String linha;
             boolean primeiraLinha = true;
             boolean segundaLinha = false;
@@ -33,6 +38,7 @@ public class GameManager {
             int count = 0;
             int countColunas = 0;
             int numeroPecas = 0;
+            int linhaAtual = 0;
 
 
             int pretaPecasCapturadas = 0;
@@ -52,7 +58,9 @@ public class GameManager {
             ArrayList<Peca> pecas = new ArrayList<>();
 
             while ((linha = reader.readLine()) != null) {
+
                 if (primeiraLinha) {
+                    linhaAtual++;
                     tamanhoTabuleiro = Integer.parseInt(linha);
 
                     primeiraLinha = false;
@@ -60,13 +68,22 @@ public class GameManager {
                     continue;
                 }
                 if (segundaLinha) {
+                    linhaAtual++;
                     numeroPecas = Integer.parseInt(linha);
                     segundaLinha = false;
                     continue;
                 }
 
                 if (primeiraLinha == false && segundaLinha == false && count < numeroPecas) {
+                    linhaAtual++;
                     String[] partes = linha.split(":");
+
+                    if(partes.length>4){
+                        throw new InvalidGameInputException("DADOS A MAIS (Esperava: 4 ; Obtive: "+partes.length+")",linhaAtual);
+                    }else if(partes.length<4){
+                        throw new InvalidGameInputException("DADOS A MENOS (Esperava: 4 ; Obtive: "+partes.length+")",linhaAtual);
+                    }
+
                     int idPeca = Integer.parseInt(partes[0]);
                     int tipoPeca = Integer.parseInt(partes[1]);
                     int equipaPeca = Integer.parseInt(partes[2]);
@@ -94,6 +111,13 @@ public class GameManager {
 
                 if (count == numeroPecas && countColunas < tamanhoTabuleiro) {
                     String[] partes = linha.split(":");
+
+                    if(partes.length>tamanhoTabuleiro){
+                        throw new InvalidGameInputException("DADOS A MAIS (Esperava: " +tamanhoTabuleiro+ " ; Obtive: "+partes.length+")",linhaAtual);
+                    }else if(partes.length<tamanhoTabuleiro){
+                        throw new InvalidGameInputException("DADOS A MENOS (Esperava: " +tamanhoTabuleiro+ " ; Obtive: "+partes.length+")",linhaAtual);
+                    }
+
                     int countlinhas = 0;
                     for (String parte : partes) {
                         int parteInt = Integer.parseInt(parte);
@@ -110,6 +134,7 @@ public class GameManager {
                         }
                     }
                     countColunas++;
+                    linhaAtual++;
                 }
 
 
@@ -170,11 +195,11 @@ public class GameManager {
             tabuleiro.setEquipaAJogar(equipaAJogar);
 
 
-
-
             reader.close();
-        } catch (IOException e) {
 
+
+        } catch (FileNotFoundException e) {
+            // Trate a exceção de arquivo não encontrado aqui
         }
 
 
