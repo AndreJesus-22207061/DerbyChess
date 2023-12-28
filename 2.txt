@@ -1,0 +1,21 @@
+4
+4
+1:0:10:Chefe
+2:3:10:Selvagem
+3:0:20:O Maior
+4:3:20:O Amigo
+0:1:0:0
+0:0:0:0
+0:2:0:0
+0:0:0:3
+Contadores por equipa:
+Preta - Peças Capturadas: 1
+Preta - Jogadas Inválidas: 1
+Preta - Jogadas Válidas: 1
+Branca - Peças Capturadas: 0
+Branca - Jogadas Inválidas: 0
+Branca - Jogadas Válidas: 1
+Contador de Rondas:
+Rondas com Joker: 2
+Rondas sem Captura: 1
+Ronda Atual: 2

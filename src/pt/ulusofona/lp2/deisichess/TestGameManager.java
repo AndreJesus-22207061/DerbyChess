@@ -252,6 +252,75 @@ public class TestGameManager {
 
     }
 
+
+    @Test
+    public void moveHomer() throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        boolean move;
+        boolean gameOver;
+
+        move =jogo.move(6,0,7,1 );  //move homer preto invalido ta a dormir
+        assertFalse(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(5,0,5,4 );  //move tv preta
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(6,7,6,6 );  //move homer branca invalido nao anda na vertical
+        assertFalse(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(6,7,7,6 );  //move homer branca
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(1,0,1,5 );  //move rainha preta
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(5,7,5,6 );  //move tv branca
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(4,0,5,0 );  //move th preta
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(7,6,6,5 );  //move homer branca
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(1,5,0,5 );  //move rainha preta
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(6,5,5,4 );  //move homer branca captura TV preta
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertFalse(gameOver);
+
+        move =jogo.move(0,5,0,7 );  //move rainha preta captura rei branco
+        assertTrue(move);
+        gameOver = jogo.gameOver();
+        assertTrue(gameOver);
+    }
+
+
     @Test
     public void Joker() throws IOException, InvalidGameInputException {
         File file = new File("test-files","8x8.txt");
