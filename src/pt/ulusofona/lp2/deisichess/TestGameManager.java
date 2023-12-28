@@ -318,6 +318,7 @@ public class TestGameManager {
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertTrue(gameOver);
+
     }
 
 

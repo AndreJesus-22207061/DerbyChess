@@ -298,10 +298,8 @@ public class Tabuleiro {
         int encontrou = 0;
         int estaCapturado = 0;
         for(Peca peca :listaPecas){
-            if(peca.getTipo() == 0){
+            if(peca.getTipo() == 0 && !peca.getEstado()){
                 encontrou++;
-            }
-            if(!peca.getEstado()){
                 estaCapturado++;
             }
         }
