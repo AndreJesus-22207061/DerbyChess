@@ -119,6 +119,29 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void loadComErrosAMenos()throws IOException, InvalidGameInputException {
+        File file = new File("test-files","8x8ErrosAMenos.txt");
+        jogo.reset();
+        String output = "";
+
+        try {
+            jogo.loadGame(file);
+        } catch (IOException var6) {
+
+        } catch (InvalidGameInputException e) {
+            output = "Ocorreu um erro a ler o ficheiro, na linha " + e.getLineWithError() + " com o seguinte problema: "
+                    + e.getProblemDescription();
+        }
+
+        String esperado =  "Ocorreu um erro a ler o ficheiro, na linha 6 com o seguinte problema: DADOS A MENOS (Esperava: 4 ; Obtive: 3)";
+
+
+        assertEquals(esperado,output);
+
+
+    }
+
 
     @Test
     public void testGetSquareInfo() throws IOException, InvalidGameInputException {
@@ -221,28 +244,7 @@ public class TestGameManager {
 
     }
 
-    @Test
-    public void loadComErrosAMenos()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","8x8ErrosAMenos.txt");
-        jogo.reset();
-        String output = "";
 
-        try {
-            jogo.loadGame(file);
-        } catch (IOException var6) {
-
-        } catch (InvalidGameInputException e) {
-            output = "Ocorreu um erro a ler o ficheiro, na linha " + e.getLineWithError() + " com o seguinte problema: "
-                    + e.getProblemDescription();
-        }
-
-        String esperado =  "Ocorreu um erro a ler o ficheiro, na linha 6 com o seguinte problema: DADOS A MENOS (Esperava: 4 ; Obtive: 3)";
-
-
-        assertEquals(esperado,output);
-
-
-    }
 
 
     @Test
