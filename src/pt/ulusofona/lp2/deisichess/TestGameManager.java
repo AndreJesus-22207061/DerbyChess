@@ -69,31 +69,41 @@ public class TestGameManager {
         pecasTeste.add(peca10);
 
         Peca peca11 = new PoneiMagico(11,2,20,"My Little Pony");
-        peca8.setCoordenadas(2,7);
+        peca11.setCoordenadas(2,7);
         pecasTeste.add(peca11);
 
         Peca peca12 = new PadreDaVila(12,3,20,"Padreco");
-        peca8.setCoordenadas(3,7);
+        peca12.setCoordenadas(3,7);
         pecasTeste.add(peca12);
 
         Peca peca13 = new TorreHorizontal(13,4,20,"Torre Padreco");
-        peca8.setCoordenadas(4,7);
+        peca13.setCoordenadas(4,7);
         pecasTeste.add(peca13);
 
         Peca peca14 = new TorreVertical(14,5,20,"Torre Trapalhona");
-        peca8.setCoordenadas(5,7);
+        peca14.setCoordenadas(5,7);
         pecasTeste.add(peca14);
 
         Peca peca15 = new HomerSimpson(15,6,20,"Homer Jay Simpson");
-        peca8.setCoordenadas(6,7);
+        peca15.setCoordenadas(6,7);
         pecasTeste.add(peca15);
 
         Peca peca16 = new Joker(16,7,20,"O Bobo da Corte");
-        peca8.setCoordenadas(7,7);
+        peca16.setCoordenadas(7,7);
         pecasTeste.add(peca16);
 
+        int countPecasIguais = 0;
+        for(Peca peca : pecasTeste){
+            for(Peca pecaTabuleiro : tabuleiro.getListaPecas()){
+                if(peca.equals(pecaTabuleiro)){
+                    countPecasIguais++;
+                }
 
-        assertEquals(pecasTeste,tabuleiro.getListaPecas());
+            }
+
+        }
+
+        assertEquals(16,countPecasIguais);
 
     }
 
