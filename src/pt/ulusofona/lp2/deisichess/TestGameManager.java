@@ -668,9 +668,73 @@ public class TestGameManager {
         boolean jogada6 = jogo.gameOver();
         assertTrue(jogada6);
 
+    }
 
+    @Test
+    public void estatisticasDaPecaRainhaPreta()throws IOException, InvalidGameInputException {
+        File file = new File("test-files", "8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
 
+        Tabuleiro tabuleiro = jogo.tabuleiro;
 
+        boolean move;
+        boolean gameOver;
+
+        move = jogo.move(1,0,1,5);//rainha preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,7,0,6); //rei branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,5,1,7);//rainha preta n anda pois n pode comer rainha branca
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,5,3,7);//rainha preta anda e captura PV branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,6,0,7); //rei branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,7,2,7);//rainha preta anda e captura PM branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,7,0,6); //rei branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(2,7,1,7);//rainha preta n anda pois n pode comer rainha branca
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(2,7,1,6);//rainha preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,6,0,7); //rei branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,6,0,7);//rainha preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertTrue(gameOver);
     }
 
 
