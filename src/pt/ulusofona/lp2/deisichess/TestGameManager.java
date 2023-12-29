@@ -696,6 +696,15 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
+        Peca peca = tabuleiro.getPeca(1,5);
+        CountJogadas countJogadas = peca.getCountJogadas();
+        int jogadasValidas = countJogadas.getJogadasValidas();
+        int jogadasInvalidas = countJogadas.getJogadasInvalidas();
+
+        assertEquals(1,jogadasValidas);
+        assertEquals(1,jogadasInvalidas);
+
+
         move = jogo.move(1,5,3,7);//rainha preta anda e captura PV branco
         assertTrue(move);
         gameOver= jogo.gameOver();
@@ -735,6 +744,23 @@ public class TestGameManager {
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertTrue(gameOver);
+
+        peca = tabuleiro.getPeca(0,7);
+        ArrayList<Integer> pecasQueCaptorou = peca.getListaPecasCapturadas();
+
+
+        countJogadas = peca.getCountJogadas();
+        jogadasValidas = countJogadas.getJogadasValidas();
+        jogadasInvalidas = countJogadas.getJogadasInvalidas();
+
+        ArrayList<Integer> esperado = new ArrayList<>();
+        esperado.add(12);
+        esperado.add(11);
+        esperado.add(9);
+
+        assertEquals(5,jogadasValidas);
+        assertEquals(2,jogadasInvalidas);
+        assertArrayEquals(esperado.toArray(),pecasQueCaptorou.toArray());
     }
 
 
