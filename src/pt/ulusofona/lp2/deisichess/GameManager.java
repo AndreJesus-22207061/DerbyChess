@@ -3,10 +3,7 @@ package pt.ulusofona.lp2.deisichess;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameManager {
 
@@ -35,6 +32,7 @@ public class GameManager {
             int countColunas = 0;
             int numeroPecas = 0;
             int linhaAtual = 0;
+            int estatisticasPeca = 0;
 
 
             int pretaPecasCapturadas = 0;
@@ -152,6 +150,49 @@ public class GameManager {
 
                 if (linha.equals("Equipa a Jogar:")) {
                     equipaAJogar = Integer.parseInt(reader.readLine().split(":")[1]);
+                }
+
+                if (linha.equals("Estatisticas de cada Peca:") || estatisticasPeca ==1){
+                    if(estatisticasPeca ==1){
+
+                            String[] partes1 = linha.split("->");
+                            int idPeca = Integer.parseInt(partes1[0]);
+                            
+                            Peca pecaAtual = null;
+                        
+                            for(Peca peca : pecas ){
+                                if(peca.getID() == idPeca){
+                                    pecaAtual = peca;
+                                    break;
+                                }
+                            }
+
+                            String []partes2 = partes1[1].split("\\|");
+
+                            String[] parteJogadas = partes2[0].split(":");
+
+                            int jodasValidasPeca =  Integer.parseInt(parteJogadas[0]);
+                            int jodasInvalidasPeca =  Integer.parseInt(parteJogadas[1]);
+
+                            CountJogadas countJogadasPeca = pecaAtual.getCountJogadas();
+                            countJogadasPeca.alteraJogadasValidas(jodasValidasPeca);
+                            countJogadasPeca.alteraJogadasInvalidas(jodasInvalidasPeca);
+
+                            if(partes2.length==1){
+                                continue;
+                            }
+
+                            String[] partePecasCapturadas = partes2[1].split(":");
+
+                            for(String stringID : partePecasCapturadas){
+                                int idPecaCapturada =Integer.parseInt(stringID);
+                                pecaAtual.adicionarPecaQueCaptorou(idPecaCapturada);
+                            }
+
+                    }
+
+                    estatisticasPeca = 1;
+
                 }
 
 
@@ -480,7 +521,7 @@ public class GameManager {
 
             for(Peca peca : tabuleiro.getListaPecas()){
                 CountJogadas countJogadas = peca.getCountJogadas();
-                writer.write(+peca.getID()+"->"+countJogadas.getJogadasValidas()+":"+countJogadas.getJogadasInvalidas()+":");
+                writer.write(+peca.getID()+"->"+countJogadas.getJogadasValidas()+":"+countJogadas.getJogadasInvalidas()+"|");
                 int count = 0;
                 if(peca.getListaPecasCapturadas().size()>0){
                     for(Integer pecaQueCapturou : peca.getListaPecasCapturadas()){
