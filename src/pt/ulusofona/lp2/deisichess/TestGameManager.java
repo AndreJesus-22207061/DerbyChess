@@ -359,17 +359,28 @@ public class TestGameManager {
         Tabuleiro tabuleiro = jogo.tabuleiro;
         boolean move;
         boolean gameOver;
+        String resultComPeca = "";
 
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/Rainha | 4 | 10 | O Beberolas @ (7, 0)", resultComPeca);
 
         move = jogo.move(7,0,7,1 );//joker(rainha) anda
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/Ponei Mágico | 4 | 10 | O Beberolas @ (7, 1)", resultComPeca);
+
+
         move = jogo.move(0,7,0,6);//rei branco anda
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/Padre da Vila | 4 | 10 | O Beberolas @ (7, 1)", resultComPeca);
+
 
         move = jogo.move(7,1,7,3);//joker(padre da vila) movimento invalido
         assertFalse(move);
@@ -381,20 +392,36 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/TorreHor | 4 | 10 | O Beberolas @ (5, 3)", resultComPeca);
+
+
         move = jogo.move(0,6,0,7); //rei branco anda
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/TorreVert | 4 | 10 | O Beberolas @ (5, 3)", resultComPeca);
+
 
         move = jogo.move(5,3,5,7); //joker(TV) preto anda e captura TV branco
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/Homer Simpson | 4 | 10 | O Beberolas @ (5, 7)", resultComPeca);
+
+
         move = jogo.move(0,7,0,6);//rei branco anda
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(8);
+        assertEquals("8 | Joker/Rainha | 4 | 10 | O Beberolas @ (5, 7)", resultComPeca);
+
 
         move = jogo.move(5,7,4,7 );//joker(rainha) anda e captura TH branco
         assertTrue(move);
@@ -637,15 +664,7 @@ public class TestGameManager {
     }
 
 
-    @Test
-    public void SaveGameTest()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","erg.txt");
-        jogo.reset();
-        jogo.loadGame(file);
 
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-    }
 
 
 
