@@ -1,5 +1,6 @@
 package pt.ulusofona.lp2.deisichess;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Peca {
@@ -21,12 +22,18 @@ public abstract class Peca {
 
     protected String imagem;
 
+    protected CountJogadas countJogadas;
+
+    protected ArrayList<Integer> listaPecasCapturadas;
+
     public Peca(int id,int tipo, int equipa, String alcunha) {
         this.id = id;
         this.tipo = tipo;
         this.equipa = equipa;
         this.alcunha = alcunha;
         this.estado = true;
+        this.countJogadas = new CountJogadas(equipa);
+        this.listaPecasCapturadas = new ArrayList<>();
     }
 
 
@@ -90,6 +97,18 @@ public abstract class Peca {
 
     String getImagem(){
         return imagem;
+    }
+
+    ArrayList<Integer> getListaPecasCapturadas(){
+        return this.listaPecasCapturadas;
+    }
+
+    void adicionarPecaQueCaptorou(int id){
+        this.listaPecasCapturadas.add(id);
+    }
+
+    CountJogadas getCountJogadas(){
+        return this.countJogadas;
     }
 
     abstract void definirPontos();

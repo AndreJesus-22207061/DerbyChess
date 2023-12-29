@@ -241,14 +241,18 @@ public class GameManager {
 
         CountJogadas contadorEquipaPeca = tabuleiro.getContadorEquipa(equipaPeca);
 
+        CountJogadas contadorPeca = peca.getCountJogadas();
+
         if (equipaPeca != tabuleiro.getEquipaAJogar()) {
-            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
+            contadorEquipaAJogar.jogadaInvalida();
+            contadorPeca.jogadaInvalida();
             //jogada invalida turno invalido
             return false;
         }
 
         if (!(peca.validMove(x1, y1, tabuleiro))) {
-            contadorEquipaAJogar.jogadaInvalida();   //contadorEquipaPeca.jogadaInvalida();
+            contadorEquipaAJogar.jogadaInvalida();
+            contadorPeca.jogadaInvalida();
             //jogada invalida nao se pode mover para essa coordenada
             return false;
         }
@@ -266,13 +270,15 @@ public class GameManager {
 
 
             if (equipaPeca == equipaDestino) {
-                contadorEquipaAJogar.jogadaInvalida();      //contadorEquipaPeca.jogadaInvalida();
+                contadorEquipaAJogar.jogadaInvalida();
+                contadorPeca.jogadaInvalida();
                 //jogada invalida peca da mesma equipa no destino
                 return false;
             } else {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
                 pecaDestino.capturada();
+                peca.adicionarPecaQueCaptorou(pecaDestino.getID());
                 contadorEquipaAJogar.pecaFoiCapturada();    //contadorEquipaPeca.pecaFoiCapturada();
                 tabuleiro.removerPeca(x1, y1);
             }
@@ -297,6 +303,7 @@ public class GameManager {
         tabuleiro.movePeca(x0, y0, x1, y1);
         peca.setCoordenadas(x1, y1);
         contadorEquipaPeca.jogadaValida();
+        contadorPeca.jogadaValida();
         contadorRondas.incrementaRondaAtual();
         tabuleiro.mudarEquipaAjogar();
 
