@@ -475,7 +475,7 @@ public class TestGameManager {
 
 
         boolean mov2 =jogo.move(1,7,1,5 );
-        assertTrue(mov2);
+        assertFalse(mov2); //rainha nao come rainha
         boolean jogada2 = jogo.gameOver();
         assertFalse(jogada2);
 
@@ -484,13 +484,13 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(2,rondaAtual);
-        assertEquals(3,rondaJoker);
+        assertEquals(1,rondaAtual);
+        assertEquals(2,rondaJoker);
         assertEquals(0,rondasSemCaptura);
 
 
         boolean mov3 =jogo.move(2,0,4,2 );
-        assertTrue(mov3);
+        assertFalse(mov3); // equipa branca a jogar ainda
         boolean jogada3 = jogo.gameOver();
         assertFalse(jogada3);
 
@@ -499,9 +499,9 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(3,rondaAtual);
-        assertEquals(4,rondaJoker);
-        assertEquals(1,rondasSemCaptura);
+        assertEquals(1,rondaAtual);
+        assertEquals(2,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
 
 
         boolean mov4 =jogo.move(3,7,6,4 );
@@ -514,9 +514,9 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(4,rondaAtual);
-        assertEquals(5,rondaJoker);
-        assertEquals(2,rondasSemCaptura);
+        assertEquals(2,rondaAtual);
+        assertEquals(3,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
 
 
         boolean mov5 =jogo.move(5,0,5,1 );
@@ -529,9 +529,9 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(5,rondaAtual);
-        assertEquals(6,rondaJoker);
-        assertEquals(3,rondasSemCaptura);
+        assertEquals(3,rondaAtual);
+        assertEquals(4,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
 
 
         boolean mov6 =jogo.move(6,4,4,2 );
@@ -544,8 +544,8 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(6,rondaAtual);
-        assertEquals(1,rondaJoker);
+        assertEquals(4,rondaAtual);
+        assertEquals(5,rondaJoker);
         assertEquals(0,rondasSemCaptura);
 
 
@@ -555,9 +555,9 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(5,rondaAtual);
-        assertEquals(6,rondaJoker);
-        assertEquals(3,rondasSemCaptura);
+        assertEquals(3,rondaAtual);
+        assertEquals(4,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
 
         jogo.undo();
         contadorRondas = tabuleiro.getContadorRondas();
@@ -565,9 +565,9 @@ public class TestGameManager {
         rondaJoker = contadorRondas.getRondasJoker();
         rondasSemCaptura = contadorRondas.getRondasSemCaptura();
 
-        assertEquals(4,rondaAtual);
-        assertEquals(5,rondaJoker);
-        assertEquals(2,rondasSemCaptura);
+        assertEquals(2,rondaAtual);
+        assertEquals(3,rondaJoker);
+        assertEquals(0,rondasSemCaptura);
 
         jogo.getPieceInfo(8);
         jogo.getPieceInfoAsString(8);
