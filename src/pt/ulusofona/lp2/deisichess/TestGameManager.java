@@ -99,7 +99,7 @@ public class TestGameManager {
 
     @Test
     public void loadComErrosAMais()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","8x8Erros.txt");
+        File file = new File("test-files","8x8ErrosAMais.txt");
         jogo.reset();
         String output = "";
 
@@ -268,6 +268,9 @@ public class TestGameManager {
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
+        String resultComPeca = jogo.getPieceInfoAsString(3);
+        assertEquals("3 | Ponei Mágico | 5 | 10 | O Grande Artista @ (6, 4)", resultComPeca);
+
     }
 
 
@@ -286,6 +289,9 @@ public class TestGameManager {
         assertFalse(move); //retorna false  ta a dormir
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
+
+        String resultComPeca = jogo.getPieceInfoAsString(15);
+        assertEquals("Doh! zzzzzz", resultComPeca);
 
         move =jogo.move(5,0,5,4 );  //move tv preta
         assertTrue(move);
@@ -332,10 +338,15 @@ public class TestGameManager {
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
+        resultComPeca = jogo.getPieceInfoAsString(15);
+        assertEquals("15 | Homer Simpson | 2 | 20 | Homer Jay Simpson @ (5, 4)", resultComPeca);
+
         move =jogo.move(0,5,0,7 );  //move rainha preta captura rei branco
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertTrue(gameOver);
+
+
 
     }
 
