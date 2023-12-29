@@ -476,6 +476,26 @@ public class GameManager {
             writer.write("Equipa a Jogar:"+"\n");
             writer.write("Equipa :"+ tabuleiro.getEquipaAJogar()+"\n");
 
+            writer.write("Estatisticas de cada Peca:"+"\n");
+
+            for(Peca peca : tabuleiro.getListaPecas()){
+                CountJogadas countJogadas = peca.getCountJogadas();
+                writer.write(+peca.getID()+"->"+countJogadas.getJogadasValidas()+":"+countJogadas.getJogadasInvalidas()+":");
+                int count = 0;
+                if(peca.getListaPecasCapturadas().size()>0){
+                    for(Integer pecaQueCapturou : peca.getListaPecasCapturadas()){
+                        if(count == peca.getListaPecasCapturadas().size()-1){
+                            writer.write(pecaQueCapturou+"\n");
+                        }else{
+                            writer.write(pecaQueCapturou+":");
+                        }
+                        count++;
+                    }
+                }else{
+                    writer.write("\n");
+                }
+            }
+
 
 
         } finally {
