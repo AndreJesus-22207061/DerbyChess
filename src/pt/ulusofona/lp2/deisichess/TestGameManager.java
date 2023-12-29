@@ -595,7 +595,7 @@ public class TestGameManager {
 
     @Test
     public void soReis()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","4x4.txt");
+        File file = new File("test-files","4x4pequeno.txt");
         jogo.reset();
         jogo.loadGame(file);
 
