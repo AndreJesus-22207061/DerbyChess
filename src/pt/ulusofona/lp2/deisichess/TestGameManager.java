@@ -772,6 +772,8 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
+        tabuleiro.top5Capturas();
+
         boolean move;
         boolean gameOver;
 

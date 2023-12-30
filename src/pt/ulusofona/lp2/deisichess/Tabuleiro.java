@@ -1,7 +1,6 @@
 package pt.ulusofona.lp2.deisichess;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class Tabuleiro {
     private  int tamanho;
@@ -309,6 +308,32 @@ public class Tabuleiro {
             return true;
         }
         return false;
+    }
+
+
+
+    ArrayList<String> top5Capturas(){
+        ArrayList<Peca> listaDePecas = getListaPecas();
+        Collections.sort(listaDePecas, Comparator.comparingInt((Peca peca )->(peca.getListaPecasCapturadas().size())).reversed());
+
+        ArrayList<String> pecasString = new ArrayList<>();
+
+        for(int i = 0; i <=5 ; i++){
+            Peca peca = listaDePecas.get(i);
+            String pecaString = "";
+
+            if(peca.getEquipa() == 10){
+                pecaString = peca.getAlcunha()+" (PRETA) fez "+peca.getListaPecasCapturadas().size()+" capturas";
+                pecasString.add(pecaString);
+            }else{
+                pecaString = peca.getAlcunha()+" (BRANCA) fez "+peca.getListaPecasCapturadas().size()+" capturas";
+                pecasString.add(pecaString);
+            }
+
+
+        }
+
+        return pecasString;
     }
 
 

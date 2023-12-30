@@ -12,6 +12,10 @@ public class GameManager {
     public GameManager() {
     }
 
+    Tabuleiro getTabuleiro(){
+        return this.tabuleiro;
+    }
+
     public void loadGame(File file) throws
             InvalidGameInputException, IOException {
 
