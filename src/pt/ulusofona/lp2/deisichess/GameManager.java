@@ -99,6 +99,7 @@ public class GameManager {
                         case 5 -> new TorreVertical(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                         case 6 -> new HomerSimpson(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                         case 7 -> new Joker(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
+                        case 8 -> new SapoEncantado(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                         default -> throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
                     };
 

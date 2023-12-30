@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import kotlin.jvm.functions.Function1;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static pt.ulusofona.lp2.deisichess.StatisticsKt.*;
+
 
 public class TestGameManager {
 
@@ -294,13 +297,14 @@ public class TestGameManager {
 
         boolean move;
         boolean gameOver;
+        String resultComPeca = "";
 
         move =jogo.move(6,0,7,1 );  //move homer preto
         assertFalse(move); //retorna false  ta a dormir
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
 
-        String resultComPeca = jogo.getPieceInfoAsString(15);
+        resultComPeca = jogo.getPieceInfoAsString(15);
         assertEquals("Doh! zzzzzz", resultComPeca);
 
         move =jogo.move(5,0,5,4 );  //move tv preta
@@ -332,6 +336,10 @@ public class TestGameManager {
         assertTrue(move);
         gameOver = jogo.gameOver();
         assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(5);
+        assertEquals("5 | TorreHor | 3 | 10 | Artolas @ (5, 0)", resultComPeca);
+
 
         move =jogo.move(7,6,6,5 );  //move homer branca
         assertTrue(move);
@@ -764,16 +772,19 @@ public class TestGameManager {
     }
 
 
+    /////////////////////////////
+
     @Test
-    public void leituraEstatisticasPorPeca()throws IOException, InvalidGameInputException {
+    public void testQuerysStatisticskt()throws IOException, InvalidGameInputException {
         File file = new File("test-files", "8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
-
+        String resultComPeca = "";
         boolean move;
         boolean gameOver;
+
 
         move = jogo.move(1,0,6,5);//rainha preta anda
         assertTrue(move);
@@ -820,6 +831,10 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
+        resultComPeca = jogo.getPieceInfoAsString(14);
+        assertEquals("14 | TorreVert | 3 | 20 | Torre Trapalhona @ (5, 7)", resultComPeca);
+
+
         move = jogo.move(7,7,5,7); //rainha Preta come TorreVert Branca
         assertTrue(move);
         gameOver= jogo.gameOver();
@@ -829,6 +844,9 @@ public class TestGameManager {
         assertTrue(move);
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(12);
+        assertEquals("12 | Padre da Vila | 3 | 20 | Padreco @ (2, 6)", resultComPeca);
 
         move = jogo.move(5,7,4,7); //rainha Preta come TorreHor Branca
         assertTrue(move);
@@ -845,18 +863,180 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
-        jogo.undo();
+        resultComPeca = jogo.getPieceInfoAsString(2);
+        assertEquals("2 | Rainha | 8 | 10 | A Dama Selvagem @ (3, 7)", resultComPeca);
+
+        move = jogo.move(0,7,0,6); //Rei Branco move
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,7,2,7); //rainha Preta come Ponei Branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        //----------------------TOP5CAPTURAS--------------------------------------//
+
+        Function1<GameManager, ArrayList<String>> calculator = getStatsCalculator(StatType.TOP_5_CAPTURAS);
+        ArrayList<String> result = queryTOP5capturas(jogo);
+
+        ArrayList<String> arrayString = new ArrayList<>();
+        String peca1 = "A Dama Selvagem (PRETA) fez 6 capturas";
+        arrayString.add(peca1);
+        String peca2 = "Torre Trapalhona (BRANCA) fez 1 capturas";
+        arrayString.add(peca2);
+        String peca3 = "O Poderoso Chefao (PRETA) fez 0 capturas";
+        arrayString.add(peca3);
+        String peca4 = "O Grande Artista (PRETA) fez 0 capturas";
+        arrayString.add(peca4);
+        String peca5 = "Amante de Praia (PRETA) fez 0 capturas";
+        arrayString.add(peca5);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------TOP5PONTOS---------------------------------------//
+
+        calculator = getStatsCalculator(StatType.TOP_5_PONTOS);
+        result = queryTOP5pontos(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "A Dama Selvagem (PRETA) tem 20 pontos";
+        arrayString.add(peca1);
+        peca2 = "Torre Trapalhona (BRANCA) tem 3 pontos";
+        arrayString.add(peca2);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------PecasCom+5Capturas------------------------//
+
+        calculator = getStatsCalculator(StatType.PECAS_MAIS_5_CAPTURAS);
+        result = queryPecasComMais5capturas(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "PRETA:A Dama Selvagem:6";
+        arrayString.add(peca1);
 
 
+        assertArrayEquals(result.toArray(), arrayString.toArray());
 
 
+        //----------------------TOP3PecasMaisBARALHADAS----------------------//
 
-        tabuleiro.top3Baralhadas();
+        calculator = getStatsCalculator(StatType.PECAS_MAIS_BARALHADAS);
+        result = queryTOP3Barralhadas(jogo);
 
+        arrayString = new ArrayList<>();
+        peca1 = "20:O Bobo da Corte:1:0";
+        arrayString.add(peca1);
+        peca2 = "20:Torre Trapalhona:1:2";
+        arrayString.add(peca2);
+        peca3 = "10:A Dama Selvagem:1:7";
+        arrayString.add(peca3);
 
+        assertArrayEquals(result.toArray(), arrayString.toArray());
 
+        //----------------------TiposPecasCapturados-------------------------//
+
+        calculator = getStatsCalculator(StatType.TIPOS_CAPTURADOS);
+        result = queryTiposPecasCapturados(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "Homer Simpson";
+        arrayString.add(peca1);
+        peca2 = "Joker/Ponei Mágico";
+        arrayString.add(peca2);
+        peca3 = "Padre da Vila";
+        arrayString.add(peca3);
+        String peca6 = "Ponei Mágico";
+        arrayString.add(peca6);
+        peca4 = "TorreHor";
+        arrayString.add(peca4);
+        peca5 = "TorreVert";
+        arrayString.add(peca5);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+        //------------------------Undo------------------------------------------
+        jogo.undo();    //UNDOOOOOOO !!!!!!!!!!!!
+
+        //----------------------TOP5CAPTURAS--------------------------------------//
+
+        calculator = getStatsCalculator(StatType.TOP_5_CAPTURAS);
+        result = queryTOP5capturas(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "A Dama Selvagem (PRETA) fez 5 capturas";
+        arrayString.add(peca1);
+        peca2 = "Torre Trapalhona (BRANCA) fez 1 capturas";
+        arrayString.add(peca2);
+        peca3 = "O Poderoso Chefao (PRETA) fez 0 capturas";
+        arrayString.add(peca3);
+        peca4 = "O Grande Artista (PRETA) fez 0 capturas";
+        arrayString.add(peca4);
+        peca5 = "Amante de Praia (PRETA) fez 0 capturas";
+        arrayString.add(peca5);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------TOP5PONTOS---------------------------------------//
+
+        calculator = getStatsCalculator(StatType.TOP_5_PONTOS);
+        result = queryTOP5pontos(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "A Dama Selvagem (PRETA) tem 15 pontos";
+        arrayString.add(peca1);
+        peca2 = "Torre Trapalhona (BRANCA) tem 3 pontos";
+        arrayString.add(peca2);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------PecasCom+5Capturas------------------------//
+
+        calculator = getStatsCalculator(StatType.PECAS_MAIS_5_CAPTURAS);
+        result = queryPecasComMais5capturas(jogo);
+
+        arrayString = new ArrayList<>();
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------TOP3PecasMaisBARALHADAS----------------------//
+
+        calculator = getStatsCalculator(StatType.PECAS_MAIS_BARALHADAS);
+        result = queryTOP3Barralhadas(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "20:O Bobo da Corte:1:0";
+        arrayString.add(peca1);
+        peca2 = "20:Torre Trapalhona:1:2";
+        arrayString.add(peca2);
+        peca3 = "10:A Dama Selvagem:1:6";
+        arrayString.add(peca3);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
+
+        //----------------------TiposPecasCapturados-------------------------//
+
+        calculator = getStatsCalculator(StatType.TIPOS_CAPTURADOS);
+        result = queryTiposPecasCapturados(jogo);
+
+        arrayString = new ArrayList<>();
+        peca1 = "Homer Simpson";
+        arrayString.add(peca1);
+        peca2 = "Joker/Rainha";
+        arrayString.add(peca2);
+        peca3 = "Padre da Vila";
+        arrayString.add(peca3);
+        peca4 = "TorreHor";
+        arrayString.add(peca4);
+        peca5 = "TorreVert";
+        arrayString.add(peca5);
+
+        assertArrayEquals(result.toArray(), arrayString.toArray());
 
     }
+
+
 
 
 

@@ -1,0 +1,28 @@
+8
+18
+1:0:10:O Poderoso Chefao
+2:1:10:A Dama Selvagem
+3:2:10:O Grande Artista
+4:3:10:Amante de Praia
+5:4:10:Artolas
+6:5:10:O Maior Grande
+7:6:10:Hommie
+8:7:10:O Beberolas
+9:8:10:Natália Harkavenko
+10:0:20:Chefe dos Indios
+11:1:20:A Barulhenta do Bairro
+12:2:20:My Little Pony
+13:3:20:Padreco
+14:4:20:Torre Padreco
+15:5:20:Torre Trapalhona
+16:6:20:Homer Jay Simpson
+17:7:20:O Bobo da Corte
+18:8:20:Susana Simões
+1:2:3:4:5:6:7:8
+9:0:0:0:0:0:0:0
+0:0:0:0:0:0:0:0
+0:0:0:0:0:0:0:0
+0:0:0:0:0:0:0:0
+0:0:0:0:0:0:0:0
+18:0:0:0:0:0:0:0
+10:11:12:13:14:15:16:17
