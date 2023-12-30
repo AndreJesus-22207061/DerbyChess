@@ -243,6 +243,7 @@ public class Tabuleiro {
 
         if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
             Peca pecaCapturada = getPecaPorIDLista(idPecaCapturada);
+            pecaQueJogou.getListaPecasCapturadas().remove(idPecaCapturada);
             pecaCapturada.reativar(xDestino,yDestino);
             colocaPecaNoTabuleiro(pecaCapturada,xDestino,yDestino);
         }

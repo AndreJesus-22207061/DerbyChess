@@ -20,7 +20,10 @@ public class Jogada {
 
     private int jogadasInvalidas;
 
-    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura , int rondaAtual , int rondaJoker , int rondaSemCaptura, int jogadasInvalidas ) {
+    private int jogadasInvalidasPeca;
+
+    public Jogada(int xOrigem, int yOrigem, int xDestino, int yDestino, boolean captura , int rondaAtual , int rondaJoker
+            , int rondaSemCaptura, int jogadasInvalidas,int jogadasInvalidaPeca ) {
         this.xOrigem = xOrigem;
         this.yOrigem = yOrigem;
         this.xDestino = xDestino;
@@ -30,6 +33,7 @@ public class Jogada {
         this.rondaJoker = rondaJoker;
         this.rondaSemCaptura = rondaSemCaptura;
         this.jogadasInvalidas = jogadasInvalidas;
+        this.jogadasInvalidasPeca = jogadasInvalidaPeca;
     }
 
     public int getXOrigem() {
@@ -46,6 +50,10 @@ public class Jogada {
 
     public int getYDestino() {
         return yDestino;
+    }
+
+    public int getJogadasInvalidasPeca(){
+        return this.jogadasInvalidasPeca;
     }
 
     public boolean houveCaptura() {
