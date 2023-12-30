@@ -790,10 +790,6 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
-
-
-
-
         move = jogo.move(6,5,7,6);//rainha preta anda e captura Hommer branco
         assertTrue(move);
         gameOver= jogo.gameOver();
@@ -859,6 +855,69 @@ public class TestGameManager {
 
 
 
+
+    }
+
+
+
+    @Test
+    public void getHints()throws IOException, InvalidGameInputException {
+        File file = new File("test-files", "8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        boolean move;
+        boolean gameOver;
+
+
+
+        move = jogo.move(1,0,1,5);//rainha preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,7,0,6); //rei branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,0,0,3); //PV preto anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,7,6,2); //rainha branca anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,3,1,4); //PV preto anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(6,2,6,3); //rainha branca anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,4,0,5); //PV preto anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+
+
+
+
+        String expected;
+        expected = jogo.getHints(0,6).toString(); // sugestao rainha
+
+        String obtained;
+        obtained = "[(0,5) -> 3, (0,7) -> 0, (1,5) -> 8, (1,6) -> 0, (1,7) -> 0]";
+        assertEquals(expected,obtained);
 
     }
 
