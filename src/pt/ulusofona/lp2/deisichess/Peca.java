@@ -103,6 +103,15 @@ public abstract class Peca {
         return this.listaPecasCapturadas;
     }
 
+    void removePecaCapturada(int ID){
+        for(Integer id : listaPecasCapturadas){
+            if(ID == id ){
+                listaPecasCapturadas.remove(id);
+                break;
+            }
+        }
+    }
+
     void adicionarPecaQueCaptorou(int id){
         this.listaPecasCapturadas.add(id);
     }

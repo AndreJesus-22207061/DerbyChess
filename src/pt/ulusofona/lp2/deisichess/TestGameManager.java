@@ -766,16 +766,98 @@ public class TestGameManager {
 
     @Test
     public void leituraEstatisticasPorPeca()throws IOException, InvalidGameInputException {
-        File file = new File("test-files", "teste3.txt");
+        File file = new File("test-files", "8x8.txt");
         jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        tabuleiro.top3Baralhadas();
-
         boolean move;
         boolean gameOver;
+
+        move = jogo.move(1,0,6,5);//rainha preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(6,7,7,6); //Hommer branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(6,5,0,6); //rainha preta invalido
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+
+
+
+
+        move = jogo.move(6,5,7,6);//rainha preta anda e captura Hommer branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(7,7,7,6); //joker branco Invalido
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(5,7,5,0);//TorreVer Branca come TorreVer Preta
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(7,6,7,7); //rainha Preta come Joker Branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(5,0,7,6);//TorreVer Branca invalido
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(5,0,5,7);//TorreVer Branca anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(7,7,5,7); //rainha Preta come TorreVert Branca
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,7,2,6);//Padre Branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(5,7,4,7); //rainha Preta come TorreHor Branca
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(2,6,3,7); //Padre Branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(4,7,3,7); //rainha Preta come Padre Branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        jogo.undo();
+
+
+
+
+
+        tabuleiro.top3Baralhadas();
+
+
 
 
     }
