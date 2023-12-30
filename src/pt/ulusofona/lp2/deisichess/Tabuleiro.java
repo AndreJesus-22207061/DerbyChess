@@ -400,6 +400,80 @@ public class Tabuleiro {
 
 
 
+    ArrayList<String> tiposPecasCapturados(){
+        ArrayList<Peca> listaDePecas = getListaPecas();
+
+        ArrayList<Integer> tiposDePecas = new ArrayList<>();
+
+        ArrayList<Peca> listaPecasTipoUnico = new ArrayList<>();
+
+
+        for(Peca peca : listaDePecas){
+            if(!tiposDePecas.contains(peca.getTipo()) && !peca.getEstado()){
+                listaPecasTipoUnico.add(peca);
+                tiposDePecas.add(peca.getTipo());
+            }
+        }
+
+        Collections.sort(listaPecasTipoUnico, Comparator.comparing((Peca peca )->(peca.getTipoString(getContadorRondas()))));
+
+        ArrayList<String> pecasString = new ArrayList<>();
+
+        for(Peca peca : listaPecasTipoUnico){
+
+                String pecaString = "";
+
+                pecaString = peca.getTipoString(getContadorRondas());
+                pecasString.add(pecaString);
+
+        }
+
+        return pecasString;
+    }
+
+    ArrayList<String> top3Baralhadas(){
+        ArrayList<Peca> listaDePecas = getListaPecas();
+        ArrayList<Peca> pecasComPeloMenos1Invalida = new ArrayList<>();
+
+        for(Peca peca : listaDePecas){
+            CountJogadas countJogadas = peca.getCountJogadas();
+            if(countJogadas.getJogadasInvalidas()>=1){
+                pecasComPeloMenos1Invalida.add(peca);
+            }
+        }
+
+
+
+        Collections.sort(pecasComPeloMenos1Invalida, Comparator.comparingInt((Peca peca) -> peca.mediaJogadas()));
+
+
+        ArrayList<String> pecasString = new ArrayList<>();
+
+        for(int i = 0; i <5 ; i++){
+            if(pecasComPeloMenos1Invalida.size()>i){
+                Peca peca = pecasComPeloMenos1Invalida.get(i);
+                CountJogadas countJogadas = peca.getCountJogadas();
+                int jogadasValidas = countJogadas.getJogadasValidas();
+                int jogadasInvalidas = countJogadas.getJogadasInvalidas();
+
+                String pecaString = "";
+
+                pecaString = peca.getEquipa()+":"+peca.getAlcunha()+":"+jogadasInvalidas+":"+jogadasValidas;
+                pecasString.add(pecaString);
+
+
+
+            }else{
+                break;
+            }
+        }
+
+        return pecasString;
+    }
+
+
+
+
 
 
 }

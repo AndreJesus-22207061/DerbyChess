@@ -12,9 +12,9 @@ public class Rei extends Peca {
     @Override
     String toString(ContadorRondas contadorRondas) {
         if (!getEstado()) {
-            return getID() + " | " + getTipoString() + " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+            return getID() + " | " + getTipoString(contadorRondas) + " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
-        return getID() + " | " + getTipoString() + " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
+        return getID() + " | " + getTipoString(contadorRondas) + " | (infinito) | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Rei extends Peca {
     }
 
     @Override
-    String getTipoString() {
+    String getTipoString(ContadorRondas contadorRondas) {
         return "Rei";
     }
 

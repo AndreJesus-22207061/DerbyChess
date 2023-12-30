@@ -89,7 +89,7 @@ public abstract class Peca {
         return y;
     }
 
-    abstract String getTipoString();
+    abstract String getTipoString(ContadorRondas contadorRondas);
 
     int getValor() {
         return valor;
@@ -117,6 +117,13 @@ public abstract class Peca {
             }
         }
         return pontos;
+    }
+
+    int mediaJogadas(){
+        int jogadasValidas = getCountJogadas().getJogadasValidas();
+        int jogadasInvalidas = getCountJogadas().getJogadasInvalidas();
+
+        return jogadasValidas - jogadasInvalidas;
     }
 
     CountJogadas getCountJogadas(){

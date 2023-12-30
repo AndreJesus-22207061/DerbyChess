@@ -772,7 +772,7 @@ public class TestGameManager {
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        tabuleiro.top5Pontos();
+        tabuleiro.top3Baralhadas();
 
         boolean move;
         boolean gameOver;

@@ -14,9 +14,9 @@ public class Rainha extends Peca{
     String toString(ContadorRondas contadorRondas) {
 
         if(!getEstado()) {
-            return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+            return getID() + " | " +getTipoString(contadorRondas)+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
-        return getID() + " | " +getTipoString()+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
+        return getID() + " | " +getTipoString(contadorRondas)+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
     }
 
 
@@ -37,7 +37,7 @@ public class Rainha extends Peca{
 
 
     @Override
-    String getTipoString() {
+    String getTipoString(ContadorRondas contadorRondas) {
         return "Rainha";
     }
 

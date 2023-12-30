@@ -9,19 +9,21 @@ public class Joker extends Peca {
 
     @Override
     String toString(ContadorRondas contadorRondas) {
-        int rondas = contadorRondas.getRondasJoker();
-        Peca pecaAtual = obterPecaCorrespondente(rondas);
-        String tipoPecaString = pecaAtual.getTipoString();
+
 
         if(!getEstado()) {
-            return getID() + " | "+getTipoString()+ tipoPecaString + " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
+            return getID() + " | "+getTipoString(contadorRondas)+ " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
         }
-        return  getID() + " | "+getTipoString()+ tipoPecaString + " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
+        return  getID() + " | "+getTipoString(contadorRondas)+  " | "+getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (" + getX() + ", " + getY() + ")";
     }
 
     @Override
-    String getTipoString() {
-        return "Joker/";
+    String getTipoString(ContadorRondas contadorRondas) {
+        int rondas = contadorRondas.getRondasJoker();
+        Peca pecaAtual = obterPecaCorrespondente(rondas);
+        String tipoPecaString = pecaAtual.getTipoString(contadorRondas);
+
+        return "Joker/"+ tipoPecaString;
     }
 
     @Override
