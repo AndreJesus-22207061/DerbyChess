@@ -336,6 +336,31 @@ public class Tabuleiro {
         return pecasString;
     }
 
+    ArrayList<String> pecasComMais5capturas(){
+        ArrayList<Peca> listaDePecas = getListaPecas();
+        Collections.sort(listaDePecas, Comparator.comparingInt((Peca peca )->(peca.getListaPecasCapturadas().size())).reversed());
+
+        ArrayList<String> pecasString = new ArrayList<>();
+
+
+        for(Peca peca:listaDePecas){
+            if(peca.getListaPecasCapturadas().size() > 5){
+                String pecaString = "";
+
+                if(peca.getEquipa() == 10){
+                    pecaString = "PRETA:" + peca.getAlcunha()+":"+ peca.getListaPecasCapturadas().size();
+                    pecasString.add(pecaString);
+                }else{
+                    pecaString = "BRANCA:" + peca.getAlcunha() +":" + peca.getListaPecasCapturadas().size();
+                    pecasString.add(pecaString);
+                }
+
+            }
+        }
+
+        return pecasString;
+    }
+
 
 }
 
