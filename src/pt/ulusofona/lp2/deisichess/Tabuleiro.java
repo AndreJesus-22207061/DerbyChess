@@ -319,7 +319,7 @@ public class Tabuleiro {
 
         ArrayList<String> pecasString = new ArrayList<>();
 
-        for(int i = 0; i <=5 ; i++){
+        for(int i = 0; i <5 ; i++){
             Peca peca = listaDePecas.get(i);
             String pecaString = "";
 
@@ -450,7 +450,7 @@ public class Tabuleiro {
 
         ArrayList<String> pecasString = new ArrayList<>();
 
-        for(int i = 0; i <5 ; i++){
+        for(int i = 0; i <3 ; i++){
             if(pecasComPeloMenos1Invalida.size()>i){
                 Peca peca = pecasComPeloMenos1Invalida.get(i);
                 CountJogadas countJogadas = peca.getCountJogadas();
