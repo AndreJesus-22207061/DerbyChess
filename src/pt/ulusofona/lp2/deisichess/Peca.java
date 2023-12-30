@@ -107,6 +107,18 @@ public abstract class Peca {
         this.listaPecasCapturadas.add(id);
     }
 
+    int pontosCapturados(ArrayList<Peca> listaDePecas){
+        int pontos = 0;
+        for(int id : listaPecasCapturadas){
+            for(Peca peca : listaDePecas){
+                if(peca.getID()== id){
+                    pontos = pontos+peca.getValor();
+                }
+            }
+        }
+        return pontos;
+    }
+
     CountJogadas getCountJogadas(){
         return this.countJogadas;
     }

@@ -361,6 +361,46 @@ public class Tabuleiro {
         return pecasString;
     }
 
+    ArrayList<String> top5Pontos(){
+        ArrayList<Peca> listaDePecas = getListaPecas();
+        ArrayList<Peca> pecasComPeloMenos1Capt = new ArrayList<>();
+
+        for(Peca peca : listaDePecas){
+            if(peca.getListaPecasCapturadas().size() >= 1){
+                pecasComPeloMenos1Capt.add(peca);
+            }
+        }
+
+        Collections.sort(pecasComPeloMenos1Capt, Comparator
+                .comparingInt((Peca peca) -> peca.pontosCapturados(listaDePecas)).reversed()
+                .thenComparing(Comparator.comparing(Peca::getAlcunha)));
+
+        ArrayList<String> pecasString = new ArrayList<>();
+
+        for(int i = 0; i <5 ; i++){
+            if(pecasComPeloMenos1Capt.size()>i){
+                Peca peca = pecasComPeloMenos1Capt.get(i);
+                String pecaString = "";
+
+                if(peca.getEquipa() == 10){
+                    pecaString = peca.getAlcunha()+" (PRETA) tem "+peca.pontosCapturados(listaDePecas)+" pontos";
+                    pecasString.add(pecaString);
+                }else{
+                    pecaString = peca.getAlcunha()+" (BRANCA) tem "+peca.pontosCapturados(listaDePecas)+" pontos";
+                    pecasString.add(pecaString);
+                }
+            }else{
+                break;
+            }
+        }
+
+        return pecasString;
+    }
+
+
+
+
+
 
 }
 

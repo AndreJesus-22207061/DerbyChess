@@ -766,13 +766,13 @@ public class TestGameManager {
 
     @Test
     public void leituraEstatisticasPorPeca()throws IOException, InvalidGameInputException {
-        File file = new File("test-files", "teste1.txt");
+        File file = new File("test-files", "teste3.txt");
         jogo.reset();
         jogo.loadGame(file);
 
         Tabuleiro tabuleiro = jogo.tabuleiro;
 
-        tabuleiro.top5Capturas();
+        tabuleiro.top5Pontos();
 
         boolean move;
         boolean gameOver;
