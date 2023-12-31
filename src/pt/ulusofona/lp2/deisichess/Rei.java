@@ -25,9 +25,9 @@ public class Rei extends Peca {
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "ReiPreto.png";
+            this.imagem = "pecaPreta.png";
         }else{
-            this.imagem = "ReiBranco.png";
+            this.imagem = "pecaBranca.png";
         }
     }
 
