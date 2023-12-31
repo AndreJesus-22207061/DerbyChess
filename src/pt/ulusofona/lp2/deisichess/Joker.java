@@ -34,9 +34,9 @@ public class Joker extends Peca {
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "joker_black.png";
+            this.imagem = "JokerPreto.png";
         }else{
-            this.imagem = "joker_white.png";
+            this.imagem = "JokerBranco.png";
         }
     }
 

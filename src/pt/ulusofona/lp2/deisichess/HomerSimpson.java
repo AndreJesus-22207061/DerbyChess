@@ -37,9 +37,9 @@ public class HomerSimpson extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "homer_black.png";
+            this.imagem = "HomerPreto.png";
         }else{
-            this.imagem = "homer_white.png";
+            this.imagem = "HomerBranco.png";
         }
     }
 

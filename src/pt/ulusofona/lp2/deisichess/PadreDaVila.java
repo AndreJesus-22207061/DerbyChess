@@ -30,9 +30,9 @@ public class PadreDaVila extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "padre_vila_black.png";
+            this.imagem = "PadrePreto.png";
         }else{
-            this.imagem = "padre_vila_white.png";
+            this.imagem = "PadreBranco.png";
         }
     }
 

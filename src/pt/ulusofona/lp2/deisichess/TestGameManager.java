@@ -1074,7 +1074,7 @@ public class TestGameManager {
         assertFalse(gameOver);
 
 
-
+        //ArrayList<Comparable> sugestoes = tabuleiro.get
 
 
         String expected;
@@ -1149,6 +1149,53 @@ public class TestGameManager {
 
         jogo.loadGame(file1);
 
+
+
+    }
+
+    @Test
+    public void sapoEncantado()throws IOException, InvalidGameInputException {
+        File file = new File("test-files", "8x8TesteSapo.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        String resultComPeca = "";
+        boolean move;
+        boolean gameOver;
+
+        move = jogo.move(1,0,1,5);//RainhaPreta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,6,2,4); //sapo n anda pois n salta por peca equipa diferente
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,6,0,3); //sapo n anda pois n salta tantas casas
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,6,0,4); //sapo anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,0,1,0);//ReiPreto anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,4,1,5); //sapo anda e captura rainhaPreta
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        resultComPeca = jogo.getPieceInfoAsString(18);
+        assertEquals("18 | Sapo Encantado | 5 | 20 | Susana Simões @ (1, 5)", resultComPeca);
 
 
     }
