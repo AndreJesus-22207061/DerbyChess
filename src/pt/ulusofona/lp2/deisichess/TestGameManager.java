@@ -757,8 +757,6 @@ public class TestGameManager {
     }
 
 
-    /////////////////////////////
-
     @Test
     public void testQuerysStatisticskt()throws IOException, InvalidGameInputException {
         File file = new File("test-files", "8x8.txt");
@@ -1073,10 +1071,6 @@ public class TestGameManager {
         gameOver= jogo.gameOver();
         assertFalse(gameOver);
 
-
-        //ArrayList<Comparable> sugestoes = tabuleiro.get
-
-
         String expected;
         expected = jogo.getHints(0,6).toString(); // sugestao rainha
 
@@ -1148,8 +1142,9 @@ public class TestGameManager {
         jogo.saveGame(file1);
 
         jogo.loadGame(file1);
-
-
+        jogo.getAuthorsPanel();
+        jogo.getBoardSize();
+        jogo.getCurrentTeamID();
 
     }
 
