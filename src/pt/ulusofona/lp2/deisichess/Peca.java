@@ -56,9 +56,6 @@ public abstract class Peca {
         return Objects.hash(id, tipo, equipa, alcunha, estado, x, y, valor);
     }
 
-    protected void setTipo(int tipo){
-        this.tipo = tipo;
-    }
 
 
     int getID() {

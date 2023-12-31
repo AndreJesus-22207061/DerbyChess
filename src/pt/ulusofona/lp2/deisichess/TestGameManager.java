@@ -171,7 +171,7 @@ public class TestGameManager {
 
         // -------------------Teste para coordenadas com peça-------------------------------
         String[] resultComPeca = jogo.getSquareInfo(0, 0);
-        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", "crazy_emoji_black.png"}, resultComPeca);
+        assertArrayEquals(new String[]{"1", "0", "10", "O Poderoso Chefao", "ReiPreto.png"}, resultComPeca);
 
 
         // ------------------ Teste para coordenadas sem peça-----------------------------
@@ -622,21 +622,6 @@ public class TestGameManager {
 
 
 
-    @Test
-    public void rainhaSugestao()throws IOException, InvalidGameInputException {
-        File file = new File("test-files","8x8.txt");
-        jogo.reset();
-        jogo.loadGame(file);
-
-        Tabuleiro tabuleiro = jogo.tabuleiro;
-
-        jogo.getHints(1,0);
-
-
-
-
-
-    }
 
     @Test
     public void soReis()throws IOException, InvalidGameInputException {
@@ -1100,6 +1085,76 @@ public class TestGameManager {
         assertEquals(expected,obtained);
 
     }
+
+    @Test
+    public void testSave_Load()throws IOException, InvalidGameInputException {
+        File file = new File("test-files", "8x8.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+
+        boolean move;
+        boolean gameOver;
+
+
+
+        move = jogo.move(5,0,5,7);//TorreVer preta como TorreVer branca
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(4,7,4,6); //torreHor Branca move se invalido
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(2,7,4,5); //Ponei Magico Branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,0,0,3); //rainha Preta anda invalido
+        assertFalse(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,0,1,5); //Rainha Preta anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,7,1,5); //Padre Branco Come rainha preta
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(3,0,5,2); //Padre preto anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(4,5,6,3); //Ponei Branco anda
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(5,2,6,3); //Padre preto como ponei branco
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        File file1 = new File("test-files", "8x8Save.txt");
+        jogo.saveGame(file1);
+
+        jogo.loadGame(file1);
+
+
+
+    }
+
+
+
 
 
 

@@ -25,9 +25,9 @@ public class Rei extends Peca {
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = "crazy_emoji_black.png";
+            this.imagem = "ReiPreto.png";
         }else{
-            this.imagem = "crazy_emoji_white.png";
+            this.imagem = "ReiBranco.png";
         }
     }
 

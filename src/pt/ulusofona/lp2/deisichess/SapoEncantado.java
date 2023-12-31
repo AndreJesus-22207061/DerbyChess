@@ -28,9 +28,9 @@ public class SapoEncantado extends Peca{
     @Override
     void defenirImagem(){
         if(getEquipa()==10){
-            this.imagem = null;
+            this.imagem = "SapoEncantadoPreto.png";
         }else{
-            this.imagem = null;
+            this.imagem = "SapoEncantadoBranco.png";
         }
     }
 
