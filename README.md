@@ -3,7 +3,7 @@
 Projeto no âmbito da cadeira de Linguagens de Programação II , jogo de "xadrez" programado em Java e Kotlin.
 
  Criadores:
- Tomás Nave
+ Tomás Nave /
  André Jesus
 
  Imagem Jogo:
