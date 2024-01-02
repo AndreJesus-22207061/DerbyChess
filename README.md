@@ -6,7 +6,8 @@ A peça que criámos é o Sapo Encantado, e quando é capturada tem o valor de 5
 
 Imagem Peças Costum:
 
-![image](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127041806/73f977a0-f4a1-4acb-a50b-0d3471feb222)
+![printJogo](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/57a73c25-3150-4a2e-b122-b7125460685a)
+
 
 Imagem Créditos Costum:
 
