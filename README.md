@@ -26,8 +26,8 @@ Imagem Créditos:
 
 Diagrama UML:
 
+![UML drawio (3)](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/05152476-633a-44c8-8b3b-54687830b1f8)
 
-![UML drawio (2)](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/2b31ee8f-7d2e-4ebd-8b99-991615f35940)
 
 
 
