@@ -636,9 +636,16 @@ public class GameManager {
 
     public Map<String, String> customizeBoard() {
 
-        Map<String, String> aaa = new HashMap<>();
+        Map<String, String> tabuleiroCostum = new HashMap<>();
+        tabuleiroCostum.put("title", "DERBI CHESS");
+        tabuleiroCostum.put("imageBlackSquare","quadradoPreto.png");
+        tabuleiroCostum.put("imageWhiteSquare", "quadradoBranco.png");
+        tabuleiroCostum.put("imageBackground", "campoFutebol.png");
+        tabuleiroCostum.put("boardMarginTop", "0");
+        tabuleiroCostum.put("boardMarginBottom", "1");
 
-        return aaa;
+
+        return tabuleiroCostum;
     }
 
 
