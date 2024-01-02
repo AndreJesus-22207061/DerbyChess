@@ -1145,6 +1145,7 @@ public class TestGameManager {
         jogo.getAuthorsPanel();
         jogo.getBoardSize();
         jogo.getCurrentTeamID();
+        jogo.customizeBoard();
 
     }
 
@@ -1196,6 +1197,64 @@ public class TestGameManager {
     }
 
 
+    @Test
+    public void testeMenuFinal()throws IOException, InvalidGameInputException {
+        File file = new File("test-files", "8x8TesteSapo.txt");
+        jogo.reset();
+        jogo.loadGame(file);
+
+        Tabuleiro tabuleiro = jogo.tabuleiro;
+        String resultComPeca = "";
+        boolean move;
+        boolean gameOver;
+
+        move = jogo.move(1,0,1,5);
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(0,7,1,6);
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertFalse(gameOver);
+
+        move = jogo.move(1,5,1,6);
+        assertTrue(move);
+        gameOver= jogo.gameOver();
+        assertTrue(gameOver);
+
+        ArrayList<String> menuFinal = new ArrayList<>();
+
+        String linha1 = "JOGO DE CRAZY CHESS";
+        String linha2 = "Resultado: VENCERAM AS PRETAS" ;
+        String linha3 = "---";
+        String linha4="Equipa das Pretas";
+        String linha5= "1";
+        String linha6= "2";
+        String linha7= "0";
+        String linha8="Equipa das Brancas";
+        String linha9= "0";
+        String linha10 = "1";
+        String linha11 = "0";
+
+        menuFinal.add(linha1);
+        menuFinal.add(linha2);
+        menuFinal.add(linha3);
+        menuFinal.add(linha4);
+        menuFinal.add(linha5);
+        menuFinal.add(linha6);
+        menuFinal.add(linha7);
+        menuFinal.add(linha8);
+        menuFinal.add(linha9);
+        menuFinal.add(linha10);
+        menuFinal.add(linha11);
+
+        assertArrayEquals(menuFinal.toArray(),jogo.getGameResults().toArray());
+
+
+
+
+    }
 
 
 
