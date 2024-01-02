@@ -1,5 +1,11 @@
 # Projeto_LP2-22207061-22208623
 
+Projeto no âmbito da cadeira de Linguagens de Programação II , jogo de "xadrez" programado em Java e Kotlin.
+
+ Criadores:
+ Tomás Nave
+ André Jesus
+
  Imagem Jogo:
 
 ![printJogo](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/57a73c25-3150-4a2e-b122-b7125460685a)
