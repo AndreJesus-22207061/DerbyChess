@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class PadreDaVila extends Peca{
+public class PadreDaVila extends Peca{ //anda no maximo 3 na diagonal
 
     public PadreDaVila(int id,int tipo, int equipa, String alcunha) {
         super(id,tipo, equipa, alcunha);
@@ -46,7 +46,7 @@ public class PadreDaVila extends Peca{
         // Verificar se a posição de destino está na diagonal
         int deltaX = Math.abs(xFinal - getX());
         int deltaY = Math.abs(yFinal - getY());
-        if (deltaX != deltaY || deltaX > 3) { //Fazer retas no papel
+        if (deltaX != deltaY || deltaX > 3) { //tem que ser iguais e menor ou igual que 3
             return false;
         }
 

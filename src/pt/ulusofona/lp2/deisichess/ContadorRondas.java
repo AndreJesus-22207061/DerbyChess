@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess;
 
 public class ContadorRondas {
 
-    private int rondasJoker= 1;
+    private int rondasJoker= 1;    // dá reset ou é incrementado na funcao move
 
     private int rondasSemCaptura = 0;
 

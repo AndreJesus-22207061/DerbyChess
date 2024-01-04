@@ -2,7 +2,7 @@ package pt.ulusofona.lp2.deisichess;
 
 import java.util.Objects;
 
-public class Rainha extends Peca{
+public class Rainha extends Peca{ // anda no maximo 5 em todas as direcoes
 
     public Rainha(int id, int tipo, int equipa, String alcunha) {
         super(id, tipo, equipa, alcunha);
@@ -52,10 +52,10 @@ public class Rainha extends Peca{
 
         ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
-        //Vreifica se a peca que vamos capturar é uma rainha
+        //Verifica se a peca que vamos capturar é uma rainha
         if(peca != null){
             if(peca.getTipo()==1 || ( peca.getTipo()==7 && contadorRondas.getRondasJoker()==1 )){
-                return false;
+                return false;    // nao poder capturar uma rainha ou um joker com rainha
             }
         }
 
@@ -63,7 +63,7 @@ public class Rainha extends Peca{
         int deltaX = Math.abs(xFinal - getX());
         int deltaY = Math.abs(yFinal - getY());
         if (deltaX > 5 || deltaY > 5 || (deltaX != 0 && deltaY != 0 && deltaX != deltaY)) {
-            return false;
+            return false;             // deltax e delta y iguais se for na diagonal
         }
 
         // Verificar se há peças no caminho

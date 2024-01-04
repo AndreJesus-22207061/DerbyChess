@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class Joker extends Peca {
+public class Joker extends Peca {  // rainha -> hommer
     public Joker(int id,int tipo ,int equipa, String alcunha) {
         super(id,tipo ,equipa, alcunha);
         definirPontos();
@@ -82,7 +82,6 @@ public class Joker extends Peca {
                 HomerSimpson peca6 = new HomerSimpson(getID(),getTipo(), getEquipa(), getAlcunha());
                 peca6.setCoordenadas(getX(),getY());
                 return peca6;
-
             default:
                 throw new IllegalArgumentException("Tipo de peça inválido");
         }

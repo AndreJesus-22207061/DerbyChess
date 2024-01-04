@@ -1,42 +1,34 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class TorreHorizontal extends Peca {  // nao tem limite de movimento na horizontal
+public class divil extends Peca{
 
-    public TorreHorizontal(int id,int tipo, int equipa, String alcunha) {
-        super(id,tipo, equipa, alcunha);
+    public divil(int id, int tipo, int equipa, String alcunha) {
+        super(id, tipo, equipa, alcunha);
         definirPontos();
         defenirImagem();
-
     }
+
+
 
     @Override
     String toString(ContadorRondas contadorRondas) {
-        if(!getEstado()) {
-            return getID() + " | " +getTipoString(contadorRondas)+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() + " @ (n/a)";
-        }
-        return getID() + " | " +getTipoString(contadorRondas)+ " | " +getValor()+ " | " + getEquipa() + " | " + getAlcunha() +  " @ (" + getX() + ", " + getY() + ")";
-
+        return null;
     }
 
     @Override
     String getTipoString(ContadorRondas contadorRondas) {
-        return "TorreHor";
+        return null;
     }
 
     @Override
     void definirPontos() {
-        this.valor = 3;
+        this.valor = 8;
     }
 
     @Override
-    void defenirImagem(){
-        if(getEquipa()==10){
-            this.imagem = "TorrePretaH.png";
-        }else{
-            this.imagem = "TorreBrancaH.png";
-        }
+    void defenirImagem() {
+        this.imagem = null;
     }
-
     @Override
     boolean validMove(int xFinal, int yFinal, Tabuleiro tabuleiro) {
         // Verificar se a posição de destino está dentro do tabuleiro
@@ -44,22 +36,24 @@ public class TorreHorizontal extends Peca {  // nao tem limite de movimento na h
             return false;
         }
 
-        // Verificar se a posição de destino está na mesma linha horizontal
-        if (yFinal != getY()) {
+        // Verificar se a posição de destino está na diagonal
+        int deltaX = Math.abs(xFinal - getX());
+        int deltaY = Math.abs(yFinal - getY());
+        if (deltaX != deltaY || deltaX > 5) { //tem que ser iguais e menor ou igual que 3
             return false;
         }
 
-        int deltaX = Math.abs(xFinal - getX());
-
         // Verificar se há peças no caminho
         int stepX = (xFinal - getX()) / Math.max(1, deltaX);
+        int stepY = (yFinal - getY()) / Math.max(1, deltaY);
 
         for (int i = 1; i < deltaX; i++) {
             int currentX = getX() + i * stepX;
+            int currentY = getY() + i * stepY;
 
             // Verificar se há uma peça na posição atual do caminho
-            if (tabuleiro.getPeca(currentX, yFinal) != null) {
-                return false;
+            if (tabuleiro.getPeca(currentX, currentY) != null) {
+                return false; // Movimento inválido devido a uma peça no caminho
             }
         }
 
@@ -67,8 +61,5 @@ public class TorreHorizontal extends Peca {  // nao tem limite de movimento na h
         Peca pecaDestino = tabuleiro.getPeca(xFinal, yFinal);
         return pecaDestino == null || pecaDestino.getEquipa() != getEquipa();
     }
-
-
-
 
 }

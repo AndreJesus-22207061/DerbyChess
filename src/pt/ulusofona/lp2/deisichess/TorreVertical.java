@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisichess;
 
-public class TorreVertical extends Peca{
+public class TorreVertical extends Peca{  // nao tem limite de movimento na vertical
     public TorreVertical(int id, int tipo ,int equipa, String alcunha) {
         super(id,tipo ,equipa, alcunha);
         definirPontos();

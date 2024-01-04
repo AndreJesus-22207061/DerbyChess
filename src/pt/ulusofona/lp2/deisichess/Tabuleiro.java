@@ -94,7 +94,7 @@ public class Tabuleiro {
     void adicionarPecaAEquipa(Peca peca){
         if(peca.getEquipa()==10){
             this.pecasPretas.add(peca);
-        }else{
+        }else if(peca.getEquipa()==20){
             this.pecasBrancas.add(peca);
         }
     }
@@ -127,7 +127,7 @@ public class Tabuleiro {
 
     Jogada obterUltimaJogada() {
         if (!historicoJogadas.isEmpty()) {
-            return historicoJogadas.peek();
+            return historicoJogadas.peek();  // ir buscar jogada de cima da stack
         }
         return null;
     }
@@ -142,7 +142,7 @@ public class Tabuleiro {
     }
 
     void mudarEquipaAjogar(){
-        if(equipaAJogar ==10){
+        if(equipaAJogar ==10){   //alterar o numero da equipa
             equipaAJogar =20;
         }else{
             equipaAJogar =10;
@@ -237,20 +237,20 @@ public class Tabuleiro {
         int yDestino = ultimaJogada.getYDestino();
         int idPecaCapturada = ultimaJogada.getIdPecaCapturada();
 
-        movePeca(xDestino, yDestino, xOrigem, yOrigem);
+        movePeca(xDestino, yDestino, xOrigem, yOrigem);  //mudar no arrayBidi
         Peca pecaQueJogou = getPeca(xOrigem,yOrigem);
-        pecaQueJogou.setCoordenadas(xOrigem,yOrigem);
+        pecaQueJogou.setCoordenadas(xOrigem,yOrigem);    //mudar na peca
 
         if (ultimaJogada.houveCaptura()) {   // Se houve uma captura, reativa a peça capturada
             Peca pecaCapturada = getPecaPorIDLista(idPecaCapturada);
-            pecaQueJogou.removePecaCapturada(idPecaCapturada);
-            pecaCapturada.reativar(xDestino,yDestino);
-            colocaPecaNoTabuleiro(pecaCapturada,xDestino,yDestino);
+            pecaQueJogou.removePecaCapturada(idPecaCapturada);  // tirar na lista de ids da peca
+            pecaCapturada.reativar(xDestino,yDestino);  // muda na peca
+            colocaPecaNoTabuleiro(pecaCapturada,xDestino,yDestino); // muda no array
         }
         historicoJogadas.pop(); // Remove a última jogada do histórico
     }
 
-    void adicionarJogadaAoHistorico(Jogada ultimaJogada) {
+    void adicionarJogadaAoHistorico(Jogada ultimaJogada) {     // push == stack.add
         historicoJogadas.push(ultimaJogada);
     }
 
@@ -262,12 +262,12 @@ public class Tabuleiro {
     ArrayList<String> menuFinal(){
         ArrayList<String> menuFinal = new ArrayList<>();
 
-        CountJogadas contadorBrancas = getContadorEquipa(20);
-        CountJogadas contadorPretas = getContadorEquipa(10);
+        CountJogadas contadorBrancas = getContadorEquipa(20);  /// Mudar equipa : getContadorEquipa(idEquipa)
+        CountJogadas contadorPretas = getContadorEquipa(10);   /// Mudar equipa : getContadorEquipa(idEquipa)
 
 
         String linha1 = "JOGO DE CRAZY CHESS";
-        String linha2 = "Resultado: " +contadorRondas.getResultado();
+        String linha2 = "Resultado: " +contadorRondas.getResultado();    //String setada no gameOver
         String linha3 = "---";
         String linha4="Equipa das Pretas";
         String linha5= Integer.toString(contadorPretas.getPecasCapturadas());
@@ -305,8 +305,8 @@ public class Tabuleiro {
                 }
             }
         }
-        if(encontrou==estaCapturado && encontrou != 0){
-            return true;
+        if(encontrou==estaCapturado && encontrou != 0){  //quantos reis essa equipa tem e quantos ja estao capturados
+            return true;                                 // se estiverem todos capturados xequeMate
         }
         return false;
     }

@@ -32,7 +32,7 @@ public class GameManager {
             boolean primeiraLinha = true;
             boolean segundaLinha = false;
             int tamanhoTabuleiro = 0;
-            int count = 0;
+            int count = 0;      // count pecas criadas
             int countColunas = 0;
             int numeroPecas = 0;
             int linhaAtual = 0;
@@ -51,14 +51,14 @@ public class GameManager {
             int rondasSemCaptura = 0;
             int rondaAtual = 0;
 
-            int equipaAJogar = 10;
+            int equipaAJogar = 10;   //mudar equipa a jogar
 
             ArrayList<Peca> pecas = new ArrayList<>();
 
             while ((linha = reader.readLine()) != null) {
 
                 if (primeiraLinha) {
-                    linhaAtual++;
+                    linhaAtual++;   // Contar linhas para usar nas exceptions
                     tamanhoTabuleiro = Integer.parseInt(linha);
 
                     primeiraLinha = false;
@@ -100,6 +100,7 @@ public class GameManager {
                         case 6 -> new HomerSimpson(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                         case 7 -> new Joker(idPeca, tipoPeca, equipaPeca, alcunhaPeca);
                         case 8 -> new SapoEncantado(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
+                        case 9 -> new divil(idPeca,tipoPeca,equipaPeca,alcunhaPeca);
                         default -> throw new IllegalStateException("Tipo de peca Invalido " + tipoPeca);
                     };
 
@@ -108,8 +109,8 @@ public class GameManager {
                     continue;
                 }
 
-                if (count == numeroPecas && countColunas < tamanhoTabuleiro) {
-                    linhaAtual++;
+                if (count == numeroPecas && countColunas < tamanhoTabuleiro) {  // entra quando as pecas ja foram todas lidas
+                    linhaAtual++;                                               // sai quando as colunas tenham sido todas lidas
 
                     String[] partes = linha.split(":");
                     if(partes.length>tamanhoTabuleiro){
@@ -126,14 +127,14 @@ public class GameManager {
                         } else {
                             for (Peca peca : pecas) {
                                 if (peca.getID() == parteInt) {
-                                    peca.setCoordenadas(countlinhas, countColunas);
-                                    countlinhas++;
+                                    peca.setCoordenadas(countlinhas, countColunas);  // ainda nao esta no tabuleiro
+                                    countlinhas++;                                   // cadas peca fica com as suas coordenadas
                                     break;
                                 }
                             }
                         }
                     }
-                    countColunas++;
+                    countColunas++;    // avanca na colouna do tabuleiro
                 }
 
 
@@ -205,22 +206,22 @@ public class GameManager {
 
 
             tabuleiro = new Tabuleiro(tamanhoTabuleiro, pecas);
-            tabuleiro.inicializarTabuleiro();
+            tabuleiro.inicializarTabuleiro();     //colocamos pecas no arrayBidimensional
 
             for (Peca peca : tabuleiro.getListaPecas()) {
                 int id = peca.getID();
 
                 if (tabuleiro.getPecaPorIDTabuleiro(id) == null) {
-                    peca.capturada();
+                    peca.capturada();   //estado = false (capturada)
 
                 }
                 tabuleiro.adicionarNovoContador(peca.getEquipa());
                 tabuleiro.adicionarPecaAEquipa(peca); //adicionar as pecas a lista de cada equipa
-            }
+            }   // Mudar equipa : adicionarPecaAEquipa
 
 
-            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);
-            CountJogadas countBranco = tabuleiro.getContadorEquipa(20);
+            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  // Mudar equipa : getContadorEquipa(idEquipa)
+            CountJogadas countBranco = tabuleiro.getContadorEquipa(20); // Mudar equipa : getContadorEquipa(idEquipa)
             ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
             countPreta.alteraPecasCapturadas(pretaPecasCapturadas);
@@ -274,7 +275,7 @@ public class GameManager {
 
         //  ContadorJogadas contadorJogadas = tabuleiro.getContadorJogadas();
 
-        Peca peca = tabuleiro.getPeca(x0, y0);
+        Peca peca = tabuleiro.getPeca(x0, y0);  //arrayBidimensionl
 
 
         if (peca == null) {
@@ -312,8 +313,6 @@ public class GameManager {
 
             int equipaDestino = pecaDestino.getEquipa();
 
-            CountJogadas contadorEquipaPecaDestino = tabuleiro.getContadorEquipa(equipaDestino);
-
 
             if (equipaPeca == equipaDestino) {
                 contadorEquipaAJogar.jogadaInvalida();
@@ -323,49 +322,47 @@ public class GameManager {
             } else {
                 foiCapturada = true;
                 contadorRondas.resetRondasSemCaptura();
-                pecaDestino.capturada();
+                pecaDestino.capturada();  // peca estado = false (capturada)
                 peca.adicionarPecaQueCaptorou(pecaDestino.getID());
-                contadorEquipaAJogar.pecaFoiCapturada();    //contadorEquipaPeca.pecaFoiCapturada();
+                contadorEquipaAJogar.pecaFoiCapturada();
                 tabuleiro.removerPeca(x1, y1);
             }
         }
 
         CountJogadas countPreta = tabuleiro.getContadorEquipa(10);  //caso se crie uma nova equipa criar adicionar countNovo
-        CountJogadas countBranca = tabuleiro.getContadorEquipa(20);
+        CountJogadas countBranca = tabuleiro.getContadorEquipa(20); //// Mudar equipa : getContadorEquipa(idEquipa)
 
         //Se no destino não houver peca é so mover
+
         if ((!foiCapturada && countBranca.getPecasCapturadas() >= 1) || (!foiCapturada && countPreta.getPecasCapturadas() >= 1)) {
-            contadorRondas.jogadaConcluidaSemCaptura();
-        }
+            contadorRondas.jogadaConcluidaSemCaptura();  //se ja houve uma captura previa e nao houve captura nesta jogada
+        }                                                // incrementa rondasSemCaptura
 
 
-        if (contadorRondas.getRondasJoker() == 6) {
-            contadorRondas.resetRondaJoker();
+        if (contadorRondas.getRondasJoker() == 6) {      //    !!!!!!!!!!! RESET Rondas Joker !!!!!!!!!!!! //
+            contadorRondas.resetRondaJoker();            // colocar rei passar count a 0
         } else {
             contadorRondas.incrementaRondaJoker();
         }
 
 
-        tabuleiro.movePeca(x0, y0, x1, y1);
-        peca.setCoordenadas(x1, y1);
+        tabuleiro.movePeca(x0, y0, x1, y1);  // arrayBidimensional
+        peca.setCoordenadas(x1, y1);      // muda coordenadas na peca
         contadorEquipaPeca.jogadaValida();
         contadorPeca.jogadaValida();
         contadorRondas.incrementaRondaAtual();
-        tabuleiro.mudarEquipaAjogar();
+        tabuleiro.mudarEquipaAjogar();  // Mudar equipa : alterar metodo
 
-
+       //-----------------------------------Jogada Undo ------------------------------------------//
         Jogada jogada = new Jogada(x0, y0, x1, y1, foiCapturada, rondaAtual, rondaJoker, rondasSemCaptura,
                 contadorEquipaAJogar.getJogadasInvalidas(),contadorPeca.getJogadasInvalidas());
 
-        CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
-        CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
-
-
-
 
         if (foiCapturada) {
-            jogada.addIDPecaCapturada(pecaDestino.getID());
+            jogada.addIDPecaCapturada(pecaDestino.getID());   // adicionar a jogada o id da peca que foi capturada
         }
+
+        //------------------------------------------------------------------------------------------//
 
         tabuleiro.adicionarJogadaAoHistorico(jogada);
 
@@ -375,11 +372,11 @@ public class GameManager {
 
     public String[] getSquareInfo(int x, int y) {
         return tabuleiro.buscarInformacaoQuadrado(x, y);
-    }
+    } // buscar arry
 
     public String[] getPieceInfo(int ID) {
         return tabuleiro.buscarInfomacaoPeca(ID);
-    }
+    }  //buscar listaDePecas
 
     public String getPieceInfoAsString(int ID) {
         return tabuleiro.buscarInformacaoPecaAsString(ID);
@@ -393,10 +390,10 @@ public class GameManager {
 
         ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
-        CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);
+        CountJogadas contadorPretas = tabuleiro.getContadorEquipa(10);   // Mudar equipa : getContadorEquipa(idEquipa)
         int pecasCapturadasPorPreta = contadorPretas.getPecasCapturadas();
 
-        CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);
+        CountJogadas contadorBrancas = tabuleiro.getContadorEquipa(20);  // Mudar equipa : getContadorEquipa(idEquipa)
         int pecasCapturadasPorBranca = contadorBrancas.getPecasCapturadas();
 
         ArrayList<Peca> equipaPreta = tabuleiro.getListaPretas();
@@ -407,7 +404,7 @@ public class GameManager {
             return true;
         }
 
-        if (pecasCapturadasPorBranca == equipaPreta.size()) {
+        if (pecasCapturadasPorBranca == equipaPreta.size()) {   //nao existem mais pecas na equipa Preta
             contadorRondas.defineResultado("VENCERAM AS BRANCAS");
             return true;
         }
@@ -417,13 +414,13 @@ public class GameManager {
             return true;
         }
 
-        if (pecasCapturadasPorPreta == equipaBranca.size()) {
+        if (pecasCapturadasPorPreta == equipaBranca.size()) {   //nao existem mais pecas na equipa Branca
             contadorRondas.defineResultado("VENCERAM AS PRETAS");
             return true;
         }
 
         if (pecasCapturadasPorBranca == (equipaPreta.size() - 1) && pecasCapturadasPorPreta == (equipaBranca.size() - 1)) {
-            contadorRondas.defineResultado("EMPATE");
+            contadorRondas.defineResultado("EMPATE");    //Ficaar uma peca de cada equipa
             return true;
         }
 
@@ -467,7 +464,7 @@ public class GameManager {
             writer.newLine();
 
             // Write piece information
-            for (Peca peca : pecas) {
+            for (Peca peca : pecas) {        // trocar ordem aqui se for mudado no load
                 writer.write(peca.getID()+":"+peca.getTipo()+":"+peca.getEquipa()+":"+peca.getAlcunha());
                 writer.newLine();
             }
@@ -497,8 +494,8 @@ public class GameManager {
 
                 }
             }
-            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);
-            CountJogadas countBranco = tabuleiro.getContadorEquipa(20);
+            CountJogadas countPreta = tabuleiro.getContadorEquipa(10);   // Mudar equipa : getContadorEquipa(idEquipa)
+            CountJogadas countBranco = tabuleiro.getContadorEquipa(20);  // Mudar equipa : getContadorEquipa(idEquipa)
             ContadorRondas contadorRondas = tabuleiro.getContadorRondas();
 
             writer.write("Contadores por equipa:"+"\n");
@@ -569,7 +566,7 @@ public class GameManager {
 
 
                 if (ultimaJogada.houveCaptura()) {
-                    countPecaQueJogou.decrementaPecaFoiCapturada();
+                    countPecaQueJogou.decrementaPecaFoiCapturada();  // contador da equipa da peca que jogou
                 }
 
                 countPecaQueJogou.decrementaJogadaValida();
@@ -594,18 +591,18 @@ public class GameManager {
 
     public List<Comparable> getHints(int x, int y) {
 
-        Peca pecaSelecionada = tabuleiro.getPeca(x, y);
+        Peca pecaSelecionada = tabuleiro.getPeca(x, y);    // buscar no array
         List<Comparable> listaDeSugestoes = new ArrayList<Comparable>();
 
         if (x < 0 || x >= tabuleiro.getTamanho() || y < 0 || y >= tabuleiro.getTamanho()) {
             return null;
         }
 
-        if (pecaSelecionada == null) {
+        if (pecaSelecionada == null) {  // se clicamos em uma peca
             return null;
         }
 
-        if (pecaSelecionada.getEquipa() != tabuleiro.getEquipaAJogar()) {
+        if (pecaSelecionada.getEquipa() != tabuleiro.getEquipaAJogar()) { // se clicamos numa peca da equipa a jogar
             return null;
         }
 

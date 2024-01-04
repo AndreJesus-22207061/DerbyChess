@@ -379,6 +379,7 @@ public class TestGameManager {
         boolean gameOver;
         String resultComPeca = "";
 
+
         resultComPeca = jogo.getPieceInfoAsString(8);
         assertEquals("8 | Joker/Rainha | 4 | 10 | O Beberolas @ (7, 0)", resultComPeca);
 
