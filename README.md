@@ -6,6 +6,10 @@ Projeto no âmbito da cadeira de Linguagens de Programação II , jogo de "xadre
  Tomás Nave /
  André Jesus
 
+ Video explicativo:
+
+ https://youtu.be/GS9t6hF_n4s
+
  Imagem Jogo:
 
 ![printJogo](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/57a73c25-3150-4a2e-b122-b7125460685a)
@@ -22,8 +26,13 @@ Imagem Créditos:
 
 Diagrama UML:
 
+![UML drawio (3)](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/05152476-633a-44c8-8b3b-54687830b1f8)
 
 
 
-![UML drawio](https://github.com/AndreJesus-22207061/Projeto_LP2-22207061-22208623/assets/127102331/b854af00-44d2-4550-aa30-35e5df21a493)
 
+
+Modelação do Projeto:
+
+No nosso código temos a classe GameManager que contém as funções principais do nosso programa, onde temos o nosso tabuleiro também foi uma classe criada por nós. Esta classe tabuleiro contém tudo o que precisamos para guardar informações sobre o jogo.
+Dentro desta classe Tabuleiro temos um array bidimensional que contém a localização das peças e as respetivas peças. Temos ainda 3 listas de peças, uma que contem todas as peças do jogo muito utilizada para se fazer as pesquisas para as estatisticas onde temos de percorrer todas as pecas do jogo, e temos as outras duas listas cada uma contendo apenas as peças de cada equipa de maneira a podermos obter informações mais relativas a cada equipa. Depois ainda dentro do tabuleiro temos uma lista de contadores, essa lista tem um contador para cada equipa em jogo onde temos informações sobre as jogadas válidas e inválidas. Temos tambem no tabuleiro um contadorRondas que tem informações mais gerais sobre as rondas do jogo. Por fim temos no tabuleiro uma stack com o histórico das jogadas, estas jogadas são uma classe criada por nós com todas as informações necessárias para realizar o undo. A nossa classe peça é uma classe pai que tem vários filhos que sao todos os tipos de peça deste jogo onde cada filho tem o seu tipo de movimento e as suas caracteristicas próprias. Por fim dentro da classe Peca temos um CountJogadas que tem as informações relativas a jogadas válidas e inválidas dessa peça, ou seja no nosso modelo temos um CountJogadas para cada equipa e temos um countJoagadas para cada peca em jogo tendo assim acesso às jogadas inválidas e válidas de cada peça e de cada equipa como um todo. Para implementar a função getints criámos uma classe comparable, a que gostamos de chamar sugestão com todas as informações necessárias de uma sugestão de jogada. Por fim temos um ficheiro chamado Statisticks.kt programado em kotlin que contém as funções principais das estatisticas, dentro de cada uma dessas funções chamamos um método "query" que está na classe Tabuleiro que devolve as informações necessárias de estatisticas para cada uma das 5 funções.
