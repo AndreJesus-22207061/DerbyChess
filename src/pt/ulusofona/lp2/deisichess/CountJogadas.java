@@ -37,9 +37,7 @@ public class CountJogadas {
         this.jogadasInvalidas++;
     }
 
-    void decrementaJogadaInvalida(){
-        this.jogadasInvalidas--;
-    }
+
     int getEquipa(){
         return this.equipa;
     }
